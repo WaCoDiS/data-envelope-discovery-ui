@@ -1,6 +1,6 @@
 # DataEnvelopeDiscoveryUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
+This project is an Angular based Webapp for discovering WaCoDiS Data Envelopes
 
 ## Development server
 
