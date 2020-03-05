@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CollapseModule} from 'ngx-bootstrap/collapse';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -22,7 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AppComponent,
     SourceTypeComponent,
     RequiredParametersComponent,
-    OptionalParametersComponent
+    OptionalParametersComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

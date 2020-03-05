@@ -1,0 +1,12 @@
+header{
+  height: 60px;
+}
+
+.title{
+  font-size: 25px;
+  color: white;
+}
+
+.bg-custom{
+  background-color: #4e81bd;
+}
