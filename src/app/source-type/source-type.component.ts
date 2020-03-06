@@ -8,10 +8,10 @@ import { WacodisProduct } from '../source-type-interfaces';
 @Component({
   selector: 'app-source-type',
   templateUrl: './source-type.component.html',
-  styleUrls: ['./source-type.component.css']
+  styleUrls: ['./source-type.component.scss']
 })
 export class SourceTypeComponent{
-  radioModel = 'Middle';
+  radioModel = 'SensorWeb';
   componentTitel = "Source type"
 
   //constructor() { }
