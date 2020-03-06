@@ -1,9 +1,14 @@
-<div>
-  <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Optional Parameters
-  </button>
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseBasic">Optional Parameters
+    </button>
+  </div>
 </div>
-<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-  <div class="card-body bg-light">Some content</div>
+<div class="row">
+  <div class="col">
+    <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+      <div class="card-body bg-light">Some content</div>
+    </div>
+  </div>
 </div>
-<hr class="hr" align="left">
