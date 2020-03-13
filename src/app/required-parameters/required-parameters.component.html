@@ -1,3 +1,54 @@
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseBasic">Required Parameters
+    </button>
+  </div>
+</div>
+
+<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+<div class="row bg-light row-custom">
+  <div class="col-md-3 col-custom">
+      <div class="card-body">
+        <label>Area of Interest</label>
+      </div>
+   </div>
+  <div class="col-md-4 col-custom ">
+    <div class="card-body">
+      <input class="form-control" id="minLon" placeholder="min. longitude"/>
+      <input class="form-control form-custom" id="minLat" placeholder="min. latitude"/>
+    </div>
+  </div>
+<div class="col-md-4 col-custom">
+  <div class="card-body bg-light">
+    <input class="form-control" id="maxLon" placeholder="max. longitude"/>
+    <input class="form-control form-custom" id="maxLat" placeholder="max. latitude"/>
+  </div>
+</div>
+</div>
+  <div class="row bg-light row-custom">
+    <div class="col-md-3 col-custom">
+      <div class="card-body">
+        <label>Timeframe</label>
+      </div>
+    </div>
+    <div class="col-md-5 col-custom ">
+      <div class="card-body">
+        <input type="text"
+               placeholder="Daterangepicker"
+               class="form-control datepicker"
+               bsDaterangepicker
+               [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue' }"/>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<!--
 <div>
   <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Required Parameters
@@ -40,3 +91,5 @@
     </form>
   </div>
 </div>
+
+-->
