@@ -34,17 +34,47 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <div id="collapseBasic2" [collapse]="isCollapsed" [isAnimated]="true">
-      <div class="card-body bg-light">Cloud Cover</div>
+<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <div class="row bg-light row-custom">
+    <div class="col-md-3 col-custom">
+      <div class="card-body">
+        <label>Satellite</label>
+      </div>
+    </div>
+    <div class="col-md-4 col-custom ">
+      <div class="card-body">
+        <label>Select-Button</label>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-light row-custom">
+  <div class="col-md-3 col-custom">
+    <div class="card-body">
+      <label>Cloud Cover</label>
+    </div>
+  </div>
+  <div class="col-md-4 col-custom ">
+    <div class="card-body">
+      <input class="form-control" id="minimumCloudCover" placeholder="min. Cloud Cover"/>
+    </div>
+  </div>
+  <div class="col-md-4 col-custom">
+    <div class="card-body bg-light">
+      <input class="form-control" id="maximumCloudCover" placeholder="max. Cloud Cover"/>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <div id="collapseBasic3" [collapse]="isCollapsed" [isAnimated]="true">
-      <div class="card-body bg-light">Portal</div>
+
+  <div class="row bg-light row-custom">
+    <div class="col-md-3 col-custom">
+      <div class="card-body">
+        <label>Portal</label>
+      </div>
+    </div>
+    <div class="col-md-4 col-custom ">
+      <div class="card-body">
+        <label>Select-Button</label>
+      </div>
     </div>
   </div>
 </div>

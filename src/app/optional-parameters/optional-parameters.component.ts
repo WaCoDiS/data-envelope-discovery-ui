@@ -16,9 +16,9 @@ export class OptionalParametersComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  onOpenChange(data: boolean): void {
-    this.text = data ? 'opened' : 'closed';
+  changeAction(obj) {
+    this.text = obj;
+  }
   }
 
   changeAction(obj) {
