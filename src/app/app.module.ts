@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { SourceTypeComponent } from './source-type/source-type.component';
-import { RequiredParametersComponent } from './required-parameters/required-parameters.component';
-import { OptionalParametersComponent } from './optional-parameters/optional-parameters.component';
+import { RequiredParametersComponent } from './source-type/required-parameters/required-parameters.component';
+import { OptionalParametersComponent } from './source-type/optional-parameters/optional-parameters.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
