@@ -43,7 +43,7 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <label>Select-Button</label>
+        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [(ngModel)]="dataModel">Satellite</ngx-select-dropdown>
       </div>
     </div>
   </div>

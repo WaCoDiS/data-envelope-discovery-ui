@@ -15,6 +15,7 @@ import { CollapseModule} from 'ngx-bootstrap/collapse';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HeaderComponent } from './header/header.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 
 
@@ -37,7 +38,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ReactiveFormsModule,
     CollapseModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    SelectDropDownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

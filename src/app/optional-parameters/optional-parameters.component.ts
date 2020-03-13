@@ -9,19 +9,21 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class OptionalParametersComponent implements OnInit {
 
+  public dataModel: any;
+
   text: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.dataModel = ["Sentinel-1", "Sentinel-2"];
   }
 
   changeAction(obj) {
     this.text = obj;
   }
-  }
 
-  changeAction(obj) {
-    this.text = obj.valueOf();
+  selectionChanged(evt){
+    console.log(evt.value);
   }
 }
