@@ -9,14 +9,17 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class OptionalParametersComponent implements OnInit {
 
-  public dataModel: any;
+  public dropdownOptionsSatellite: any
+
+  public dropdownOptionsPortal: any
 
   text: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.dataModel = ["Sentinel-1", "Sentinel-2"];
+    this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
+    this.dropdownOptionsPortal = ["CODE-DE", "Sentinel-Hub"];
   }
 
   changeAction(obj) {
@@ -25,5 +28,10 @@ export class OptionalParametersComponent implements OnInit {
 
   selectionChanged(evt){
     console.log(evt.value);
+  }
+
+
+  config = {
+    placeholder:'Select'
   }
 }

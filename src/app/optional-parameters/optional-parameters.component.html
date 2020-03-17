@@ -5,35 +5,6 @@
     </button>
   </div>
 </div>
-<div class="row bg-light">
-  <div class="col-md-2">
-    <div id="satellite-text" [collapse]="isCollapsed" [isAnimated]="true">
-      <div class="card-body">Satellite</div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id="satellite-dropdown" [collapse]="isCollapsed" [isAnimated]="true">
-      <div class="card-body">
-
-      <div class="btn-group" dropdown>
-        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                aria-controls="dropdown-animated">
-          {{text}} <span class="caret"></span>
-        </button>
-        <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-animated">
-          <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="changeAction(obj)" >Action</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="changeAction(obj)" >Another action</a>
-          </li>
-          <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)" (click)="changeAction(obj)" >Something else
-            here</a></li>
-        </ul>
-      </div>
-
-      </div>
-    </div>
-  </div>
-</div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
@@ -43,7 +14,7 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [(ngModel)]="dataModel">Satellite</ngx-select-dropdown>
+        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsSatellite" [config]="config" >Satellite</ngx-select-dropdown>
       </div>
     </div>
   </div>
@@ -73,7 +44,7 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <label>Select-Button</label>
+        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsPortal" [config]="config" >Satellite</ngx-select-dropdown>
       </div>
     </div>
   </div>
