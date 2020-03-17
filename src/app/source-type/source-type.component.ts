@@ -11,10 +11,15 @@ import { WacodisProduct } from '../source-type-interfaces';
   styleUrls: ['./source-type.component.scss']
 })
 export class SourceTypeComponent{
-  radioModel = 'SensorWeb';
   componentTitel = "Source type"
 
-  //constructor() { }
+  radioModel:any;
+  showcontent:boolean=false;
+
+
+  showContent(){
+    this.showcontent=this.radioModel;
+  }
 
 
 }

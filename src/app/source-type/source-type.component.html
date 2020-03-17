@@ -1,16 +1,21 @@
 <h5>{{componentTitel}}</h5>
 <div class="btn-group">
   <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="SensorWeb" tabindex="0" role="button" >SensorWeb</label>
+         btnRadio="SensorWeb" tabindex="0" role="button" (click)="showContent()">SensorWeb</label>
   <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="Copernicus" tabindex="0" role="button">Copernicus</label>
+         btnRadio="Copernicus" tabindex="0" role="button" (click)="showContent()">Copernicus</label>
   <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="GDI-DE" tabindex="0" role="button">GDI-DE</label>
+         btnRadio="GDI-DE" tabindex="0" role="button" (click)="showContent()">GDI-DE</label>
   <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="DWD" tabindex="0" role="button">DWD</label>
+         btnRadio="DWD" tabindex="0" role="button" (click)="showContent()">DWD</label>
   <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="WacodisProduct" tabindex="0" role="button">WacodisProduct</label>
+         btnRadio="WacodisProduct" tabindex="0" role="button" (click)="showContent()">WacodisProduct</label>
 </div>
 
 <app-required-parameters></app-required-parameters>
-<hr class="hr">
+<br>
+<app-optional-parameters-sensor-web *ngIf="radioModel && showcontent=='SensorWeb'"></app-optional-parameters-sensor-web>
+<app-optional-parameters-copernicus *ngIf="radioModel && showcontent=='Copernicus'"></app-optional-parameters-copernicus>
+<app-optional-parameters-gdi-de *ngIf="radioModel && showcontent=='GDI-DE'"></app-optional-parameters-gdi-de>
+<app-optional-parameters-dwd *ngIf="radioModel && showcontent=='DWD'"></app-optional-parameters-dwd>
+<app-optional-parameters-wacodis-product *ngIf="radioModel && showcontent=='WacodisProduct'"></app-optional-parameters-wacodis-product>
