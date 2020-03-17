@@ -15,7 +15,12 @@ import { CollapseModule} from 'ngx-bootstrap/collapse';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HeaderComponent } from './header/header.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { OptionalParametersCopernicusComponent } from './source-type/optional-parameters-copernicus/optional-parameters-copernicus.component';
+import { OptionalParametersSensorWebComponent } from './source-type/optional-parameters-sensor-web/optional-parameters-sensor-web.component';
+import { OptionalParametersGdiDeComponent } from './source-type/optional-parameters-gdi-de/optional-parameters-gdi-de.component';
+import { OptionalParametersDwdComponent } from './source-type/optional-parameters-dwd/optional-parameters-dwd.component';
+import { OptionalParametersWacodisProductComponent } from './source-type/optional-parameters-wacodis-product/optional-parameters-wacodis-product.component'
 
 
 
@@ -26,7 +31,12 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
     SourceTypeComponent,
     RequiredParametersComponent,
     OptionalParametersComponent,
-    HeaderComponent
+    HeaderComponent,
+    OptionalParametersCopernicusComponent,
+    OptionalParametersSensorWebComponent,
+    OptionalParametersGdiDeComponent,
+    OptionalParametersDwdComponent,
+    OptionalParametersWacodisProductComponent
   ],
   imports: [
     BrowserModule,
