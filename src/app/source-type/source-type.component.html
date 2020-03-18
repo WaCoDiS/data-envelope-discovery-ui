@@ -1,5 +1,5 @@
-<h5>{{componentTitel}}</h5>
-<div class="btn-group">
+<h5 class="row-custom">{{componentTitel}}</h5>
+<div class="btn-group row-custom">
   <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
          btnRadio="SensorWeb" tabindex="0" role="button">SensorWeb</label>
   <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
@@ -13,7 +13,7 @@
 </div>
 
 <app-required-parameters></app-required-parameters>
-<hr>
+<hr class="col-md-5 row-custom" align="left">
 
 <div *ngIf="sourceTypeSelection">
   <app-optional-parameters-sensor-web *ngIf="sourceTypeSelection=='SensorWeb'"></app-optional-parameters-sensor-web>
@@ -22,4 +22,4 @@
   <app-optional-parameters-dwd *ngIf="sourceTypeSelection=='DWD'"></app-optional-parameters-dwd>
   <app-optional-parameters-wacodis-product *ngIf="sourceTypeSelection=='WacodisProduct'"></app-optional-parameters-wacodis-product>
 </div>
-<hr>
+<hr class="col-md-5 row-custom" align="left">
