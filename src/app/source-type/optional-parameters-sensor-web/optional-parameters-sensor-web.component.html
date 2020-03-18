@@ -6,45 +6,55 @@
   </div>
 </div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <!-- Service URL -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>SensorWeb-test</label>
+        <label>ServiceURL</label>
       </div>
     </div>
-    <div class="col-md-4 col-custom ">
+    <div class="col-md-9 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsSatellite" [config]="config" >Satellite</ngx-select-dropdown>
+        <input class="form-control" id="serviceUrlSensorWeb" placeholder="url"/>
       </div>
     </div>
   </div>
+  <!-- Offering -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>Cloud Cover</label>
+        <label>Offering</label>
       </div>
     </div>
-    <div class="col-md-4 col-custom ">
+    <div class="col-md-5 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="minimumCloudCover" placeholder="min. Cloud Cover"/>
-      </div>
-    </div>
-    <div class="col-md-4 col-custom">
-      <div class="card-body bg-light">
-        <input class="form-control" id="maximumCloudCover" placeholder="max. Cloud Cover"/>
+        <input class="form-control" id="offering" placeholder="offering"/>
       </div>
     </div>
   </div>
-
+  <!-- Feature of Interest -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>Portal</label>
+        <label>Feature of Interest</label>
       </div>
     </div>
-    <div class="col-md-4 col-custom ">
+    <div class="col-md-5 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsPortal" [config]="config" >Satellite</ngx-select-dropdown>
+        <input class="form-control" id="foi" placeholder="feature of interest"/>
+      </div>
+    </div>
+  </div>
+  <!-- Observed property -->
+  <div class="row bg-light row-custom">
+    <div class="col-md-3 col-custom">
+      <div class="card-body">
+        <label>Observed Property</label>
+      </div>
+    </div>
+    <div class="col-md-5 col-custom ">
+      <div class="card-body">
+        <input class="form-control" id="observedProp" placeholder="observed property"/>
       </div>
     </div>
   </div>
