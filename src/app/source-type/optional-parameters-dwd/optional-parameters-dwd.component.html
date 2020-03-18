@@ -6,45 +6,34 @@
   </div>
 </div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <!-- Service URL -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>Satellite</label>
+        <label>ServiceURL</label>
       </div>
     </div>
-    <div class="col-md-4 col-custom ">
+    <div class="col-md-9 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsSatellite" [config]="config" >Satellite</ngx-select-dropdown>
+        <input class="form-control" id="serviceUrlDwd" placeholder="url"/>
       </div>
     </div>
   </div>
+  <!-- Layer name -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>Cloud Cover</label>
+        <label>Layer name</label>
       </div>
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="minimumCloudCover" placeholder="min. Cloud Cover"/>
-      </div>
-    </div>
-    <div class="col-md-4 col-custom">
-      <div class="card-body bg-light">
-        <input class="form-control" id="maximumCloudCover" placeholder="max. Cloud Cover"/>
-      </div>
-    </div>
-  </div>
-
-  <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Portal</label>
+        <ngx-select-dropdown (change)="availableLayerNames($event)" [multiple]="false" [options]="dropdownOptionsTime" [config]="config">time interval</ngx-select-dropdown>
       </div>
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsPortal" [config]="config" >Satellite</ngx-select-dropdown>
+        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsLayer" [config]="config">weather data</ngx-select-dropdown>
       </div>
     </div>
   </div>
