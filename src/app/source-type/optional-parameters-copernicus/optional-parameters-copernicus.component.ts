@@ -10,29 +10,26 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 export class OptionalParametersCopernicusComponent implements OnInit {
 
   public dropdownOptionsSatellite: any
-
   public dropdownOptionsPortal: any
-
-  text: string;
+  public selectedSatellite: any
+  public selectedPortal: any
 
   constructor() { }
 
   ngOnInit() {
     this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
     this.dropdownOptionsPortal = ["CODE-DE", "Sentinel-Hub"];
-  }
 
-  changeAction(obj) {
-    this.text = obj;
+    this.selectedSatellite = this.dropdownOptionsSatellite[1];
+    this.selectedPortal = this.dropdownOptionsPortal[0];
   }
 
   selectionChanged(evt){
     console.log(evt.value);
   }
 
-
   config = {
     placeholder:'Select'
-  }
+  };
 
 }

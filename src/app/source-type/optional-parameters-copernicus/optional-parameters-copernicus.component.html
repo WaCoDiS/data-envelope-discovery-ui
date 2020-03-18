@@ -6,6 +6,7 @@
   </div>
 </div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <!-- Satellite -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
@@ -14,10 +15,15 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsSatellite" [config]="config" >Satellite</ngx-select-dropdown>
+        <ngx-select-dropdown  [multiple]="false"
+                              [options]="dropdownOptionsSatellite"
+                              [config]="config"
+                              [(ngModel)]="selectedSatellite">Satellite
+        </ngx-select-dropdown>
       </div>
     </div>
   </div>
+  <!-- Cloud Cover -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
@@ -35,7 +41,7 @@
       </div>
     </div>
   </div>
-
+  <!-- Portal -->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
@@ -44,7 +50,10 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsPortal" [config]="config" >Satellite</ngx-select-dropdown>
+        <ngx-select-dropdown  [multiple]="false"
+                              [options]="dropdownOptionsPortal"
+                              [config]="config"
+                              [(ngModel)]="selectedPortal">Satellite</ngx-select-dropdown>
       </div>
     </div>
   </div>
