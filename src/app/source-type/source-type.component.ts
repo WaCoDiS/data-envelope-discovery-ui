@@ -13,13 +13,13 @@ import { WacodisProduct } from '../source-type-interfaces';
 export class SourceTypeComponent{
   componentTitel = "Source type"
 
-  radioModel:any;
-  showcontent:boolean=false;
+  sourceTypeSelection = 'SensorWeb';
+  //showcontent:boolean=false;
 
 
-  showContent(){
+  /*showContent(){
     this.showcontent=this.radioModel;
   }
-
+*/
 
 }
