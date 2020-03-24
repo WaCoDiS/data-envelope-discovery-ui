@@ -10,15 +10,21 @@ import {HOURLY, DAILY, MONTHLY, YEARLY} from './optional-parameters-dwd.layernam
 })
 export class OptionalParametersDwdComponent implements OnInit {
 
-  public dropdownOptionsTime: any
-  public dropdownOptionsLayer: any
-  public dropdownOptionsLayerHourly: any
+  private dropdownOptionsTime: any
+  private dropdownOptionsLayer: any
+  private dropdownOptionsLayerHourly: any
+  private dropdownOptionsLayerDaily: any
+  private dropdownOptionsLayerMonthly: any
+  private dropdownOptionsLayerYearly: any
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.dropdownOptionsTime = ["hourly", "daily", "monthly", "yearly"];
-    this.dropdownOptionsLayerHourly= this.getLayername()
+    this.dropdownOptionsLayerHourly = this.getLayername(HOURLY);
+    this.dropdownOptionsLayerDaily = this.getLayername(DAILY);
+    this.dropdownOptionsLayerMonthly = this.getLayername(MONTHLY);
+    this.dropdownOptionsLayerYearly = this.getLayername(YEARLY);
   }
 
   selectionChanged(evt){
@@ -31,11 +37,10 @@ export class OptionalParametersDwdComponent implements OnInit {
     limitTo: this.calcLimit()
   }
 
-  getLayername() {
+  getLayername(timeArray) {
     var layernames: string[] = [];
-    for (let i in HOURLY) {
-      layernames.push(HOURLY[i][1])
-      //alert(HOURLY[i][1])
+    for (let i in timeArray) {
+      layernames.push(timeArray[i][1])
     }
     return layernames;
   }
@@ -45,19 +50,19 @@ export class OptionalParametersDwdComponent implements OnInit {
     var sortedLenghts:number[] = lengths.sort((n1,n2) => n1 - n2);
     return sortedLenghts.pop();
   }
+
   availableLayerNames(selectedTimeIntervall){
     if (selectedTimeIntervall.value == "hourly"){
       this.dropdownOptionsLayer = this.dropdownOptionsLayerHourly;
     }
     if (selectedTimeIntervall.value == "daily"){
-      this.dropdownOptionsLayer = ['blub'];
+      this.dropdownOptionsLayer = this.dropdownOptionsLayerDaily;
     }
     if (selectedTimeIntervall.value == "monthly"){
-      this.dropdownOptionsLayer = ['blub'];
+      this.dropdownOptionsLayer = this.dropdownOptionsLayerMonthly;
     }
     if (selectedTimeIntervall.value == "yearly"){
-      this.dropdownOptionsLayer = ['blub'];
+      this.dropdownOptionsLayer = this.dropdownOptionsLayerYearly;
     }
   }
 }
-
