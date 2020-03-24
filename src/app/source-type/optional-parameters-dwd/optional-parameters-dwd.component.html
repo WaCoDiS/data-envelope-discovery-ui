@@ -26,14 +26,21 @@
         <label>Layer name</label>
       </div>
     </div>
-    <div class="col-md-4 col-custom ">
+
+    <div class="col-md-9 col-custom">
       <div class="card-body">
+        <div class="col-md-4 col-custom">
         <ngx-select-dropdown (change)="availableLayerNames($event)" [multiple]="false" [options]="dropdownOptionsTime" [config]="config">time interval</ngx-select-dropdown>
+        </div>
+        <div class="col-custom form-custom">
+          <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsLayer" [config]="config">weather data</ngx-select-dropdown>
+      </div>
       </div>
     </div>
+
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsLayer" [config]="config">weather data</ngx-select-dropdown>
+
       </div>
     </div>
   </div>

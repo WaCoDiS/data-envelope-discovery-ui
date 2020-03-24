@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
-import {LayernameI, HOURLY} from './optional-parameters-dwd.layernames';
+import {HOURLY} from './optional-parameters-dwd.layernames';
 
 @Component({
   selector: 'app-optional-parameters-dwd',
@@ -18,7 +18,7 @@ export class OptionalParametersDwdComponent implements OnInit {
 
   ngOnInit() {
     this.dropdownOptionsTime = ["hourly", "daily", "monthly", "yearly"];
-    //this.dropdownOptionsLayerHourly= this.getLayername(HOURLY)
+    this.dropdownOptionsLayerHourly= this.getLayername()
   }
 
   selectionChanged(evt){
@@ -27,23 +27,22 @@ export class OptionalParametersDwdComponent implements OnInit {
 
   config = {
     placeholder:'Select',
-    customComparator: ()=>{
-    }
+    search:true,
+    limitTo: HOURLY.length
   }
 
- /*getLayername(time:Layername[]){
-    var layernames:string[] = [];
-    alert(time.pop())
-    for (let layer in time){
-      layernames.push(layer.name())
-      alert(layer[1])
+  getLayername() {
+    var layernames: string[] = [];
+    for (let i in HOURLY) {
+      layernames.push(HOURLY[i][1])
+      //alert(HOURLY[i][1])
     }
     return layernames;
-  }*/
+  }
 
-  /*availableLayerNames(selectedTimeIntervall){
+  availableLayerNames(selectedTimeIntervall){
     if (selectedTimeIntervall.value == "hourly"){
-      this.dropdownOptionsLayer = ;
+      this.dropdownOptionsLayer = this.dropdownOptionsLayerHourly;
     }
     if (selectedTimeIntervall.value == "daily"){
       this.dropdownOptionsLayer = ['blub'];
@@ -54,17 +53,6 @@ export class OptionalParametersDwdComponent implements OnInit {
     if (selectedTimeIntervall.value == "yearly"){
       this.dropdownOptionsLayer = ['blub'];
     }
-  }*/
-
-}
-
-export class Layername implements LayernameI{
-  get name(): string {
-    return this.name;
-  }
-
-  get title(): string {
-    return this.title;
   }
 }
 
