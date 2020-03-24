@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
-import {HOURLY} from './optional-parameters-dwd.layernames';
+import {HOURLY, DAILY, MONTHLY, YEARLY} from './optional-parameters-dwd.layernames';
 
 @Component({
   selector: 'app-optional-parameters-dwd',
@@ -28,7 +28,7 @@ export class OptionalParametersDwdComponent implements OnInit {
   config = {
     placeholder:'Select',
     search:true,
-    limitTo: HOURLY.length
+    limitTo: this.calcLimit()
   }
 
   getLayername() {
@@ -40,6 +40,11 @@ export class OptionalParametersDwdComponent implements OnInit {
     return layernames;
   }
 
+  calcLimit(){
+    var lengths:number[] = [HOURLY.length, DAILY.length, MONTHLY.length, YEARLY.length];
+    var sortedLenghts:number[] = lengths.sort((n1,n2) => n1 - n2);
+    return sortedLenghts.pop();
+  }
   availableLayerNames(selectedTimeIntervall){
     if (selectedTimeIntervall.value == "hourly"){
       this.dropdownOptionsLayer = this.dropdownOptionsLayerHourly;
