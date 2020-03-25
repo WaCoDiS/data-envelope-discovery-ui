@@ -21,6 +21,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HeaderComponent } from './header/header.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { MapApplicationComponent } from './map-application/map-application.component';
 
 
 
@@ -35,7 +36,8 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
     OptionalParametersSensorWebComponent,
     OptionalParametersGdiDeComponent,
     OptionalParametersDwdComponent,
-    OptionalParametersWacodisProductComponent
+    OptionalParametersWacodisProductComponent,
+    MapApplicationComponent
   ],
   imports: [
     BrowserModule,
