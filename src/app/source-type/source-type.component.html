@@ -1,42 +1,44 @@
 <h5 class="row-custom">{{componentTitel}}</h5>
 
 <div class="row-custom">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <div class="col">
-      <li class="nav-item active">
-        <a class="nav-link" [(ngModel)]="sourceTypeSelection"
+  <nav class="navbar-expand-lg navbar-dark bg-primary">
+    <ul class="navbar-nav nav-pills nav-fill">
+    <li class="nav-item">
+      <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
+         btnRadio="SensorWeb" href="#">SensorWeb<span class="sr-only">(current)</span></a>
+    </li>
            btnRadio="SensorWeb" href="#">SensorWeb<span class="sr-only">(current)</span></a>
       </li>
-      </div>
-      <div class="col">
-        <li class="nav-item active">
-          <a class="nav-link"  [(ngModel)]="sourceTypeSelection"
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold"  [(ngModel)]="sourceTypeSelection"
+           btnRadio="Copernicus" href="#">Copernicus<span class="sr-only">(current)</span></a>
+      </li>
              btnRadio="Copernicus" href="#">Copernicus<span class="sr-only">(current)</span></a>
         </li>
-      </div>
-      <div class="col">
-        <li class="nav-item active">
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
+           btnRadio="GDI-DE" href="#">GDI-DE<span class="sr-only">(current)</span></a>
           <a class="nav-link" [(ngModel)]="sourceTypeSelection"
              btnRadio="GDI-DE" href="#">GDI_DE<span class="sr-only">(current)</span></a>
         </li>
       </div>
       <div class="col">
         <li class="nav-item active">
-          <a class="nav-link" [(ngModel)]="sourceTypeSelection"
-             btnRadio="DWD" href="#">DWD<span class="sr-only">(current)</span></a>
-        </li>
-      </div>
-      <div class="col">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
+           btnRadio="DWD" href="#">DWD<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
         <li class="nav-item active">
           <a class="nav-link" [(ngModel)]="sourceTypeSelection"
-             btnRadio="WacodisProducts" href="#">WacodisProducts<span class="sr-only">(current)</span></a>
-        </li>
+           btnRadio="WacodisProducts" href="#">WacodisProducts<span class="sr-only">(current)</span></a>
+      </li>
       </div>
     </ul>
   </div>
-</nav>
+  </nav>
 </div>
 <!--
 <div class="btn-group row-custom">
