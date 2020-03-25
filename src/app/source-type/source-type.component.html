@@ -1,17 +1,61 @@
 <h5 class="row-custom">{{componentTitel}}</h5>
-<div class="btn-group row-custom">
-  <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-         btnRadio="SensorWeb" tabindex="0" role="button">SensorWeb</label>
-  <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-         btnRadio="Copernicus" tabindex="0" role="button" >Copernicus</label>
-  <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-         btnRadio="GDI-DE" tabindex="0" role="button" >GDI-DE</label>
-  <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-         btnRadio="DWD" tabindex="0" role="button">DWD</label>
-  <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-         btnRadio="WacodisProduct" tabindex="0" role="button">WacodisProduct</label>
-</div>
 
+<div class="row-custom">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <div class="col">
+      <li class="nav-item active">
+        <a class="nav-link" [(ngModel)]="sourceTypeSelection"
+           btnRadio="SensorWeb" href="#">SensorWeb<span class="sr-only">(current)</span></a>
+      </li>
+      </div>
+      <div class="col">
+        <li class="nav-item active">
+          <a class="nav-link"  [(ngModel)]="sourceTypeSelection"
+             btnRadio="Copernicus" href="#">Copernicus<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+      <div class="col">
+        <li class="nav-item active">
+          <a class="nav-link" [(ngModel)]="sourceTypeSelection"
+             btnRadio="GDI-DE" href="#">GDI_DE<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+      <div class="col">
+        <li class="nav-item active">
+          <a class="nav-link" [(ngModel)]="sourceTypeSelection"
+             btnRadio="DWD" href="#">DWD<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+      <div class="col">
+        <li class="nav-item active">
+          <a class="nav-link" [(ngModel)]="sourceTypeSelection"
+             btnRadio="WacodisProducts" href="#">WacodisProducts<span class="sr-only">(current)</span></a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</nav>
+</div>
+<!--
+<div class="btn-group row-custom">
+  <div class ="row-sm">
+    <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
+                  btnRadio="SensorWeb" tabindex="0" role="button">SensorWeb</label>
+  </div>
+  <div class ="row-sm">
+    <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
+                 btnRadio="Copernicus" tabindex="0" role="button" >Copernicus</label>
+  </div>
+  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
+                              btnRadio="GDI-DE" tabindex="0" role="button" >GDI-DE</label></div>
+  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
+                              btnRadio="DWD" tabindex="0" role="button">DWD</label></div>
+  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
+                              btnRadio="WacodisProduct" tabindex="0" role="button">WacodisProduct</label></div>
+</div>
+-->
 <app-required-parameters></app-required-parameters>
 <hr class="col-md-5 row-custom" align="left">
 
@@ -20,6 +64,6 @@
   <app-optional-parameters-copernicus *ngIf="sourceTypeSelection=='Copernicus'"></app-optional-parameters-copernicus>
   <app-optional-parameters-gdi-de *ngIf="sourceTypeSelection=='GDI-DE'"></app-optional-parameters-gdi-de>
   <app-optional-parameters-dwd *ngIf="sourceTypeSelection=='DWD'"></app-optional-parameters-dwd>
-  <app-optional-parameters-wacodis-product *ngIf="sourceTypeSelection=='WacodisProduct'"></app-optional-parameters-wacodis-product>
+  <app-optional-parameters-wacodis-product *ngIf="sourceTypeSelection=='WacodisProducts'"></app-optional-parameters-wacodis-product>
 </div>
 <hr class="col-md-5 row-custom" align="left">
