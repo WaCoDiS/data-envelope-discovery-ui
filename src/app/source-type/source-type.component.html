@@ -27,24 +27,6 @@
   </nav>
 </div>
 
-<!--
-<div class="btn-group row-custom">
-  <div class ="row-sm">
-    <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-                  btnRadio="SensorWeb" tabindex="0" role="button">SensorWeb</label>
-  </div>
-  <div class ="row-sm">
-    <label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-                 btnRadio="Copernicus" tabindex="0" role="button" >Copernicus</label>
-  </div>
-  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-                              btnRadio="GDI-DE" tabindex="0" role="button" >GDI-DE</label></div>
-  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-                              btnRadio="DWD" tabindex="0" role="button">DWD</label></div>
-  <div class ="row-sm"><label class="btn btn-primary" [(ngModel)]="sourceTypeSelection"
-                              btnRadio="WacodisProduct" tabindex="0" role="button">WacodisProduct</label></div>
-</div>
--->
 <app-required-parameters></app-required-parameters>
 <hr class="row-custom" align="left">
 
@@ -56,3 +38,5 @@
   <app-optional-parameters-wacodis-product *ngIf="sourceTypeSelection=='WacodisProducts'"></app-optional-parameters-wacodis-product>
 </div>
 <hr class="row-custom" align="left">
+  <app-result></app-result>
+

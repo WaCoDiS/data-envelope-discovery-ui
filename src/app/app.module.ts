@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { MapApplicationComponent } from './map-application/map-application.component';
+import { ResultComponent } from './source-type/result/result.component';
 
 
 
@@ -37,7 +38,8 @@ import { MapApplicationComponent } from './map-application/map-application.compo
     OptionalParametersGdiDeComponent,
     OptionalParametersDwdComponent,
     OptionalParametersWacodisProductComponent,
-    MapApplicationComponent
+    MapApplicationComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

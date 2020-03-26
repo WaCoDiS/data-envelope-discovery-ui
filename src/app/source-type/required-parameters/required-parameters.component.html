@@ -1,96 +1,47 @@
 <div class="container-custom">
-<div class="row">
-  <div class="col">
-    <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-            aria-controls="collapseBasic">Required Parameters
-    </button>
-  </div>
-</div>
-
-<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-<div class="row bg-light row-custom">
-  <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Area of Interest</label>
-      </div>
-   </div>
-  <div class="col-md-4 col-custom ">
-    <div class="card-body">
-      <input class="form-control" id="minLon" placeholder="min. longitude"/>
-      <input class="form-control form-custom" id="minLat" placeholder="min. latitude"/>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+              aria-controls="collapseBasic">Required Parameters
+      </button>
     </div>
   </div>
-<div class="col-md-4 col-custom">
-  <div class="card-body bg-light">
-    <input class="form-control" id="maxLon" placeholder="max. longitude"/>
-    <input class="form-control form-custom" id="maxLat" placeholder="max. latitude"/>
-  </div>
-</div>
-</div>
+
+  <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Area of Interest</label>
+        </div>
+     </div>
+    <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <label>Timeframe</label>
+        <input class="form-control" id="minLon" placeholder="min. longitude"/>
+        <input class="form-control form-custom" id="minLat" placeholder="min. latitude"/>
       </div>
     </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input type="text"
-               placeholder="01/31/2020 - 29/02/2020"
-               class="form-control datepicker"
-               bsDaterangepicker
-               [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue' }"/>
-      </div>
+  <div class="col-md-4 col-custom">
+    <div class="card-body bg-light">
+      <input class="form-control" id="maxLon" placeholder="max. longitude"/>
+      <input class="form-control form-custom" id="maxLat" placeholder="max. latitude"/>
     </div>
-</div>
-</div>
-
-</div>
-
-
-
-<!--
-<div>
-  <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Required Parameters
-  </button>
-</div>
-<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-  <div class="card-body bg-light">
-    <form class="form-horizontal">
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Area of interest</label>
-        <div class="col-sm-2">
-          <input class="form-control" id="minLon" placeholder="min. longitude"/>
-        </div>
-        <div class="col-sm-2">
-          <input class="form-control" id="maxLon" placeholder="max. longitude"/>
+  </div>
+  </div>
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Timeframe</label>
         </div>
       </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-2">
-          <input class="form-control" id="minLat" placeholder="min. latitude"/>
-        </div>
-        <div class="col-sm-2">
-          <input class="form-control" id="maxLat" placeholder="max. latitude"/>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Timeframe</label>
-        <div class="col-sm-4">
-        <input type="text"
-               placeholder="Daterangepicker"
-               class="form-control datepicker"
-               bsDaterangepicker
-               [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue' }"/>
+      <div class="col-md-5 col-custom ">
+        <div class="card-body">
+          <input type="text"
+                 placeholder="01/31/2020 - 29/02/2020"
+                 class="form-control datepicker"
+                 bsDaterangepicker
+                 [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue' }"/>
         </div>
       </div>
-    </form>
+  </div>
   </div>
 </div>
-
--->
