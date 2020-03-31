@@ -23,6 +23,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { MapApplicationComponent } from './map-application/map-application.component';
 import { ResultComponent } from './source-type/result/result.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
+
 
 
 
@@ -52,7 +55,9 @@ import { ResultComponent } from './source-type/result/result.component';
     CollapseModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
-    SelectDropDownModule
+    SelectDropDownModule,
+    LeafletModule.forRoot(),
+    LeafletDrawModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
