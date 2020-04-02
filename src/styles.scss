@@ -3,8 +3,10 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/leaflet/dist/leaflet.css';
 @import '../node_modules/leaflet-draw/dist/leaflet.draw.css';
-
+html{
+  height: 100%;
+}
 body {
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow: hidden;
+  height: 100%;
 }

@@ -1,12 +1,14 @@
-.container-margin-header{
-   margin-top: 10vh;
+.content-wrapper{
+   margin-top:80px;
+   height: 100%;
+   max-height: calc(100% - 80px);
  }
+.content{
+  height: 100%
+}
 
 .input-bar{
   width: 41.66%;
   overflow: auto;
-  height: 90vh;
+  height: 100%;
 }
-
-
-
