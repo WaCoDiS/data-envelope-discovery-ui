@@ -5,7 +5,8 @@
          [leafletOptions]="options"
          [leafletDrawOptions]="drawOptions"
          (leafletDrawCreated)="onDrawCreated($event)"
-         (leafletDrawStart)="onDrawStart($event)">
+         (leafletDrawStart)="onDrawStart($event)"
+         (leafletMapReady)="onMapReady($event)">>
     </div>
   </div>
 

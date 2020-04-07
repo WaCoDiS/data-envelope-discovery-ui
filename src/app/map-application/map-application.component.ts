@@ -39,4 +39,17 @@ export class MapApplicationComponent  {
     console.log('Draw Started Event!');
   }
 
+  onMapReady(map) {
+    map.on(L.Draw.Event.CREATED, function (e) {
+      const type = (e as any).layerType,
+        layer = (e as any).layer
+
+      if (type === 'rectangle') {
+        const coords = layer._latlngs;
+        var bbox = [coords[0][0], coords[0][2]];
+        console.log(bbox);
+      }
+    });
+  }
+
 }
