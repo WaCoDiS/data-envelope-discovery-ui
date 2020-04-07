@@ -11,23 +11,21 @@ export class MapApplicationComponent  {
 
   options = {
     layers: [
-      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' })
+      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: 'Open Street Map' })
     ],
-    zoom: 5,
-    center: L.latLng({ lat: 46.879966, lng: -121.726909 })
+    zoom: 15,
+    center: L.latLng({ lat: 51.447437, lng: 7.271786 })
   };
 
   drawOptions = {
-    position: 'topright',
+    position: 'topleft',
     draw: {
-      marker: {
-        icon: L.icon({
-          iconSize: [ 25, 41 ],
-          iconAnchor: [ 13, 41 ],
-          iconUrl: '2273e3d8ad9264b7daa5bdbf8e6b47f8.png',
-          shadowUrl: '44a526eed258222515aa21eaffd14a96.png'
-        })
-      }
+      marker: false,
+      polyline: false,
+      polygon: false,
+      rectangle: { showArea: false},
+      circlemarker: false,
+      circle: false,
     }
   };
 
