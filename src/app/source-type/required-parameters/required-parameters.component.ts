@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ParameterServiceService } from '../../parameter-service.service';
 
 @Component({
   selector: 'app-required-parameters',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequiredParametersComponent implements OnInit {
 
-  constructor() { }
+  coords: number[];
+
+  constructor(public parameterService: ParameterServiceService) { }
 
   ngOnInit() {
   }
+
+
+  getCoordinates(): void {
+    this.coords = this.parameterService.getCoordinates();
+  }
+  /*
+  getCoordinates(): void {
+    this.ParameterService.getCoordinates()
+      .subscribe(heroes => this.coords = heroes);
+  }
+  */
 
 }

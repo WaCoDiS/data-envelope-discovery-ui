@@ -16,8 +16,12 @@
      </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="minLon" placeholder="min. longitude"/>
+        <div *ngIf="parameterService.coords.length">
+        <div *ngFor='let coords of parameterService.coords'>
+        <input class="form-control" id="minLon" placeholder="min. longitude" [attr.value]="coords"/>
         <input class="form-control form-custom" id="minLat" placeholder="min. latitude"/>
+        </div>
+        </div>
       </div>
     </div>
   <div class="col-md-4 col-custom">
