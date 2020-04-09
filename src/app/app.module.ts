@@ -25,6 +25,7 @@ import { MapApplicationComponent } from './map-application/map-application.compo
 import { ResultComponent } from './source-type/result/result.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
+import { BboxValueDirective } from './map-application/bbox-value.directive';
 
 
 
@@ -42,7 +43,8 @@ import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
     OptionalParametersDwdComponent,
     OptionalParametersWacodisProductComponent,
     MapApplicationComponent,
-    ResultComponent
+    ResultComponent,
+    BboxValueDirective
   ],
   imports: [
     BrowserModule,
