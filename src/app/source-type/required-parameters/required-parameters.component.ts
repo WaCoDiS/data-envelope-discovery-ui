@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ParameterServiceService } from '../../parameter-service.service';
+import { ParameterService } from '../../services/parameter-service/parameter-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-required-parameters',
@@ -8,22 +9,22 @@ import { ParameterServiceService } from '../../parameter-service.service';
 })
 export class RequiredParametersComponent implements OnInit {
 
+  subscription: Subscription;
   coords: number[];
+  public minLon: number;
+  public minLat: number;
 
-  constructor(public parameterService: ParameterServiceService) { }
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
+    this.subscription = this.parameterService.minLon$
+      .subscribe(item => {
+        this.minLon = item
+      })
   }
-
-
-  getCoordinates(): void {
-    this.coords = this.parameterService.getCoordinates();
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
   }
-  /*
-  getCoordinates(): void {
-    this.ParameterService.getCoordinates()
-      .subscribe(heroes => this.coords = heroes);
-  }
-  */
 
 }

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import { ParameterServiceService } from '../parameter-service.service';
+import { ParameterService } from '../services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-map-application',
@@ -10,6 +10,7 @@ import { ParameterServiceService } from '../parameter-service.service';
 
 export class MapApplicationComponent {
 
+  constructor(public parameterService: ParameterService) { };
 
   options = {
     layers: [
@@ -25,13 +26,11 @@ export class MapApplicationComponent {
       marker: false,
       polyline: false,
       polygon: false,
-      rectangle: { showArea: false},
+      rectangle: { showArea: false },
       circlemarker: false,
       circle: false,
     }
   };
-
-  constructor(public parameterService: ParameterServiceService){};
 
   /*
   public onDrawCreated(e: any) {
@@ -45,15 +44,17 @@ export class MapApplicationComponent {
   }
 
   public onDrawCreated(e: any) {
-       const type = (e as any).layerType,
-        layer = (e as any).layer
-      if (type === 'rectangle') {
-        const coords = layer._latlngs;
-        var bbox = [coords[0][0], coords[0][2]];
-        console.log(bbox[0].lat);
-        this.parameterService.add(bbox[0].lat);
-        console.log(bbox);
-      }
+    const type = (e as any).layerType,
+      layer = (e as any).layer
+    if (type === 'rectangle') {
+      const coords = layer._latlngs;
+      var bbox = [coords[0][0], coords[0][2]];
+      console.log(bbox[0].lat);
+      console.log(bbox);
+      
+      // call service command for updating the observable
+      this.parameterService.changeMinLon(bbox[0].lng);
+    }
   }
 
 }
