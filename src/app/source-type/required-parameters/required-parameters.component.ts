@@ -13,6 +13,9 @@ export class RequiredParametersComponent implements OnInit {
   coords: number[];
   public minLon: number;
   public minLat: number;
+  public maxLon: number;
+  public maxLat: number;
+
 
   constructor(public parameterService: ParameterService) { }
 
@@ -20,6 +23,18 @@ export class RequiredParametersComponent implements OnInit {
     this.subscription = this.parameterService.minLon$
       .subscribe(item => {
         this.minLon = item
+      })
+    this.subscription = this.parameterService.minLat$
+      .subscribe(item => {
+        this.minLat = item
+      })
+    this.subscription = this.parameterService.maxLon$
+      .subscribe(item => {
+        this.maxLon = item
+      })
+    this.subscription = this.parameterService.maxLat$
+      .subscribe(item => {
+        this.maxLat = item
       })
   }
   ngOnDestroy() {

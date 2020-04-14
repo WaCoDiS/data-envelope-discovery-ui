@@ -16,14 +16,14 @@
      </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="minLon" placeholder="min. longitude" appBboxValue [(ngModel)]="minLon">
+        <input class="form-control" id="minLon" placeholder="min. longitude" [(ngModel)]="minLon">
         <input class="form-control form-custom" id="minLat" placeholder="min. latitude"  [(ngModel)]="minLat"/>
       </div>
     </div>
   <div class="col-md-4 col-custom">
     <div class="card-body bg-light">
-      <input class="form-control" id="maxLon" placeholder="max. longitude"/>
-      <input class="form-control form-custom" id="maxLat" placeholder="max. latitude"/>
+      <input class="form-control" id="maxLon" placeholder="max. longitude" [(ngModel)]="maxLon"/>
+      <input class="form-control form-custom" id="maxLat" placeholder="max. latitude" [(ngModel)]="maxLat"/>
     </div>
   </div>
   </div>

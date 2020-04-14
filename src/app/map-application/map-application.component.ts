@@ -51,9 +51,12 @@ export class MapApplicationComponent {
       var bbox = [coords[0][0], coords[0][2]];
       console.log(bbox[0].lat);
       console.log(bbox);
-      
+
       // call service command for updating the observable
       this.parameterService.changeMinLon(bbox[0].lng);
+      this.parameterService.changeMinLat(bbox[0].lat);
+      this.parameterService.changeMaxLon(bbox[1].lng);
+      this.parameterService.changeMaxLat(bbox[1].lat);
     }
   }
 
