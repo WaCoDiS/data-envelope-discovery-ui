@@ -8,6 +8,8 @@ export class ParameterService {
 
   coords: number[] = [];
 
+  serviceUrl: string;
+
   // Observable source
   private minLonSource = new Subject<number>();
   private minLatSource = new Subject<number>();
@@ -42,6 +44,13 @@ export class ParameterService {
   getCoordinates(): number[] {
     return this.coords;
   }
+
+
+  setServiceUrl(serviceUrl: string){
+    this.serviceUrl = serviceUrl;
+    console.log(serviceUrl);
+  }
+
 
   clear() {
     this.coords = [];

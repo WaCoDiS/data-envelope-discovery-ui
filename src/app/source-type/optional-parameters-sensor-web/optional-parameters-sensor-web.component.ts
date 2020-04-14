@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { ParameterService } from 'src/app/services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-optional-parameters-sensor-web',
@@ -9,7 +10,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class OptionalParametersSensorWebComponent implements OnInit {
 
-  constructor() { }
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
   }
@@ -22,4 +23,9 @@ export class OptionalParametersSensorWebComponent implements OnInit {
     placeholder:'Select'
   }
 
+  readServiceUrl(ServicUrl: string){
+    console.log(ServicUrl);
+    this.parameterService.setServiceUrl(ServicUrl);
+
+}
 }
