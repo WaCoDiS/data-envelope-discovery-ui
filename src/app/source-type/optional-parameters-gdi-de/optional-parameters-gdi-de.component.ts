@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { ParameterService } from 'src/app/services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-optional-parameters-gdi-de',
@@ -9,13 +10,21 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class OptionalParametersGdiDeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
   }
 
   selectionChanged(evt){
     console.log(evt.value);
+  }
+
+  readCatalogueUrl(catalogueUrl: string){
+    this.parameterService.setCatalogueUrl(catalogueUrl);
+  }
+
+  readRecordRefId(recordRefId: string){
+    this.parameterService.setRecordRefId(recordRefId);
   }
 
 }

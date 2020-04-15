@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="serviceUrlDwd" placeholder="url"/>
+        <input class="form-control" id="serviceUrlDwd" placeholder="url" (input)="readServiceUrlDwd($event.target.value)"/>
       </div>
     </div>
   </div>
@@ -31,10 +31,19 @@
     <div class="col-md-9 col-custom">
       <div class="card-body">
         <div class="col-md-5 col-custom">
-        <ngx-select-dropdown (change)="availableLayerNames($event)" [multiple]="false" [options]="dropdownOptionsTime" [config]="config">time interval</ngx-select-dropdown>
+        <ngx-select-dropdown (change)="availableLayerNames($event)"
+                             [multiple]="false"
+                             [options]="dropdownOptionsTime"
+                             [config]="config">
+        </ngx-select-dropdown>
         </div>
         <div class="col-custom form-custom">
-          <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [options]="dropdownOptionsLayer" [config]="config">weather data</ngx-select-dropdown>
+          <ngx-select-dropdown (change)="selectionChanged($event)"
+                               [multiple]="false"
+                               [options]="dropdownOptionsLayer"
+                               [config]="config"
+                               (change)="readLayerName($event.value)">
+          </ngx-select-dropdown>
       </div>
       </div>
     </div>

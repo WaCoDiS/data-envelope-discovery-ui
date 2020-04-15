@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { ParameterService } from 'src/app/services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-optional-parameters-copernicus',
@@ -14,7 +15,7 @@ export class OptionalParametersCopernicusComponent implements OnInit {
   public selectedSatellite: any
   public selectedPortal: any
 
-  constructor() { }
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
     this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
@@ -31,5 +32,22 @@ export class OptionalParametersCopernicusComponent implements OnInit {
   config = {
     placeholder:'Select'
   };
+
+  readSatellite(satellite: string){
+    this.parameterService.setSatellite(satellite);
+  }
+
+  readCloudCover(cloudCover: number[]){
+    this.parameterService.setCloudCover(cloudCover);
+    console.log(this.parameterService.copernicus.cloudCover);
+  }
+
+  readPortal(portal: string){
+    this.parameterService.setPortal(portal);
+    console.log(this.parameterService.copernicus.portal);
+  }
+
+
+
 
 }

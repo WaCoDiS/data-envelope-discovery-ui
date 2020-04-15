@@ -1,18 +1,27 @@
 export interface SensorWeb {
-  name: "SensorWeb";
+  serviceUrlSensorWeb: string;
+  offering: string;
+  featureOfInterest: string;
+  observedProperty: string;
 }
 
 export interface Copernicus {
-  name: "Copernicus";
+  satellite: string;
+  cloudCover: number[];
+  portal: string;
 }
 
 export interface GdiDe {
-  name: "GDI-DE";
+  catalogueUrl: string;
+  recordRefId: string;
 }
 
 export interface Dwd {
-  name: "DWD";
+  serviceUrlDwd: string;
+  layerName: string;
 }
 export interface WacodisProduct {
-  name: "WacodisProduct";
+  productCollection: string;
+  productType: string;
+  serviceName: string;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import {HOURLY, DAILY, MONTHLY, YEARLY} from './optional-parameters-dwd.layernames';
+import { ParameterService } from 'src/app/services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-optional-parameters-dwd',
@@ -17,7 +18,7 @@ export class OptionalParametersDwdComponent implements OnInit {
   private dropdownOptionsLayerMonthly: any
   private dropdownOptionsLayerYearly: any
 
-  constructor() {}
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
     this.dropdownOptionsTime = ["hourly", "daily", "monthly", "yearly"];
@@ -64,5 +65,13 @@ export class OptionalParametersDwdComponent implements OnInit {
     if (selectedTimeIntervall.value == "yearly"){
       this.dropdownOptionsLayer = this.dropdownOptionsLayerYearly;
     }
+  }
+
+  readServiceUrlDwd(serviceUrl: string){
+    this.parameterService.setServiceUrlDwd(serviceUrl);
+  }
+
+  readLayerName(layerName: string){
+    this.parameterService.setLayerName(layerName);
   }
 }

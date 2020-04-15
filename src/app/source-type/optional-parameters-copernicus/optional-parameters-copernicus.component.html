@@ -19,7 +19,8 @@
         <ngx-select-dropdown  [multiple]="false"
                               [options]="dropdownOptionsSatellite"
                               [config]="config"
-                              [(ngModel)]="selectedSatellite">Satellite
+                              [(ngModel)]="selectedSatellite"
+                              (change)="readSatellite($event.value)">
         </ngx-select-dropdown>
       </div>
     </div>
@@ -54,7 +55,9 @@
         <ngx-select-dropdown  [multiple]="false"
                               [options]="dropdownOptionsPortal"
                               [config]="config"
-                              [(ngModel)]="selectedPortal">Satellite</ngx-select-dropdown>
+                              [(ngModel)]="selectedPortal"
+                              (change)="readPortal($event.value)">>
+        </ngx-select-dropdown>
       </div>
     </div>
   </div>

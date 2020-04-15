@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="catalogueURL" placeholder="url"/>
+        <input class="form-control" id="catalogueURL" placeholder="url" (input)="readCatalogueUrl($event.target.value)"/>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-5 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="recordRefId" placeholder="id"/>
+        <input class="form-control" id="recordRefId" placeholder="id" (input)="readRecordRefId($event.target.value)"/>
       </div>
     </div>
   </div>

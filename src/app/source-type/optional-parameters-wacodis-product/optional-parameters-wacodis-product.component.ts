@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { ParameterService } from 'src/app/services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-optional-parameters-wacodis-product',
@@ -9,13 +10,25 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class OptionalParametersWacodisProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
   }
 
   selectionChanged(evt){
     console.log(evt.value);
+  }
+
+  readProductCollection(productCollection: string){
+    this.parameterService.setProductCollection(productCollection);
+  }
+
+  readProductType(productType: string){
+    this.parameterService.setProductType(productType);
+  }
+
+  readServiceName(serviceName: string){
+    this.parameterService.setServiceName(serviceName);
   }
 
 }

@@ -23,9 +23,20 @@ export class OptionalParametersSensorWebComponent implements OnInit {
     placeholder:'Select'
   }
 
-  readServiceUrl(ServicUrl: string){
-    console.log(ServicUrl);
-    this.parameterService.setServiceUrl(ServicUrl);
-
+  readServiceUrlSensorWeb(serviceUrl: string){
+    this.parameterService.setServiceUrlSensorWeb(serviceUrl);
 }
+
+  readOffering(offering: string){
+    this.parameterService.setOffering(offering);
+  }
+
+  readFOI(foi: string){
+    this.parameterService.setFOI(foi);
+  }
+
+  readObservedProp(observedProp: string){
+    this.parameterService.setObservedProp(observedProp);
+    console.log(this.parameterService.sensorWeb);
+  }
 }
