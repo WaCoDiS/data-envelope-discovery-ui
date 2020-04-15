@@ -10,12 +10,10 @@ import { Subscription } from 'rxjs';
 export class RequiredParametersComponent implements OnInit {
 
   subscription: Subscription;
-  coords: number[];
   public minLon: number;
   public minLat: number;
   public maxLon: number;
   public maxLat: number;
-
 
   constructor(public parameterService: ParameterService) { }
 
@@ -40,6 +38,11 @@ export class RequiredParametersComponent implements OnInit {
   ngOnDestroy() {
     // prevent memory leak when component is destroyed
     this.subscription.unsubscribe();
+  }
+
+  readDateRange(dateRange: Date[]){
+    //console.log(dateRange[1].toISOString());
+    this.parameterService.setDateRange(dateRange);
   }
 
 }

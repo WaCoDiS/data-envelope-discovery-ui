@@ -39,7 +39,9 @@
                  placeholder="01/31/2020 - 29/02/2020"
                  class="form-control datepicker"
                  bsDaterangepicker
-                 [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue' }"/>
+                 [bsConfig]="{ isAnimated: true,
+                 containerClass: 'theme-dark-blue'}"
+                 (bsValueChange)="readDateRange($event)"/>
         </div>
       </div>
   </div>

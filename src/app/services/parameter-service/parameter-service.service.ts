@@ -7,7 +7,9 @@ import * as sourceType from '../../source-type-interfaces';
 })
 export class ParameterService {
 
-  coords: number[] = [];
+  dateRange: Date[] = [];
+  dateRangeString: String[] = [];
+
   public sensorWeb: sourceType.SensorWeb = new class implements sourceType.SensorWeb {
     serviceUrlSensorWeb: string;
     featureOfInterest: string;
@@ -63,6 +65,13 @@ export class ParameterService {
   }
 
   constructor() { }
+
+  // Setters for required Parameters
+  setDateRange(dateRange: Date[]){
+    this.dateRange = dateRange;
+    this.dateRangeString[0] = dateRange[0].toISOString();
+    this.dateRangeString[1] = dateRange[1].toISOString();
+  }
 
   // Setters for SensorWeb
   setServiceUrlSensorWeb(serviceUrl: string){
