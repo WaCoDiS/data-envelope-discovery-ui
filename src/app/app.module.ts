@@ -26,7 +26,7 @@ import { ResultComponent } from './source-type/result/result.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
 // import { BboxValueDirective } from './map-application/bbox-value.directive';
-
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 
 
 
@@ -58,7 +58,8 @@ import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
     BsDropdownModule.forRoot(),
     SelectDropDownModule,
     LeafletModule.forRoot(),
-    LeafletDrawModule.forRoot()
+    LeafletDrawModule.forRoot(),
+    NgxBootstrapSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

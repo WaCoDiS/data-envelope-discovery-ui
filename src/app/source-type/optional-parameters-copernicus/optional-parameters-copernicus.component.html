@@ -34,12 +34,7 @@
     </div>
     <div class="col-md-4 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="minimumCloudCover" placeholder="min. Cloud Cover"/>
-      </div>
-    </div>
-    <div class="col-md-4 col-custom">
-      <div class="card-body bg-light">
-        <input class="form-control" id="maximumCloudCover" placeholder="max. Cloud Cover"/>
+        <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="true" (change)="change()"></mv-slider>
       </div>
     </div>
   </div>
