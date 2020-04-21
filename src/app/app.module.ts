@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -47,6 +48,8 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+
     BrowserAnimationsModule,
 
     ButtonsModule.forRoot(),
