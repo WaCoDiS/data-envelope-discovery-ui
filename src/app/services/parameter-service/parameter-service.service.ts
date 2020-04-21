@@ -22,6 +22,7 @@ export class ParameterService {
   public copernicus: sourceType.Copernicus = new class implements sourceType.Copernicus {
     dateRange: Date[];
     dateRangeString: String[];
+    cloudCover: number[] =[0,100];
     portal = "CODE-DE";
     satellite = "Sentinel-2";
   }
@@ -141,6 +142,14 @@ export class ParameterService {
 
   setServiceName(serviceName: string){
     this.wacodisProducts.serviceName = serviceName;
+  }
+
+
+  getDataEnvelope(): sourceType.DataEnvelope{
+    this.copernicus.dateRange = this.dateRange;
+    this.copernicus.dateRangeString = this.dateRangeString;
+    console.log(this.copernicus)
+    return this.copernicus;
   }
 
 }
