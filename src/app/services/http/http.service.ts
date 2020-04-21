@@ -24,10 +24,10 @@ export class HttpService {
     private http: HttpClient) {
   }
 
-  searchDataEnvelope (sourceType: sourceType.Copernicus): Observable<sourceType.Copernicus> {
-    return this.http.post<sourceType.Copernicus>(this.dataAccessApiUrl, sourceType, httpOptions)
+  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelope): Observable<sourceType.DataEnvelope> {
+    return this.http.post<sourceType.Copernicus>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
       .pipe(
-        catchError(this.handleError('searchDataEnvelope', sourceType))
+        catchError(this.handleError('searchDataEnvelope', dataEnvelope))
       );
   }
 

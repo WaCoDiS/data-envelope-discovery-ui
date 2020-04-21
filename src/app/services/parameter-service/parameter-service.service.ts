@@ -11,6 +11,8 @@ export class ParameterService {
   dateRangeString: String[] = [];
 
   public sensorWeb: sourceType.SensorWeb = new class implements sourceType.SensorWeb {
+    dateRange: Date[];
+    dateRangeString: String[];
     serviceUrlSensorWeb: string;
     featureOfInterest: string;
     observedProperty: string;
@@ -18,22 +20,29 @@ export class ParameterService {
   }
 
   public copernicus: sourceType.Copernicus = new class implements sourceType.Copernicus {
-    cloudCover: number[];
+    dateRange: Date[];
+    dateRangeString: String[];
     portal = "CODE-DE";
     satellite = "Sentinel-2";
   }
 
   public gdiDe: sourceType.GdiDe = new class implements sourceType.GdiDe {
+    dateRange: Date[];
+    dateRangeString: String[];
     catalogueUrl: string;
     recordRefId: string;
   }
 
   public dwd: sourceType.Dwd = new class implements sourceType.Dwd {
+    dateRange: Date[];
+    dateRangeString: String[];
     layerName: string;
     serviceUrlDwd: string;
   }
 
   public wacodisProducts: sourceType.WacodisProduct = new class implements sourceType.WacodisProduct {
+    dateRange: Date[];
+    dateRangeString: String[];
     productCollection: string;
     productType: string;
     serviceName: string;
