@@ -10,15 +10,7 @@ export class ParameterService {
   dateRange: Date[] = [];
   dateRangeString: String[] = [];
 
-  public sensorWeb: sourceType.SensorWeb = new class implements sourceType.SensorWeb {
-    dateRange: Date[];
-    dateRangeString: String[];
-    serviceUrlSensorWeb: string;
-    featureOfInterest: string;
-    observedProperty: string;
-    offering: string;
-  }
-
+  public sensorWeb: sourceType.SensorWeb;
   public copernicus: sourceType.Copernicus = new class implements sourceType.Copernicus {
     dateRange: Date[];
     dateRangeString: String[];
@@ -27,27 +19,9 @@ export class ParameterService {
     satellite = "Sentinel-2";
   }
 
-  public gdiDe: sourceType.GdiDe = new class implements sourceType.GdiDe {
-    dateRange: Date[];
-    dateRangeString: String[];
-    catalogueUrl: string;
-    recordRefId: string;
-  }
-
-  public dwd: sourceType.Dwd = new class implements sourceType.Dwd {
-    dateRange: Date[];
-    dateRangeString: String[];
-    layerName: string;
-    serviceUrlDwd: string;
-  }
-
-  public wacodisProducts: sourceType.WacodisProduct = new class implements sourceType.WacodisProduct {
-    dateRange: Date[];
-    dateRangeString: String[];
-    productCollection: string;
-    productType: string;
-    serviceName: string;
-  }
+  public gdiDe: sourceType.GdiDe;
+  public dwd: sourceType.Dwd;
+  public wacodisProducts: sourceType.WacodisProduct;
 
   // Observable source
   private minLonSource = new Subject<number>();
