@@ -1,6 +1,16 @@
 export interface DataEnvelope{
-  dateRange: Date[];
-  dateRangeString: String[];
+  areaOfInterest: AreaOfInterest;
+  timeFrame: TimeFrame;
+}
+
+
+export interface AreaOfInterest{
+  extend: number[];
+}
+
+export interface TimeFrame{
+  starTime: String;
+  endTime: String;
 }
 
 

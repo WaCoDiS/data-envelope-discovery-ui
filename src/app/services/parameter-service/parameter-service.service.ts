@@ -11,9 +11,15 @@ export class ParameterService {
   dateRangeString: String[] = [];
 
   public sensorWeb: sourceType.SensorWeb;
+
   public copernicus: sourceType.Copernicus = new class implements sourceType.Copernicus {
-    dateRange: Date[];
-    dateRangeString: String[];
+    timeFrame: sourceType.TimeFrame = new class implements sourceType.TimeFrame {
+      endTime: String;
+      starTime: String;
+    }
+    areaOfInterest: sourceType.AreaOfInterest = new class implements sourceType.AreaOfInterest {
+      extend: number[];
+    }
     cloudCover: number[] =[0,100];
     portal = "CODE-DE";
     satellite = "Sentinel-2";
@@ -120,8 +126,9 @@ export class ParameterService {
 
 
   getDataEnvelope(): sourceType.DataEnvelope{
-    this.copernicus.dateRange = this.dateRange;
-    this.copernicus.dateRangeString = this.dateRangeString;
+    this.copernicus.timeFrame.starTime = this.dateRangeString[0];
+    this.copernicus.timeFrame.endTime = this.dateRangeString[1];
+    this.copernicus.areaOfInterest = null;
     console.log(this.copernicus)
     return this.copernicus;
   }
