@@ -14,13 +14,13 @@ export class OptionalParametersCopernicusComponent implements OnInit {
   public dropdownOptionsPortal: any
   public selectedSatellite: any
   public selectedPortal: any
-
+  public value: any
   constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
     this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
     this.dropdownOptionsPortal = ["CODE-DE", "Sentinel-Hub"];
-
+    this.value = [0,100];
     this.selectedSatellite = this.dropdownOptionsSatellite[1];
     this.selectedPortal = this.dropdownOptionsPortal[0];
   }
