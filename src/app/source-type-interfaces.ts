@@ -9,7 +9,7 @@ export interface AreaOfInterest{
 }
 
 export interface TimeFrame{
-  starTime: String;
+  startTime: String;
   endTime: String;
 }
 

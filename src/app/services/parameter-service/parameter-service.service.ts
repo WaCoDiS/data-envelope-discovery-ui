@@ -7,24 +7,13 @@ import * as sourceType from '../../source-type-interfaces';
 })
 export class ParameterService {
 
-  dateRange: Date[] = [];
-  dateRangeString: String[] = [];
+  dateRange: Date[];
+  dateRangeString: String[];
+  startDate: string;
+  endDate: string;
 
   public sensorWeb: sourceType.SensorWeb;
-
-  public copernicus: sourceType.Copernicus = new class implements sourceType.Copernicus {
-    timeFrame: sourceType.TimeFrame = new class implements sourceType.TimeFrame {
-      endTime: String;
-      starTime: String;
-    }
-    areaOfInterest: sourceType.AreaOfInterest = new class implements sourceType.AreaOfInterest {
-      extend: number[];
-    }
-    cloudCover: number[] =[0,100];
-    portal = "CODE-DE";
-    satellite = "Sentinel-2";
-  }
-
+  public copernicus: sourceType.Copernicus;
   public gdiDe: sourceType.GdiDe;
   public dwd: sourceType.Dwd;
   public wacodisProducts: sourceType.WacodisProduct;
@@ -54,13 +43,15 @@ export class ParameterService {
     this.maxLatSource.next(coord);
   }
 
-  constructor() { }
+  constructor() {
+    //this.copernicus = new sourceType.Copernicus();
+  }
 
   // Setters for required Parameters
   setDateRange(dateRange: Date[]){
     this.dateRange = dateRange;
-    this.dateRangeString[0] = dateRange[0].toISOString();
-    this.dateRangeString[1] = dateRange[1].toISOString();
+    this.startDate= dateRange[0].toISOString();
+    this.endDate= dateRange[1].toISOString();
   }
 
   // Setters for SensorWeb
@@ -126,9 +117,11 @@ export class ParameterService {
 
 
   getDataEnvelope(): sourceType.DataEnvelope{
-    this.copernicus.timeFrame.starTime = this.dateRangeString[0];
-    this.copernicus.timeFrame.endTime = this.dateRangeString[1];
-    this.copernicus.areaOfInterest = null;
+    //this.copernicus.timeFrame.startTime = this.startDate;
+    //this.copernicus.timeFrame.endTime = this.endDate;
+
+    //this.copernicus.areaOfInterest.extend = [0, 0, 0, 5];
+    console.log(this.copernicus.areaOfInterest)
     console.log(this.copernicus)
     return this.copernicus;
   }
