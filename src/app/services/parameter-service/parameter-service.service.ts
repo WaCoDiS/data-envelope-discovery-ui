@@ -16,7 +16,7 @@ export class ParameterService {
 
   public sensorWeb: sourceType.SensorWeb;
   public copernicus: sourceType.Copernicus = {
-    satellite: null,
+    sourceType : "CopernicusDataEnvelope",
     cloudCover: null,
     portal: null,
     areaOfInterest: null,

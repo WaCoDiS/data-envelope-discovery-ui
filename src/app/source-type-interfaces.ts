@@ -1,6 +1,7 @@
 export interface DataEnvelope{
   areaOfInterest: AreaOfInterest;
   timeFrame: TimeFrame;
+  sourceType: string;
 }
 
 
