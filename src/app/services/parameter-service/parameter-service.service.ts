@@ -91,8 +91,8 @@ export class ParameterService {
     this.copernicus.satellite = satellite;
   }
 
-  setCloudCover(cloudCover: number[]){
-    this.copernicus.cloudCover = cloudCover;
+  setCloudCover(cloudCover: number){
+    this.copernicus.cloudCoverage = cloudCover;
   }
 
   setPortal(portal: string){

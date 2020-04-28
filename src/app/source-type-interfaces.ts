@@ -23,7 +23,7 @@ export interface SensorWeb extends DataEnvelope{
 
 export interface Copernicus extends DataEnvelope {
   satellite: string;
-  cloudCover: number[];
+  cloudCoverage: number;
   portal: string;
 }
 

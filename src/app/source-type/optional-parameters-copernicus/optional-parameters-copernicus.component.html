@@ -35,7 +35,7 @@
     <div class="col-md-8 col-custom ">
       <div class="card-body">
         <label>0 %</label>
-        <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="true"
+        <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="false"
                    (change)="readCloudCover($event.newValue)"></mv-slider>
         <label>100 %</label>
       </div>
