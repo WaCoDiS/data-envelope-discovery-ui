@@ -13,7 +13,13 @@ export class ParameterService {
   endDate: string;
 
   public sensorWeb: sourceType.SensorWeb;
-  public copernicus: sourceType.Copernicus;
+  public copernicus: sourceType.Copernicus = {
+    satellite: null,
+    cloudCover: null,
+    portal: null,
+    areaOfInterest: null,
+    timeFrame: null
+  };
   public gdiDe: sourceType.GdiDe;
   public dwd: sourceType.Dwd;
   public wacodisProducts: sourceType.WacodisProduct;
@@ -117,11 +123,16 @@ export class ParameterService {
 
 
   getDataEnvelope(): sourceType.DataEnvelope{
-    //this.copernicus.timeFrame.startTime = this.startDate;
-    //this.copernicus.timeFrame.endTime = this.endDate;
+    this.copernicus.timeFrame = {
+      startTime: this.startDate,
+      endTime: this.endDate
+    }
 
-    //this.copernicus.areaOfInterest.extend = [0, 0, 0, 5];
-    console.log(this.copernicus.areaOfInterest)
+    this.copernicus.areaOfInterest = {
+      extend: null
+    }
+
+    //console.log(this.copernicus.areaOfInterest)
     console.log(this.copernicus)
     return this.copernicus;
   }
