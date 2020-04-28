@@ -12,6 +12,8 @@ export class ParameterService {
   startDate: string;
   endDate: string;
 
+  extent: number[] = new Array(4);
+
   public sensorWeb: sourceType.SensorWeb;
   public copernicus: sourceType.Copernicus = {
     satellite: null,
@@ -37,15 +39,22 @@ export class ParameterService {
 
   // service command
   changeMinLon(coord: number) {
+    this.extent[0] = coord;
     this.minLonSource.next(coord);
   }
+  changeMaxLon(coord: number) {
+    this.extent[1] = coord;
+    this.maxLonSource.next(coord);
+  }
   changeMinLat(coord: number) {
+    this.extent[2] = coord;
     this.minLatSource.next(coord);
   }
   changeMaxLon(coord: number) {
     this.maxLonSource.next(coord);
   }
   changeMaxLat(coord: number) {
+    this.extent[3] = coord;
     this.maxLatSource.next(coord);
   }
 
@@ -129,7 +138,7 @@ export class ParameterService {
     }
 
     this.copernicus.areaOfInterest = {
-      extend: null
+      extend: this.extent
     }
 
     //console.log(this.copernicus.areaOfInterest)
