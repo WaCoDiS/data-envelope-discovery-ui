@@ -20,7 +20,7 @@ export class OptionalParametersCopernicusComponent implements OnInit {
   ngOnInit() {
     this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
     this.dropdownOptionsPortal = ["CODE-DE", "Sentinel-Hub"];
-    this.value = [0,100];
+    //this.value = [0,100];
     this.selectedSatellite = this.dropdownOptionsSatellite[1];
     this.selectedPortal = this.dropdownOptionsPortal[0];
   }
@@ -46,8 +46,5 @@ export class OptionalParametersCopernicusComponent implements OnInit {
     this.parameterService.setPortal(portal);
     console.log(this.parameterService.copernicus.portal);
   }
-
-
-
 
 }

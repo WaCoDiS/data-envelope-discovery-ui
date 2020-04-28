@@ -17,8 +17,9 @@ export class ParameterService {
   public sensorWeb: sourceType.SensorWeb;
   public copernicus: sourceType.Copernicus = {
     sourceType : "CopernicusDataEnvelope",
-    cloudCover: null,
-    portal: null,
+    satellite : "sentinel-2",
+    cloudCoverage: 100,
+    portal: "Code-DE",
     areaOfInterest: null,
     timeFrame: null
   };
@@ -49,9 +50,6 @@ export class ParameterService {
   changeMinLat(coord: number) {
     this.extent[2] = coord;
     this.minLatSource.next(coord);
-  }
-  changeMaxLon(coord: number) {
-    this.maxLonSource.next(coord);
   }
   changeMaxLat(coord: number) {
     this.extent[3] = coord;
