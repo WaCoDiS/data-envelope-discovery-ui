@@ -6,7 +6,7 @@ export interface DataEnvelope{
 
 
 export interface AreaOfInterest{
-  extend: number[];
+  extent: number[];
 }
 
 export interface TimeFrame{

@@ -136,7 +136,7 @@ export class ParameterService {
     }
 
     this.copernicus.areaOfInterest = {
-      extend: this.extent
+      extent: this.extent
     }
 
     //console.log(this.copernicus.areaOfInterest)
