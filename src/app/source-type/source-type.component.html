@@ -9,7 +9,7 @@
     </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold"  [(ngModel)]="sourceTypeSelection"
-           btnRadio="Copernicus" href="#">Copernicus<span class="sr-only">(current)</span></a>
+           btnRadio="Copernicus" href="#" (ngModelChange)="sendChoosenSourceType($event)">Copernicus<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"

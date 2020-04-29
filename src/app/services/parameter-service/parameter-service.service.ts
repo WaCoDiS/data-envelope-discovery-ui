@@ -27,7 +27,14 @@ export class ParameterService {
     datasetId: "anyID"
   };
   public gdiDe: sourceType.GdiDe;
-  public dwd: sourceType.Dwd;
+  public dwd: sourceType.Dwd = {
+    sourceType: "DwdDataEnvelope",
+    datasetId: "anyID",
+    areaOfInterest: null,
+    timeFrame: null,
+    serviceUrlDwd: "https://cdc.dwd.de:443/geoserver/CDC/wfs?",
+    layerName: null,
+  };
   public wacodisProducts: sourceType.WacodisProduct;
 
   // Observable source
@@ -156,6 +163,12 @@ export class ParameterService {
       this.copernicus.areaOfInterest = this.areaOfInterest;
       console.log(this.copernicus)
       return this.copernicus
+    }
+    else if(this.currentSourceType == "DWD"){
+      this.dwd.timeFrame = this.timeFrame;
+      this.dwd.areaOfInterest = this.areaOfInterest;
+      console.log(this.dwd)
+      return this.dwd;
     }
   }
 
