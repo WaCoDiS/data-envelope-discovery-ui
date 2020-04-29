@@ -21,7 +21,8 @@ export class ParameterService {
     cloudCoverage: 100,
     portal: "Code-DE",
     areaOfInterest: null,
-    timeFrame: null
+    timeFrame: null,
+    datasetId: "anyID"
   };
   public gdiDe: sourceType.GdiDe;
   public dwd: sourceType.Dwd;
