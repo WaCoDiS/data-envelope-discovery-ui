@@ -9,7 +9,7 @@ import { ParameterService } from 'src/app/services/parameter-service/parameter-s
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  copernicusDataEnvelopes: sourceType.DataEnvelope[];
+  dataEnvelopes: sourceType.DataEnvelope[] = new Array();
 
   constructor(private httpService: HttpService, private parameterService: ParameterService) {
   }
@@ -19,8 +19,9 @@ export class ResultComponent implements OnInit {
 
 
   sendRequest() {
-    this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope())
-      .subscribe(dataEnvelope => this.copernicusDataEnvelopes.push(dataEnvelope));
+    var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
+    ergebnis.subscribe(val => console.log(val));
+    ergebnis.subscribe(dataEnvelope => this.dataEnvelopes.push(dataEnvelope));
   }
 }
 
