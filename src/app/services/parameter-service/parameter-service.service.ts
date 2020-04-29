@@ -150,7 +150,6 @@ export class ParameterService {
       endTime: this.endDate
     }
     this.areaOfInterest = {
-    this.copernicus.areaOfInterest = {
       extent: this.extent
     }
 
