@@ -5,7 +5,7 @@
     <ul class="navbar-nav nav-pills nav-fill">
     <li class="nav-item">
       <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
-         btnRadio="SensorWeb" href="#">SensorWeb<span class="sr-only">(current)</span></a>
+         btnRadio="SensorWeb" href="#" (ngModelChange)="sendChoosenSourceType($event)">SensorWeb<span class="sr-only">(current)</span></a>
     </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold"  [(ngModel)]="sourceTypeSelection"
@@ -13,15 +13,15 @@
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
-           btnRadio="GDI-DE" href="#">GDI-DE<span class="sr-only">(current)</span></a>
+           btnRadio="GDI-DE" href="#" (ngModelChange)="sendChoosenSourceType($event)">GDI-DE<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
-           btnRadio="DWD" href="#">DWD<span class="sr-only">(current)</span></a>
+           btnRadio="DWD" href="#" (ngModelChange)="sendChoosenSourceType($event)">DWD<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" [(ngModel)]="sourceTypeSelection"
-           btnRadio="WacodisProducts" href="#">WacodisProducts<span class="sr-only">(current)</span></a>
+           btnRadio="WacodisProducts" href="#" (ngModelChange)="sendChoosenSourceType($event)">WacodisProducts<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </nav>

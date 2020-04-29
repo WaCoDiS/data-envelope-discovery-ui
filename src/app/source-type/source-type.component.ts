@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { SensorWeb } from '../source-type-interfaces';
 import { Copernicus } from '../source-type-interfaces';
 import { GdiDe } from '../source-type-interfaces';
 import { Dwd } from '../source-type-interfaces';
 import { WacodisProduct } from '../source-type-interfaces';
+import { ParameterService } from '../services/parameter-service/parameter-service.service';
 
 @Component({
   selector: 'app-source-type',
@@ -21,5 +22,10 @@ export class SourceTypeComponent{
     this.showcontent=this.radioModel;
   }
 */
+
+constructor(public parameterService: ParameterService) { }
+  sendChoosenSourceType(event: any){
+   this.parameterService.changeSourceType(event);
+  }
 
 }

@@ -7,11 +7,13 @@ import * as sourceType from '../../source-type-interfaces';
 })
 export class ParameterService {
 
+  currentSourceType: string;
   dateRange: Date[];
   dateRangeString: String[];
   startDate: string;
   endDate: string;
-
+  timeFrame: sourceType.TimeFrame;
+  areaOfInterest: sourceType.AreaOfInterest;
   extent: number[] = new Array(4);
 
   public sensorWeb: sourceType.SensorWeb;
@@ -61,6 +63,11 @@ export class ParameterService {
     //this.copernicus = new sourceType.Copernicus();
   }
 
+  changeSourceType(choosenSourceType: string){
+    console.log(choosenSourceType)
+    this.currentSourceType = choosenSourceType;
+    console.log(this.currentSourceType)
+  }
   // Setters for required Parameters
   setDateRange(dateRange: Date[]){
     this.dateRange = dateRange;
@@ -131,18 +138,25 @@ export class ParameterService {
 
 
   getDataEnvelope(): sourceType.DataEnvelope{
-    this.copernicus.timeFrame = {
+    this.timeFrame = {
       startTime: this.startDate,
       endTime: this.endDate
     }
-
+    this.areaOfInterest = {
     this.copernicus.areaOfInterest = {
       extent: this.extent
     }
 
-    //console.log(this.copernicus.areaOfInterest)
-    console.log(this.copernicus)
-    return this.copernicus;
+    console.log(this.currentSourceType)
+    if (this.currentSourceType == "SensorWeb"){
+
+    }
+    else if (this.currentSourceType == "Copernicus"){
+      this.copernicus.timeFrame = this.timeFrame;
+      this.copernicus.areaOfInterest = this.areaOfInterest;
+      console.log(this.copernicus)
+      return this.copernicus
+    }
   }
 
 }
