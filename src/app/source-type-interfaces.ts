@@ -35,7 +35,7 @@ export interface GdiDe extends DataEnvelope{
 }
 
 export interface Dwd extends DataEnvelope{
-  serviceUrlDwd: string;
+  serviceUrl: string;
   layerName: string;
 }
 export interface WacodisProduct extends DataEnvelope{

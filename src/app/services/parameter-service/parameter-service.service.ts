@@ -32,7 +32,7 @@ export class ParameterService {
     datasetId: "anyID",
     areaOfInterest: null,
     timeFrame: null,
-    serviceUrlDwd: "https://cdc.dwd.de:443/geoserver/CDC/wfs?",
+    serviceUrl: "https://cdc.dwd.de:443/geoserver/CDC/wfs?",
     layerName: null,
   };
   public wacodisProducts: sourceType.WacodisProduct;
@@ -123,7 +123,7 @@ export class ParameterService {
 
   // Setters for DWD
   setServiceUrlDwd(serviceUrlDwd: string){
-    this.dwd.serviceUrlDwd = serviceUrlDwd;
+    this.dwd.serviceUrl = serviceUrlDwd;
   }
 
   setLayerName(layerName: string){
