@@ -16,7 +16,16 @@ export class ParameterService {
   areaOfInterest: sourceType.AreaOfInterest;
   extent: number[] = new Array(4);
 
-  public sensorWeb: sourceType.SensorWeb;
+  public sensorWeb: sourceType.SensorWeb = {
+    sourceType : "SensorWebDataEnvelope",
+    areaOfInterest: null,
+    timeFrame: null,
+    serviceUrl: null,
+    offering: null,
+    featureOfInterest: null,
+    observedProperty: null,
+    datasetId: "anyID"
+  }
   public copernicus: sourceType.Copernicus = {
     sourceType : "CopernicusDataEnvelope",
     satellite : "sentinel-2",
@@ -49,6 +58,13 @@ export class ParameterService {
   maxLon$ = this.maxLonSource.asObservable();
   maxLat$ = this.maxLatSource.asObservable();
 
+
+  constructor() {
+    this.currentSourceType = "SensorWeb";
+  }
+
+
+
   // service command
   changeMinLon(coord: number) {
     this.extent[0] = coord;
@@ -67,11 +83,10 @@ export class ParameterService {
     this.maxLatSource.next(coord);
   }
 
-  constructor() {
-    //this.copernicus = new sourceType.Copernicus();
-  }
+
 
   changeSourceType(choosenSourceType: string){
+    console.log(choosenSourceType)
     this.currentSourceType = choosenSourceType;
   }
   // Setters for required Parameters
@@ -83,7 +98,7 @@ export class ParameterService {
 
   // Setters for SensorWeb
   setServiceUrlSensorWeb(serviceUrl: string){
-    this.sensorWeb.serviceUrlSensorWeb = serviceUrl;
+    this.sensorWeb.serviceUrl = serviceUrl;
   }
 
   setOffering(offering: string){
@@ -157,7 +172,9 @@ export class ParameterService {
     }
 
     if (this.currentSourceType == "SensorWeb"){
-
+      this.sensorWeb.timeFrame = this.timeFrame;
+      this.sensorWeb.areaOfInterest = this.areaOfInterest;
+      return this.sensorWeb
     }
     else if (this.currentSourceType == "Copernicus"){
       this.copernicus.timeFrame = this.timeFrame;

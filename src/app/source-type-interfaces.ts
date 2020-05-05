@@ -17,7 +17,7 @@ export interface TimeFrame{
 
 
 export interface SensorWeb extends DataEnvelope{
-  serviceUrlSensorWeb: string;
+  serviceUrl: string;
   offering: string;
   featureOfInterest: string;
   observedProperty: string;

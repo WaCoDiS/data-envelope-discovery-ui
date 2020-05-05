@@ -19,6 +19,7 @@ export class ResultComponent implements OnInit {
 
 
   sendRequest() {
+    console.log(this.parameterService.getDataEnvelope())
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
     ergebnis.subscribe(val => console.log(val));
     ergebnis.subscribe(dataEnvelope => this.dataEnvelopes.push(dataEnvelope));

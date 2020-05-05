@@ -37,6 +37,5 @@ export class OptionalParametersSensorWebComponent implements OnInit {
 
   readObservedProp(observedProp: string){
     this.parameterService.setObservedProp(observedProp);
-    console.log(this.parameterService.sensorWeb);
   }
 }
