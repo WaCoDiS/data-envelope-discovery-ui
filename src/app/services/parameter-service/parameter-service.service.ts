@@ -72,9 +72,7 @@ export class ParameterService {
   }
 
   changeSourceType(choosenSourceType: string){
-    console.log(choosenSourceType)
     this.currentSourceType = choosenSourceType;
-    console.log(this.currentSourceType)
   }
   // Setters for required Parameters
   setDateRange(dateRange: Date[]){
@@ -158,20 +156,17 @@ export class ParameterService {
       extent: this.extent
     }
 
-    console.log(this.currentSourceType)
     if (this.currentSourceType == "SensorWeb"){
 
     }
     else if (this.currentSourceType == "Copernicus"){
       this.copernicus.timeFrame = this.timeFrame;
       this.copernicus.areaOfInterest = this.areaOfInterest;
-      console.log(this.copernicus)
       return this.copernicus
     }
     else if(this.currentSourceType == "DWD"){
       this.dwd.timeFrame = this.timeFrame;
       this.dwd.areaOfInterest = this.areaOfInterest;
-      console.log(this.dwd)
       return this.dwd;
     }
   }
