@@ -2,29 +2,25 @@
   <div class="row row-custom">
     <div class="col col-custom">
       <button class="btn btn-primary btn-block" type="button" (click)="sendRequest()">Run</button>
-  </div>
+    </div>
   </div>
 </div>
 <div class="container-custom">
   <div class="row row-custom">
     <div class="col col-custom">
-      <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" class="btn btn-light"
-              type="button">Dataset 1
-      </button>
-    </div>
-  </div>
 
-  <div [collapse]="isCollapsed" [isAnimated]="true" id="collapseBasic">
-    <div class="row bg-light row-custom">
-      <div class="col col-custom">
+      <div class="card text-white bg-primary mb-3"  *ngFor="let dataEnvelope of dataEnvelopes">
+        <div class="card-header" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">{{dataEnvelope.sourceType}}
+      </div>
+        <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
         <div class="card-body">
-          <p>informations: some information about the result dataset</p>
-          <p>informations: some information about the result dataset</p>
-          <p>informations: some information about the result dataset</p>
-          <p>informations: some information about the result dataset</p>
-          <p>informations: some information about the result dataset</p>
+          <h5 class="card-title">{{dataEnvelope.sourceType}}</h5>
+          <p class="card-text">{{dataEnvelope}}</p>
         </div>
+      </div>
       </div>
     </div>
   </div>
+
 </div>
