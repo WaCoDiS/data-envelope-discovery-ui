@@ -34,6 +34,7 @@ export class ParameterService {
     timeFrame: null,
     serviceUrl: "https://cdc.dwd.de:443/geoserver/CDC/wfs?",
     layerName: null,
+    parameter: null
   };
   public wacodisProducts: sourceType.WacodisProduct;
 
@@ -128,6 +129,10 @@ export class ParameterService {
 
   setLayerName(layerName: string){
     this.dwd.layerName = layerName;
+  }
+
+  setParameter(parameter: string){
+    this.dwd.parameter = parameter;
   }
 
   // Setters for WacodisProducts
