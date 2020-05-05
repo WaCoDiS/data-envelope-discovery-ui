@@ -24,6 +24,7 @@ export class ParameterService {
     offering: null,
     featureOfInterest: null,
     observedProperty: null,
+    procedure: null,
     datasetId: "anyID"
   }
   public copernicus: sourceType.Copernicus = {
@@ -111,6 +112,10 @@ export class ParameterService {
 
   setObservedProp(observedProp: string){
     this.sensorWeb.observedProperty = observedProp;
+  }
+
+  setProcedure(procedure: string){
+    this.sensorWeb.procedure = procedure;
   }
 
   // Setters for Copernicus

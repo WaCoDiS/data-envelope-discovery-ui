@@ -21,6 +21,7 @@ export interface SensorWeb extends DataEnvelope{
   offering: string;
   featureOfInterest: string;
   observedProperty: string;
+  procedure: string;
 }
 
 export interface Copernicus extends DataEnvelope {

@@ -38,4 +38,8 @@ export class OptionalParametersSensorWebComponent implements OnInit {
   readObservedProp(observedProp: string){
     this.parameterService.setObservedProp(observedProp);
   }
+
+  readProcedure(procedure: string){
+    this.parameterService.setProcedure(procedure);
+  }
 }

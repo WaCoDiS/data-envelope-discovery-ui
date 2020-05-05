@@ -1,63 +1,81 @@
 <div class="container-custom">
-<div class="row">
-  <div class="col">
-    <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-            aria-controls="collapseBasic">Optional Parameters
-    </button>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Optional Parameters
+      </button>
+    </div>
   </div>
-</div>
-<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-  <!-- Service URL -->
+  <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+    <!-- Service URL -->
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>ServiceURL</label>
+        </div>
+      </div>
+      <div class="col-md-9 col-custom ">
+        <div class="card-body">
+          <input class="form-control" id="serviceUrlSensorWeb" placeholder="url"
+            (input)="readServiceUrlSensorWeb($event.target.value)" />
+        </div>
+      </div>
+    </div>
+    <!-- Offering -->
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Offering</label>
+        </div>
+      </div>
+      <div class="col-md-5 col-custom ">
+        <div class="card-body">
+          <input class="form-control" id="offering" placeholder="offering"
+            (input)="readOffering($event.target.value)" />
+        </div>
+      </div>
+    </div>
+    <!-- Feature of Interest -->
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Feature of Interest</label>
+        </div>
+      </div>
+      <div class="col-md-5 col-custom ">
+        <div class="card-body">
+          <input class="form-control" id="foi" placeholder="feature of interest"
+            (input)="readFOI($event.target.value)" />
+        </div>
+      </div>
+    </div>
+    <!-- Observed property -->
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Observed Property</label>
+        </div>
+      </div>
+      <div class="col-md-5 col-custom ">
+        <div class="card-body">
+          <input class="form-control" id="observedProp" placeholder="observed property"
+            (input)="readObservedProp($event.target.value)" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Procedure-->
   <div class="row bg-light row-custom">
     <div class="col-md-3 col-custom">
       <div class="card-body">
-        <label>ServiceURL</label>
-      </div>
-    </div>
-    <div class="col-md-9 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="serviceUrlSensorWeb" placeholder="url" (input)="readServiceUrlSensorWeb($event.target.value)"/>
-      </div>
-    </div>
-  </div>
-  <!-- Offering -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Offering</label>
+        <label>Procedure</label>
       </div>
     </div>
     <div class="col-md-5 col-custom ">
       <div class="card-body">
-        <input class="form-control" id="offering" placeholder="offering" (input)="readOffering($event.target.value)"/>
+        <input class="form-control" id="procedure" placeholder="procedure"
+          (input)="readProcedure($event.target.value)" />
       </div>
     </div>
   </div>
-  <!-- Feature of Interest -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Feature of Interest</label>
-      </div>
-    </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="foi" placeholder="feature of interest" (input)="readFOI($event.target.value)"/>
-      </div>
-    </div>
-  </div>
-  <!-- Observed property -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Observed Property</label>
-      </div>
-    </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="observedProp" placeholder="observed property" (input)="readObservedProp($event.target.value)"/>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
