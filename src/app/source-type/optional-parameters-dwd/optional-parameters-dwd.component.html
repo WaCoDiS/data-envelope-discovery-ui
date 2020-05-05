@@ -32,6 +32,7 @@
       <div class="card-body">
         <div class="col-md-5 col-custom">
         <ngx-select-dropdown (change)="availableLayerNames($event)"
+                             (change)="determineSelectedInterval($event.value)"
                              [multiple]="false"
                              [options]="dropdownOptionsTime"
                              [config]="config">
@@ -42,7 +43,7 @@
                                [multiple]="false"
                                [options]="dropdownOptionsLayer"
                                [config]="config"
-                               (change)="readLayerName($event.value)">
+                               (change)="readParameter($event.value)">
           </ngx-select-dropdown>
       </div>
       </div>

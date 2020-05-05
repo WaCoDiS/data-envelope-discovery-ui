@@ -17,15 +17,16 @@ export class OptionalParametersDwdComponent implements OnInit {
   private dropdownOptionsLayerDaily: any
   private dropdownOptionsLayerMonthly: any
   private dropdownOptionsLayerYearly: any
+  private selectedInterval: any
 
   constructor(public parameterService: ParameterService) { }
 
   ngOnInit() {
     this.dropdownOptionsTime = ["hourly", "daily", "monthly", "yearly"];
-    this.dropdownOptionsLayerHourly = this.getLayername(HOURLY);
-    this.dropdownOptionsLayerDaily = this.getLayername(DAILY);
-    this.dropdownOptionsLayerMonthly = this.getLayername(MONTHLY);
-    this.dropdownOptionsLayerYearly = this.getLayername(YEARLY);
+    this.dropdownOptionsLayerHourly = Array.from(HOURLY.keys());// this.getLayername(HOURLY);
+    this.dropdownOptionsLayerDaily = Array.from(DAILY.keys());
+    this.dropdownOptionsLayerMonthly = Array.from(MONTHLY.keys());
+    this.dropdownOptionsLayerYearly = Array.from(YEARLY.keys());
   }
 
   selectionChanged(evt){
@@ -38,16 +39,8 @@ export class OptionalParametersDwdComponent implements OnInit {
     limitTo: this.calcLimit()
   }
 
-  getLayername(timeArray) {
-    var layernames: string[] = [];
-    for (let i in timeArray) {
-      layernames.push(timeArray[i][1])
-    }
-    return layernames;
-  }
-
   calcLimit(){
-    var lengths:number[] = [HOURLY.length, DAILY.length, MONTHLY.length, YEARLY.length];
+    var lengths:number[] = [HOURLY.size, DAILY.size, MONTHLY.size, YEARLY.size];
     var sortedLenghts:number[] = lengths.sort((n1,n2) => n1 - n2);
     return sortedLenghts.pop();
   }
@@ -67,11 +60,31 @@ export class OptionalParametersDwdComponent implements OnInit {
     }
   }
 
+  determineSelectedInterval(selected: string){
+    this.selectedInterval = selected;
+  }
+
   readServiceUrlDwd(serviceUrl: string){
     this.parameterService.setServiceUrlDwd(serviceUrl);
   }
 
-  readLayerName(layerName: string){
-    this.parameterService.setLayerName(layerName);
+  readParameter(parameter: string){
+    this.parameterService.setParameter(parameter);
+
+    if(this.selectedInterval == "hourly"){
+     this.parameterService.setLayerName(HOURLY.get(parameter));
+    }
+
+    if(this.selectedInterval == "daily"){
+      this.parameterService.setLayerName(DAILY.get(parameter));
+    }
+
+    if(this.selectedInterval == "monthly"){
+      this.parameterService.setLayerName(MONTHLY.get(parameter));
+    }
+
+    if(this.selectedInterval == "yearly"){
+      this.parameterService.setLayerName(YEARLY.get(parameter));
+    }
   }
 }

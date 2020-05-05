@@ -1,4 +1,4 @@
-export const HOURLY: [string, string][] = [
+export const HOURLY = new Map([
   ["Mittlere Windgeschwindigkeit in ca. 10 m Höhe [m/s]", "F_MN003"],
   ["Mittlere Windrichtung in ca. 10 m Höhe [°]", "D_MN003"],
   ["Erdbodentemperatur in 10 cm Tiefe [°C]", "TE10_MN002"],
@@ -17,9 +17,9 @@ export const HOURLY: [string, string][] = [
   ["Indikator ob Niederschlag gefallen ist", "RS_IND_MN008"],
   ["Luftdruck auf Stationshöhe [hpa]", "P0_MN008"],
   ["Luftdruck reduziert auf Meereshöhe [hpa]", "P_MN008"]
-]
+])
 
-export const DAILY: [string, string][] = [
+export const DAILY = new Map([
   ["Tagesmittel der mittleren Windgeschwindigkeit in ca. 10 m Höhe [m/s]", "FM_MN003"],
   ["Tagesmittel der relativen Feuchte auf 2 m Höhe [%]", "UPM_MN004"],
   ["Summe der Neuschneehöhe [cm]", "NSH_TAG_MN006"],
@@ -41,9 +41,9 @@ export const DAILY: [string, string][] = [
   ["Mittlerer Bedeckungsgrad [Achtel]", "NM_MN004"],
   ["Mittlerer Dampfdrucks [hpa]", "VPM_MN004"],
   ["Mittlerer Luftdruck auf Stationshöhe [hpa]", "PM_MN004"]
-]
+])
 
-export const MONTHLY: [string, string][] = [
+export const MONTHLY = new Map([
   ["Mittel der Lufttemperatur auf 2 m Höhe [°C]", "MO_TT_MN004"],
   ["Mittel der Sonnenscheindauer [h]", "MO_SD_MN004"],
   ["Mittel der Windstärke [bft]", "MO_FK_MN004"],
@@ -58,9 +58,9 @@ export const MONTHLY: [string, string][] = [
   ["Summe der Niederschlagshöhe [mm]", "MO_RR_MN006"],
   ["Summe der Schneehöhe [cm]", "MO_SH_S_MN006"],
   ["Summe der Sonnenscheindauer [h]", "MO_SD_S_MN004"]
-]
+])
 
-export const YEARLY: [string, string][] = [
+export const YEARLY = new Map([
   ["Mittel der Lufttemperatur auf 2 m Höhe [°C]", "JA_TT_MN004"],
   ["Mittel der Sonnenscheindauer [h]", "JA_SD_MN004"],
   ["Mittel der Windstärke [bft]", "JA_FK_MN004"],
@@ -78,4 +78,4 @@ export const YEARLY: [string, string][] = [
   ["Gebietsmittlere Lufttemperatur (Mittel) [°C] (2 m Höhe)", "RGN_DEU_P1Y_TM"],
   ["Gebietsmittlere Niederschlagshöhe (Jahressumme) [mm]", "RGN_DEU_P1Y_RR"],
   ["Gebietsmittlere Sonnenscheindauer (Jahressumme) [h]", "RGN_DEU_P1Y_SD"]
-]
+])
