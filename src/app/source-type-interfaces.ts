@@ -21,7 +21,7 @@ export interface SensorWeb extends DataEnvelope{
   offering: string;
   featureOfInterest: string;
   observedProperty: string;
-  procedure: string;
+  procedure: string
 }
 
 export interface Copernicus extends DataEnvelope {
@@ -31,7 +31,7 @@ export interface Copernicus extends DataEnvelope {
 }
 
 export interface GdiDe extends DataEnvelope{
-  catalogueUrl: string;
+  //catalogueUrl: string;
   recordRefId: string;
 }
 

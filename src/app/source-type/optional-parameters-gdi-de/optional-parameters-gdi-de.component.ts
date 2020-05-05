@@ -15,10 +15,6 @@ export class OptionalParametersGdiDeComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectionChanged(evt){
-    console.log(evt.value);
-  }
-
   readCatalogueUrl(catalogueUrl: string){
     this.parameterService.setCatalogueUrl(catalogueUrl);
   }
