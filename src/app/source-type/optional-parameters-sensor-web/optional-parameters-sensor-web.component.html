@@ -63,19 +63,21 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- Procedure-->
-  <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
-      <div class="card-body">
-        <label>Procedure</label>
+    <!-- Procedure-->
+    <div class="row bg-light row-custom">
+      <div class="col-md-3 col-custom">
+        <div class="card-body">
+          <label>Procedure</label>
+        </div>
+      </div>
+      <div class="col-md-5 col-custom ">
+        <div class="card-body">
+          <input class="form-control" id="procedure" placeholder="procedure"
+            (input)="readProcedure($event.target.value)" />
+        </div>
       </div>
     </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="procedure" placeholder="procedure"
-          (input)="readProcedure($event.target.value)" />
-      </div>
-    </div>
   </div>
+  
+  
 </div>
