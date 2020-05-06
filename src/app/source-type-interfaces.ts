@@ -5,6 +5,16 @@ export interface DataEnvelope{
   datasetId: string;
 }
 
+export interface DataEnvelopeResult{
+  areaOfInterest: AreaOfInterest;
+  timeFrame: TimeFrame;
+  sourceType: string;
+  datasetId: string;
+  modified: string;
+  created: string;
+  identifier: string
+}
+
 
 export interface AreaOfInterest{
   extent: number[];
