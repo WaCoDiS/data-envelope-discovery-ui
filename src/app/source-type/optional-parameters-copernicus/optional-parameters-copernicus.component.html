@@ -36,11 +36,11 @@
       <div class="card-body">
         <div class="container-fluid col-custom">
         <label>0 %</label>
-        <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="false"
+        <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="false" [value]="100"
                    (change)="readCloudCover($event.newValue)"></mv-slider>
         <label>100 %</label>
       </div>
-        <label>Current Value: <span id="currentValue"></span> %</label>
+        <label>Current Value: <span id="currentValue">100</span> %</label>
       </div>
     </div>
   </div>
