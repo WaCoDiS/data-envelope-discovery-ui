@@ -20,19 +20,19 @@ export class RequiredParametersComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.parameterService.minLon$
       .subscribe(item => {
-        this.minLon = item
+        this.minLon = Math.round(item*100000)/100000
       })
     this.subscription = this.parameterService.minLat$
       .subscribe(item => {
-        this.minLat = item
+        this.minLat = Math.round(item*100000)/100000
       })
     this.subscription = this.parameterService.maxLon$
       .subscribe(item => {
-        this.maxLon = item
+        this.maxLon = Math.round(item*100000)/100000
       })
     this.subscription = this.parameterService.maxLat$
       .subscribe(item => {
-        this.maxLat = item
+        this.maxLat = Math.round(item*100000)/100000
       })
   }
   ngOnDestroy() {
