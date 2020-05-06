@@ -9,10 +9,9 @@ import { ParameterService } from 'src/app/services/parameter-service/parameter-s
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  dataEnvelopes: sourceType.DataEnvelopeResult[] = new Array();
+  dataEnvelopes: sourceType.DataEnvelope[];
 
   constructor(private httpService: HttpService, private parameterService: ParameterService) {
-    this.dataEnvelopes = new Array();
   }
 
   ngOnInit() {
@@ -24,7 +23,7 @@ export class ResultComponent implements OnInit {
     console.log(this.parameterService.getDataEnvelope())
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
     ergebnis.subscribe(val => console.log(val));
-    ergebnis.subscribe(dataEnvelope => this.dataEnvelopes = dataEnvelope);
+    ergebnis.subscribe(dataEnvelope => this.dataEnvelopes.push(dataEnvelope));
   }
 }
 
