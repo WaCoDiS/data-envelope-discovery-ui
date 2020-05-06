@@ -12,6 +12,9 @@ export class MapApplicationComponent {
 
   constructor(public parameterService: ParameterService) { };
 
+  drawnItems: L.FeatureGroup = L.featureGroup();
+
+
   options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: 'Open Street Map' })
@@ -29,7 +32,12 @@ export class MapApplicationComponent {
       rectangle: { showArea: false },
       circlemarker: false,
       circle: false,
-    }
+    },
+    edit:{
+      featureGroup: this.drawnItems,
+      edit:false,
+      remove:false
+    },
   };
 
   /*
@@ -40,10 +48,13 @@ export class MapApplicationComponent {
   */
   public onDrawStart(e: any) {
     // tslint:disable-next-line:no-console
+    
     console.log('Draw Started Event!');
   }
 
   public onDrawCreated(e: any) {
+    this.drawnItems.clearLayers();
+    this.drawnItems.addLayer((e as L.DrawEvents.Created).layer);
     const type = (e as any).layerType,
       layer = (e as any).layer
     if (type === 'rectangle') {
