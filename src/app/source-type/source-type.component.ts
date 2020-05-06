@@ -1,7 +1,6 @@
 import { Component} from '@angular/core';
 import { SensorWeb } from '../source-type-interfaces';
 import { Copernicus } from '../source-type-interfaces';
-import { GdiDe } from '../source-type-interfaces';
 import { Dwd } from '../source-type-interfaces';
 import { WacodisProduct } from '../source-type-interfaces';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';

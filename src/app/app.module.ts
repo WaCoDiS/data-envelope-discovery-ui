@@ -8,7 +8,6 @@ import { SourceTypeComponent } from './source-type/source-type.component';
 import { RequiredParametersComponent } from './source-type/required-parameters/required-parameters.component';
 import { OptionalParametersCopernicusComponent } from './source-type/optional-parameters-copernicus/optional-parameters-copernicus.component';
 import { OptionalParametersSensorWebComponent } from './source-type/optional-parameters-sensor-web/optional-parameters-sensor-web.component';
-import { OptionalParametersGdiDeComponent } from './source-type/optional-parameters-gdi-de/optional-parameters-gdi-de.component';
 import { OptionalParametersDwdComponent } from './source-type/optional-parameters-dwd/optional-parameters-dwd.component';
 import { OptionalParametersWacodisProductComponent } from './source-type/optional-parameters-wacodis-product/optional-parameters-wacodis-product.component'
 
@@ -40,7 +39,6 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
     HeaderComponent,
     OptionalParametersCopernicusComponent,
     OptionalParametersSensorWebComponent,
-    OptionalParametersGdiDeComponent,
     OptionalParametersDwdComponent,
     OptionalParametersWacodisProductComponent,
     MapApplicationComponent,
