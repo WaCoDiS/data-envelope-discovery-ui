@@ -9,11 +9,11 @@
   <div class="row row-custom">
     <div class="col col-custom">
 
-      <div class="card text-white bg-primary mb-3"  *ngFor="let dataEnvelope of dataEnvelopes">
+      <div class="card text-white bg-primary mb-3"  *ngFor="let dataEnvelope of dataEnvelopes; let i = index" [attr.data-index]="i">
         <div class="card-header" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">{{dataEnvelope.sourceType}}
+        [attr.aria-expanded]="!isCollapsed" aria-controls="i">{{dataEnvelope.sourceType}}
       </div>
-        <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+        <div id="i" [collapse]="isCollapsed" [isAnimated]="true">
         <div class="card-body">
           <h5 class="card-title">{{dataEnvelope.sourceType}}</h5>
           <p class="card-text">{{dataEnvelope}}</p>
