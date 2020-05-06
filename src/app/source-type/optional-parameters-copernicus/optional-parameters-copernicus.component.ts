@@ -25,9 +25,7 @@ export class OptionalParametersCopernicusComponent implements OnInit {
     this.selectedPortal = this.dropdownOptionsPortal[0];
   }
 
-  selectionChanged(evt){
-    console.log(evt.value);
-  }
+
 
   config = {
     placeholder:'Select'
@@ -40,6 +38,7 @@ export class OptionalParametersCopernicusComponent implements OnInit {
   readCloudCover(cloudCover: number){
     this.parameterService.setCloudCover(cloudCover);
     console.log(this.parameterService.copernicus.cloudCoverage);
+    document.getElementById("currentValue").textContent = cloudCover.toString();
   }
 
   readPortal(portal: string){
