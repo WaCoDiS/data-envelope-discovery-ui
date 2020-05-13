@@ -18,12 +18,11 @@ export class HttpService {
 
   dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/search';  // URL to data access api search
 
-  constructor(
-    private http: HttpClient) {
+  constructor( private http: HttpClient) {
   }
 
-  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelope): Observable<sourceType.DataEnvelope> {
-    return this.http.post<sourceType.DataEnvelope>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
+  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelope): Observable<sourceType.DataEnvelopeResult> {
+    return this.http.post<sourceType.DataEnvelopeResult>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
