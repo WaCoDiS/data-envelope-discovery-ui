@@ -7,35 +7,28 @@
 </div>
 <div class="container-custom">
   <div class="row row-custom">
-    <div class="col col-custom">
-      <form>
-        <div class="form-group form-inline">
-            Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
-        </div>
-      </form>
-      
-      <table *ngIf="resultPressed"class="table table-striped">
+    <div class="col col-custom"> 
+      <div class="table-responsive"> 
+      <table *ngIf="resultPressed"class="table table-stripe">
         <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Idendifier</th>
-          <th scope="col">Timeframe</th>
-          <th scope="col">Source Type</th>
+        <tr class="d-flex">
+          <th class="col-1">#</th>
+          <th class="col">Idendifier</th>
+          <th class="col">Date</th>
+          <th class="col">Source Type</th>
           
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let dataEnvelope of dataEnvelopes$ | async; index as i">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>
-            {{dataEnvelope.idendifier}}
-          </td>
-          <td>{{dataEnvelope.timeframe}}</td>
-          <td>{{dataEnvelope.sourceType}}</td>
+        <tr class="d-flex" *ngFor="let dataEnvelope of dataEnvelopes; index as i">
+          <th style="width: 10%">{{ i + 1 }}</th>
+          <td style="width: 30%"> {{dataEnvelope.identifier}}</td>
+          <td  style="width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
+          <td  style="width: 30%">{{dataEnvelope.sourceType}}</td>
         </tr>
         </tbody>
       </table>
-
+    </div>  
     </div>
   </div>
 </div>
