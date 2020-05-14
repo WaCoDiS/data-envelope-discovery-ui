@@ -33,11 +33,15 @@
   <app-optional-parameters-wacodis-product *ngIf="sourceTypeSelection=='WacodisProducts'"></app-optional-parameters-wacodis-product>
 </div>
 <hr class="row-custom" align="left">
-
+<div class="container-custom">
   <div class="row row-custom">
     <div class="col col-custom">
       <button class="btn btn-primary btn-block" type="button" (click)="sendRequest()">Run</button>
     </div>
   </div>
-<app-result></app-result>
+</div>
+<div *ngIf="resultPressed">
+  <app-result [dataEnvelopes]="dataEnvelopes"></app-result>
+</div>
+
 

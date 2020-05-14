@@ -1,4 +1,5 @@
-import { Component, OnInit, PipeTransform } from '@angular/core';
+import { Component, OnInit, PipeTransform, Input } from '@angular/core';
+import * as sourceType from '../../source-type-interfaces';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { Component, OnInit, PipeTransform } from '@angular/core';
 })
 
 export class ResultComponent implements OnInit {
+
+  @Input()  dataEnvelopes: sourceType.DataEnvelopeResult[];
 
 
   ngOnInit() {
