@@ -36,14 +36,7 @@ export class ParameterService {
     timeFrame: null,
     datasetId: "anyID"
   };
-  public gdiDe: sourceType.GdiDe = {
-    sourceType : "GdiDeDataEnvelope",
-    areaOfInterest: null,
-    timeFrame: null,
-    //catalogueUrl: null,
-    recordRefId: null,
-    datasetId: "anyID"
-  }
+
   public dwd: sourceType.Dwd = {
     sourceType: "DwdDataEnvelope",
     datasetId: "anyID",
@@ -138,14 +131,6 @@ export class ParameterService {
     this.copernicus.portal = portal;
   }
 
-  // Setters for GDI-DE
-  setCatalogueUrl(catalogueUrl: string){
-    //this.gdiDe.catalogueUrl = catalogueUrl;
-  }
-
-  setRecordRefId(recordRefId: string){
-    this.gdiDe.recordRefId = recordRefId;
-  }
 
   // Setters for DWD
   setServiceUrlDwd(serviceUrlDwd: string){
@@ -197,11 +182,6 @@ export class ParameterService {
       this.dwd.timeFrame = this.timeFrame;
       this.dwd.areaOfInterest = this.areaOfInterest;
       return this.dwd;
-    }
-    else if(this.currentSourceType == "GDI-DE"){
-      this.gdiDe.timeFrame = this.timeFrame;
-      this.gdiDe.areaOfInterest = this.areaOfInterest;
-      return this.gdiDe;
     }
   }
 

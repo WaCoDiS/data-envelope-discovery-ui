@@ -40,10 +40,6 @@ export interface Copernicus extends DataEnvelope {
   portal: string;
 }
 
-export interface GdiDe extends DataEnvelope{
-  //catalogueUrl: string;
-  recordRefId: string;
-}
 
 export interface Dwd extends DataEnvelope{
   serviceUrl: string;
