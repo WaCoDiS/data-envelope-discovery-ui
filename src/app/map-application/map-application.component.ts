@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';
+import * as sourceType from '../source-type-interfaces';
 
 @Component({
   selector: 'app-map-application',
@@ -13,7 +14,7 @@ export class MapApplicationComponent {
   constructor(public parameterService: ParameterService) { };
 
   drawnItems: L.FeatureGroup = L.featureGroup();
-
+  footprints: L.FeatureGroup = L.featureGroup();
 
   options = {
     layers: [
@@ -33,10 +34,10 @@ export class MapApplicationComponent {
       circlemarker: false,
       circle: false,
     },
-    edit:{
+    edit: {
       featureGroup: this.drawnItems,
-      edit:false,
-      remove:false
+      edit: false,
+      remove: false
     },
   };
 
@@ -48,7 +49,7 @@ export class MapApplicationComponent {
   */
   public onDrawStart(e: any) {
     // tslint:disable-next-line:no-console
-    
+
     console.log('Draw Started Event!');
   }
 
@@ -69,6 +70,19 @@ export class MapApplicationComponent {
       this.parameterService.changeMaxLon(bbox[1].lng);
       this.parameterService.changeMaxLat(bbox[1].lat);
     }
+  }
+
+  public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
+    /*var extent = dataEnvelopes[0].areaOfInterest.extent
+    // xmin xmax ymin ymax
+    var min: number[] = [extent[3], extent[0]];
+    var max: number[] = [extent[2], extent[1]];*/
+    // var bounds: any[] = [min, max];
+    var corner1 = L.latLng(51.447437, 7.271786)
+    var corner2 = L.latLng(52.00, 7.5)
+    var bounds = L.latLngBounds(corner1, corner2);
+    // ymin xmin ymax xmax
+    this.footprints.addLayer(L.rectangle(bounds))
   }
 
 }

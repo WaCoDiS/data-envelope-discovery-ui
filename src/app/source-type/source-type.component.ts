@@ -1,12 +1,9 @@
-import { Component} from '@angular/core';
-import { SensorWeb } from '../source-type-interfaces';
-import { Copernicus } from '../source-type-interfaces';
-import { Dwd } from '../source-type-interfaces';
-import { WacodisProduct } from '../source-type-interfaces';
+import { Component, EventEmitter, Output} from '@angular/core';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';
 import * as sourceType from '../source-type-interfaces';
 import { HttpService } from 'src/app/services/http/http.service';
-import { FormControl } from '@angular/forms';
+import {ResultService} from 'src/app/services/result/result.service';
+import {MapApplicationComponent} from '../map-application/map-application.component';
 
 @Component({
   selector: 'app-source-type',
@@ -16,10 +13,12 @@ import { FormControl } from '@angular/forms';
 export class SourceTypeComponent{
   componentTitel = "Source type"
   sourceTypeSelection = 'SensorWeb';
-  dataEnvelopes: sourceType.DataEnvelopeResult[];
   resultPressed = false;
 
-constructor(public parameterService: ParameterService, private httpService: HttpService) { }
+  @Output() results = new EventEmitter<sourceType.DataEnvelopeResult[]>();
+
+constructor(public parameterService: ParameterService, private httpService: HttpService, private resultService: ResultService) { }
+
   sendChoosenSourceType(event: any){
    this.parameterService.changeSourceType(event);
   }
@@ -27,12 +26,11 @@ constructor(public parameterService: ParameterService, private httpService: Http
 
   sendRequest() {
     this.resultPressed = true;
-    this.dataEnvelopes = new Array();
     console.log(this.parameterService.getDataEnvelope())
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
     ergebnis.subscribe(val => console.log(val));
-    ergebnis.subscribe(dataEnvelope => this.dataEnvelopes.push(dataEnvelope));
-    console.log(this.dataEnvelopes);
+    ergebnis.subscribe(dataEnvelope => this.resultService.addResult(dataEnvelope));
+    this.results.emit(this.resultService.getResults());
   }
 
 }
