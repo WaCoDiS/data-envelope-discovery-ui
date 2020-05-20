@@ -11,7 +11,12 @@ import * as sourceType from '../source-type-interfaces';
 
 export class MapApplicationComponent {
 
-  @Input() resultEnvelopes: sourceType.DataEnvelopeResult[];
+  //@Input() resultEnvelopes: sourceType.DataEnvelopeResult[];
+
+  @Input() set resultDataEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
+    this.drawFootprints(resultEnvelopes);
+    console.log(resultEnvelopes)
+ }
 
   constructor(public parameterService: ParameterService) { };
 
@@ -80,11 +85,25 @@ export class MapApplicationComponent {
     var min: number[] = [extent[3], extent[0]];
     var max: number[] = [extent[2], extent[1]];*/
     // var bounds: any[] = [min, max];
+
+    dataEnvelopes.forEach(dataEnvelope => {
+      var min: number[] = [dataEnvelope.areaOfInterest.extent[3], dataEnvelope.areaOfInterest.extent[0]];
+      var max: number[] = [dataEnvelope.areaOfInterest.extent[2], dataEnvelope.areaOfInterest.extent[1]];
+      var corner1 = L.latLng(min[0], min[1])
+      var corner2 = L.latLng(max[0], max[1])
+      var bounds = L.latLngBounds(corner1, corner2);
+      // ymin xmin ymax xmax
+      this.footprints.addLayer(L.rectangle(bounds))
+    });
+
+
+    /*
     var corner1 = L.latLng(51.447437, 7.271786)
     var corner2 = L.latLng(52.00, 7.5)
     var bounds = L.latLngBounds(corner1, corner2);
     // ymin xmin ymax xmax
     this.footprints.addLayer(L.rectangle(bounds))
+    */
   }
 
 }
