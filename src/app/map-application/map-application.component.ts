@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';
 import * as sourceType from '../source-type-interfaces';
@@ -10,6 +10,8 @@ import * as sourceType from '../source-type-interfaces';
 })
 
 export class MapApplicationComponent {
+
+  @Input() resultEnvelopes: sourceType.DataEnvelopeResult[];
 
   constructor(public parameterService: ParameterService) { };
 

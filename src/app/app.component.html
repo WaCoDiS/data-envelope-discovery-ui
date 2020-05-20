@@ -2,10 +2,10 @@
 <div class="container-fluid content-wrapper">
   <div class="row content">
     <div class="col-xl-5 shadow input-bar">
-      <app-source-type></app-source-type>
+      <app-source-type (results) = "onResults($event)"></app-source-type>
     </div>
     <div class="col-xl-7">
-      <app-map-application></app-map-application>
+      <app-map-application [resultEnvelopes] = "results"></app-map-application>
     </div>
   </div>
 </div>
