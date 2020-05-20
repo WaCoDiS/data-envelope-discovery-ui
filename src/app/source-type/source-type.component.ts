@@ -14,7 +14,7 @@ export class SourceTypeComponent{
   resultPressed = false;
   dataEnvelopes: sourceType.DataEnvelopeResult[];
 
-  @Output() results = new EventEmitter<sourceType.DataEnvelopeResult[]>();
+  @Output() results: EventEmitter<sourceType.DataEnvelopeResult[]> = new EventEmitter();
 
 constructor(public parameterService: ParameterService, private httpService: HttpService) { }
 
@@ -24,7 +24,7 @@ constructor(public parameterService: ParameterService, private httpService: Http
 
 
   sendRequest() {
-    this.dataEnvelopes =  new Array();
+    this.dataEnvelopes =  new Array<sourceType.DataEnvelopeResult>();
     this.resultPressed = true;
     console.log(this.parameterService.getDataEnvelope())
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());

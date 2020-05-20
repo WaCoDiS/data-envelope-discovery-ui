@@ -12,6 +12,8 @@ export class AppComponent {
   results : sourceType.DataEnvelopeResult[];
 
   onResults(results: sourceType.DataEnvelopeResult[]){
+    console.log("onResults");
+    console.log(results[0]);
     this.results = results;
   }
 
