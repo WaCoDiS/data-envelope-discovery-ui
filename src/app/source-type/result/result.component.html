@@ -14,10 +14,10 @@
         </thead>
         <tbody>
         <tr class="d-flex" *ngFor="let dataEnvelope of dataEnvelopes; index as i">
-          <th style="width: 10%">{{ i + 1 }}</th>
-          <td style="width: 30%"> {{dataEnvelope.identifier}}</td>
-          <td  style="width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
-          <td  style="width: 30%">{{dataEnvelope.sourceType}}</td>
+          <th style="word-wrap: break-word; max-width: 10%">{{ i + 1 }}</th>
+          <td style="word-wrap: break-word; max-width: 30%"> {{dataEnvelope.identifier}}</td>
+          <td  style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
+          <td  style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.sourceType}}</td>
         </tr>
         </tbody>
       </table>
