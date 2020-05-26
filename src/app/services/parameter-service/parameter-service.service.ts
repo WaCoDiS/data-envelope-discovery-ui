@@ -133,10 +133,6 @@ export class ParameterService {
 
 
   // Setters for DWD
-  setServiceUrlDwd(serviceUrlDwd: string){
-    this.dwd.serviceUrl = serviceUrlDwd;
-  }
-
   setLayerName(layerName: string){
     this.dwd.layerName = layerName;
   }

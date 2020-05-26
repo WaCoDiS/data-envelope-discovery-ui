@@ -64,10 +64,6 @@ export class OptionalParametersDwdComponent implements OnInit {
     this.selectedInterval = selected;
   }
 
-  readServiceUrlDwd(serviceUrl: string){
-    this.parameterService.setServiceUrlDwd(serviceUrl);
-  }
-
   readParameter(parameter: string){
     this.parameterService.setParameter(parameter);
 
