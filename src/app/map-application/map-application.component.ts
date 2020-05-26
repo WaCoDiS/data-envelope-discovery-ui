@@ -26,6 +26,17 @@ export class MapApplicationComponent {
   drawnItems: L.FeatureGroup = L.featureGroup();
   footprints: L.FeatureGroup = L.featureGroup();
 
+  layersControl = {
+    baseLayers: {
+    },
+    overlays: {
+      'Bounding Box': this.drawnItems,
+      'Footprints': this.footprints
+    }
+  }
+
+
+
   options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: 'Open Street Map' })
@@ -40,7 +51,7 @@ export class MapApplicationComponent {
       marker: false,
       polyline: false,
       polygon: false,
-      rectangle: { showArea: false },
+      rectangle: { showArea: false, shapeOptions: {color: "#ff7800", weight: 1}},
       circlemarker: false,
       circle: false,
     },
@@ -65,9 +76,11 @@ export class MapApplicationComponent {
 
   public onDrawCreated(e: any) {
     this.drawnItems.clearLayers();
-    this.drawnItems.addLayer((e as L.DrawEvents.Created).layer);
+    var drawnBBoxLayer = (e as L.DrawEvents.Created).layer;
+    //drawnBBoxLayer.setOptions(object);//   setStyle({color: "#ff7800", weight: 1});
+    this.drawnItems.addLayer(drawnBBoxLayer);
     const type = (e as any).layerType,
-      layer = (e as any).layer
+    layer = (e as any).layer
     if (type === 'rectangle') {
       const coords = layer._latlngs;
       var bbox = [coords[0][0], coords[0][2]];
