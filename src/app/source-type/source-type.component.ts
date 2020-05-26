@@ -26,12 +26,12 @@ constructor(public parameterService: ParameterService, private httpService: Http
   sendRequest() {
     this.dataEnvelopes =  new Array<sourceType.DataEnvelopeResult>();
     this.resultPressed = true;
-    console.log(this.parameterService.getDataEnvelope())
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
-    ergebnis.subscribe(val => console.log(val));
-    ergebnis.subscribe(dataEnvelope => this.dataEnvelopes.push(dataEnvelope));
-    console.log(this.dataEnvelopes);
+    ergebnis.subscribe(dataEnvelope => {
+      this.dataEnvelopes.push(dataEnvelope);
     this.results.emit(this.dataEnvelopes);
+    });
+    
   }
 
 }

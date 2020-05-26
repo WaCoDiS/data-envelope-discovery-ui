@@ -15,9 +15,6 @@ export class MapApplicationComponent {
 
   //private _resultEnvelopes: sourceType.DataEnvelopeResult[];
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
-    console.log("Input");
-    console.log(resultEnvelopes);
-    console.log(resultEnvelopes[0]);
     this.drawFootprints(resultEnvelopes);
  }
 
@@ -84,8 +81,6 @@ export class MapApplicationComponent {
     if (type === 'rectangle') {
       const coords = layer._latlngs;
       var bbox = [coords[0][0], coords[0][2]];
-      console.log(bbox[0].lat);
-      console.log(bbox);
 
       // call service command for updating the observable
       this.parameterService.changeMinLon(bbox[0].lng);
@@ -96,47 +91,15 @@ export class MapApplicationComponent {
   }
 
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
-    console.log("draw footprints");
-    /*var extent = dataEnvelopes[0].areaOfInterest.extent
-    // xmin xmax ymin ymax
-    var min: number[] = [extent[3], extent[0]];
-    var max: number[] = [extent[2], extent[1]];*/
-    // var bounds: any[] = [min, max];
-    console.log(dataEnvelopes.length)
-    /*
-    dataEnvelopes.forEach(dataEnvelope => {
-      var min: number[] = [dataEnvelope.areaOfInterest.extent[3], dataEnvelope.areaOfInterest.extent[0]];
-      var max: number[] = [dataEnvelope.areaOfInterest.extent[2], dataEnvelope.areaOfInterest.extent[1]];
-      console.log("hallo christian du arsch")
-      var corner1 = L.latLng(min[0], min[1])
-      var corner2 = L.latLng(max[0], max[1])
-      var bounds = L.latLngBounds(corner1, corner2);
-      // ymin xmin ymax xmax
-      this.footprints.addLayer(L.rectangle(bounds))
-
-    });
-    */
-    
       for (let i = 0; i < dataEnvelopes.length; i++) {
-        console.log(dataEnvelopes[i]);
         var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
         var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[2], dataEnvelopes[i].areaOfInterest.extent[1]];
-        console.log("setted bbox")
         var corner1 = L.latLng(min[0], min[1])
         var corner2 = L.latLng(max[0], max[1])
         var bounds = L.latLngBounds(corner1, corner2);
         // ymin xmin ymax xmax
         this.footprints.addLayer(L.rectangle(bounds))
       }
-    
-
-    /*
-    var corner1 = L.latLng(51.447437, 7.271786)
-    var corner2 = L.latLng(52.00, 7.5)
-    var bounds = L.latLngBounds(corner1, corner2);
-    // ymin xmin ymax xmax
-    this.footprints.addLayer(L.rectangle(bounds))
-    */
   }
 
 }
