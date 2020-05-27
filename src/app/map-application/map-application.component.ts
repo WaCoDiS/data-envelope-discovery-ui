@@ -17,9 +17,9 @@ export class MapApplicationComponent {
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
     this.drawFootprints(resultEnvelopes);
  }
-
   constructor(public parameterService: ParameterService) { };
 
+  drawnBBoxLayer:any;
   drawnItems: L.FeatureGroup = L.featureGroup();
   footprints: L.FeatureGroup = L.featureGroup();
 
@@ -48,7 +48,7 @@ export class MapApplicationComponent {
       marker: false,
       polyline: false,
       polygon: false,
-      rectangle: { showArea: false, shapeOptions: {color: "#ff7800", weight: 1}},
+      rectangle: { showArea: false}, //shapeOptions: {color: "#ff7800", weight: 1}},
       circlemarker: false,
       circle: false,
     },
@@ -73,9 +73,8 @@ export class MapApplicationComponent {
 
   public onDrawCreated(e: any) {
     this.drawnItems.clearLayers();
-    var drawnBBoxLayer = (e as L.DrawEvents.Created).layer;
-    //drawnBBoxLayer.setOptions(object);//   setStyle({color: "#ff7800", weight: 1});
-    this.drawnItems.addLayer(drawnBBoxLayer);
+    this.drawnBBoxLayer = (e as L.DrawEvents.Created).layer;
+    this.drawnItems.addLayer(this.drawnBBoxLayer);
     const type = (e as any).layerType,
     layer = (e as any).layer
     if (type === 'rectangle') {
@@ -91,14 +90,18 @@ export class MapApplicationComponent {
   }
 
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
-      for (let i = 0; i < dataEnvelopes.length; i++) {
+    this.drawnBBoxLayer.remove();
+    this.footprints.clearLayers();
+    for (let i = 0; i < dataEnvelopes.length; i++) {
         var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
         var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[2], dataEnvelopes[i].areaOfInterest.extent[1]];
-        var corner1 = L.latLng(min[0], min[1])
-        var corner2 = L.latLng(max[0], max[1])
+        var corner1 = L.latLng(min[0], min[1]);
+        var corner2 = L.latLng(max[0], max[1]);
         var bounds = L.latLngBounds(corner1, corner2);
         // ymin xmin ymax xmax
-        this.footprints.addLayer(L.rectangle(bounds))
+        var footprintLayer = L.rectangle(bounds)
+        footprintLayer.setStyle({color: "#ff7800", weight: 1})
+        this.footprints.addLayer(footprintLayer)
       }
   }
 
