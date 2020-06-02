@@ -1,27 +1,103 @@
 <div class="container-custom">
   <div class="row row-custom">
-    <div class="col col-custom"> 
-      <div class="table-responsive"> 
-      <table class="table table-stripe">
-        <thead>
-        <tr class="d-flex">
-          <th class="col-1">#</th>
-          <th class="col">Idendifier</th>
-          <th class="col">Date</th>
-          <th class="col">Source Type</th>
-          
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="d-flex" *ngFor="let dataEnvelope of dataEnvelopes; index as i">
-          <th style="word-wrap: break-word; max-width: 10%">{{ i + 1 }}</th>
-          <td style="word-wrap: break-word; max-width: 30%"> {{dataEnvelope.identifier}}</td>
-          <td  style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
-          <td  style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.sourceType}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>  
+    <div class="col col-custom">
+      <div class="table-responsive">
+        <table class="table table-stripe">
+          <thead>
+            <tr class="d-flex">
+              <th class="col-1">#</th>
+              <th class="col">Idendifier</th>
+              <th class="col">Date</th>
+              <th class="col">Source Type</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <div *ngFor="let dataEnvelope of dataEnvelopes; index as i">
+              <tr class="d-flex" (click)="isCollapsed = !isCollapsed" role="button" aria-expanded="false"
+                aria-controls="collapseExample" onmouseover="" style="cursor: pointer;">
+                <th style="word-wrap: break-word; max-width: 10%">{{ i + 1 }}</th>
+                <td style="word-wrap: break-word; max-width: 30%"> {{dataEnvelope.identifier}}</td>
+                <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
+                <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.sourceType}}</td>
+              </tr>
+              <div [collapse]="!isCollapsed">
+                <div class="card card-body">
+                  <table>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Identifier:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.identifier}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Date:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">SourceType:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.sourceType}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Created:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.created}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Modified:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.modified}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Area of Interest</td>
+                      <td style="word-wrap: break-word; max-width: 30%">
+                      x-Min: {{dataEnvelope.areaOfInterest.extent[0]}}<br/>
+                      y-Min: {{dataEnvelope.areaOfInterest.extent[2]}}<br/>
+                      x-Max: {{dataEnvelope.areaOfInterest.extent[1]}}<br/>
+                      y-Max: {{dataEnvelope.areaOfInterest.extent[3]}}<br/>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Satellite:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.satellite}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Portal:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.portal}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; max-width: 30%">Cloud Cover:</td>
+                      <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.cloudCoverage}}</td>
+                    </tr>
+                  </table>
+
+
+
+
+
+
+
+
+                  <!--
+                  <span class= "font-weight-bold"> Identifier: </span> {{dataEnvelope.identifier}}
+                  <span class= "font-weight-bold">Date: </span>{{dataEnvelope.timeFrame.startTime}}
+                  <span class= "font-weight-bold"> SourceType: </span> {{dataEnvelope.sourceType}}
+                  <span class= "font-weight-bold">Created: </span>{{dataEnvelope.created}}
+                  <span class= "font-weight-bold"> Modified: </span> {{dataEnvelope.modified}}
+                  <span class= "font-weight-bold"> Area of Interest: </span>
+                  <span class= "font-weight-italic">
+                    x-Min: {{dataEnvelope.areaOfInterest.extent[0]}}
+                    y-Min: {{dataEnvelope.areaOfInterest.extent[1]}}
+                    x-Max: {{dataEnvelope.areaOfInterest.extent[2]}}
+                    y-Max: {{dataEnvelope.areaOfInterest.extent[3]}}
+                  </span>
+                  <span class= "font-weight-bold"> Satellite: </span> {{dataEnvelope.satellite}}
+                  <span class= "font-weight-bold"> Portal: </span> {{dataEnvelope.portal}}
+                  <span class= "font-weight-bold"> Cloud Cover: </span> {{dataEnvelope.cloudCoverage}}
+                -->
+
+                </div>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

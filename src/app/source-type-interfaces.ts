@@ -51,3 +51,10 @@ export interface WacodisProduct extends DataEnvelope{
   productType: string;
   serviceName: string;
 }
+
+
+export interface CopernicusResult extends DataEnvelopeResult {
+  satellite: string;
+  cloudCoverage: number;
+  portal: string;
+}

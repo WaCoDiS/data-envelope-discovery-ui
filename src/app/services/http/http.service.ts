@@ -22,10 +22,13 @@ export class HttpService {
   }
 
   searchDataEnvelope (dataEnvelope: sourceType.DataEnvelope): Observable<sourceType.DataEnvelopeResult> {
-    return this.http.post<sourceType.DataEnvelopeResult>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
+
+    if (this.instanceOfCopernicus(dataEnvelope)) {
+      return this.http.post<sourceType.CopernicusResult>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
+  }
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -43,5 +46,12 @@ export class HttpService {
     return throwError(
       'Something bad happened; please try again later.');
   };
+
+
+
+  instanceOfCopernicus(envelope: any): envelope is sourceType.Copernicus {
+    return envelope.hasOwnProperty('satellite')
+}
+
 
 }
