@@ -7,14 +7,15 @@
     </div>
   </div>
   <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+    <div class="bg-light first-element">
     <!-- Service URL -->
     <div class="row bg-light row-custom">
-      <div class="col-md-3 col-custom">
+      <div class="col-md-4 col-custom">
         <div class="card-body">
           <label>ServiceURL</label>
         </div>
       </div>
-      <div class="col-md-9 col-custom ">
+      <div class="col-md-8 col-custom ">
         <div class="card-body">
           <input class="form-control" id="serviceUrlSensorWeb" placeholder="url"
             (input)="readServiceUrlSensorWeb($event.target.value)" />
@@ -23,7 +24,7 @@
     </div>
     <!-- Offering -->
     <div class="row bg-light row-custom">
-      <div class="col-md-3 col-custom">
+      <div class="col-md-4 col-custom">
         <div class="card-body">
           <label>Offering</label>
         </div>
@@ -37,7 +38,7 @@
     </div>
     <!-- Feature of Interest -->
     <div class="row bg-light row-custom">
-      <div class="col-md-3 col-custom">
+      <div class="col-md-4 col-custom">
         <div class="card-body">
           <label>Feature of Interest</label>
         </div>
@@ -51,7 +52,7 @@
     </div>
     <!-- Observed property -->
     <div class="row bg-light row-custom">
-      <div class="col-md-3 col-custom">
+      <div class="col-md-4 col-custom">
         <div class="card-body">
           <label>Observed Property</label>
         </div>
@@ -65,7 +66,7 @@
     </div>
     <!-- Procedure-->
     <div class="row bg-light row-custom">
-      <div class="col-md-3 col-custom">
+      <div class="col-md-4 col-custom">
         <div class="card-body">
           <label>Procedure</label>
         </div>
@@ -77,6 +78,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
   
   

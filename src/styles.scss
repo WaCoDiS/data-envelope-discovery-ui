@@ -10,3 +10,6 @@ body {
   overflow: hidden;
   height: 100%;
 }
+input::placeholder {
+  font-size: small;
+}

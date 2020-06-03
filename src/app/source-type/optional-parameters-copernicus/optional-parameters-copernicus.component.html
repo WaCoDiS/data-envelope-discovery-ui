@@ -7,9 +7,10 @@
   </div>
 </div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <div class="bg-light first-element">
   <!-- Satellite -->
   <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
+    <div class="col-md-4 col-custom">
       <div class="card-body">
         <label>Satellite</label>
       </div>
@@ -27,7 +28,7 @@
   </div>
   <!-- Cloud Cover -->
   <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
+    <div class="col-md-4 col-custom">
       <div class="card-body">
         <label>Cloud Cover</label>
       </div>
@@ -37,7 +38,7 @@
         <div class="container-fluid col-custom">
         <label>0 %</label>
         <mv-slider [(value)]="value" [min]="0" [max]="100" [enabled]="enabled" [range]="false" [value]="100"
-                   (change)="readCloudCover($event.newValue)"></mv-slider>
+                   (change)="readCloudCover($event.newValue)" style="width:180px !important;"></mv-slider>
         <label>100 %</label>
       </div>
         <label>Current Value: <span id="currentValue">100</span> %</label>
@@ -46,7 +47,7 @@
   </div>
   <!-- Portal -->
   <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
+    <div class="col-md-4 col-custom">
       <div class="card-body">
         <label>Portal</label>
       </div>
@@ -62,5 +63,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>

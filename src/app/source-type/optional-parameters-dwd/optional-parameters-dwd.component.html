@@ -7,15 +7,16 @@
   </div>
 </div>
 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+  <div class="bg-light first-element">
   <!-- Layer name -->
   <div class="row bg-light row-custom">
-    <div class="col-md-3 col-custom">
+    <div class="col-md-4 col-custom">
       <div class="card-body">
         <label>Layer name</label>
       </div>
     </div>
 
-    <div class="col-md-9 col-custom">
+    <div class="col-md-8 col-custom">
       <div class="card-body">
         <div class="col-md-5 col-custom">
         <ngx-select-dropdown (change)="availableLayerNames($event)"
@@ -42,5 +43,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>

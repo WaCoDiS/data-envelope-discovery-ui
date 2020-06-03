@@ -1,3 +1,6 @@
+
+
+
 h5{
   padding-top: 5px;
   padding-bottom: 5px;
@@ -20,10 +23,29 @@ h5{
 }
 
 .container-custom{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .btn{
   border-radius: 0;
+
+}
+
+.card-body{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+
+}
+
+label{
+  padding-top: 10px;
+  font-size: small;
+}
+
+.first-element{
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
