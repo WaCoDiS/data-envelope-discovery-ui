@@ -1,7 +1,10 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
+import { Component, AfterViewInit, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';
 import * as sourceType from '../source-type-interfaces';
+import { ResultService } from '../services/result-service/result.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-map-application',
@@ -9,19 +12,35 @@ import * as sourceType from '../source-type-interfaces';
   styleUrls: ['./map-application.component.scss']
 })
 
-export class MapApplicationComponent {
+export class MapApplicationComponent implements OnInit {
 
   //@Input() resultEnvelopes: sourceType.DataEnvelopeResult[];
 
   //private _resultEnvelopes: sourceType.DataEnvelopeResult[];
+
+  subscription: Subscription;
+  selectedEnvelope: sourceType.DataEnvelopeResult;
+  map = new Map<string, number>(); 
+
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
     this.drawFootprints(resultEnvelopes);
- }
-  constructor(public parameterService: ParameterService) { };
+  }
+  constructor(public parameterService: ParameterService, public resultService: ResultService) { };
 
-  drawnBBoxLayer:any;
+
+  ngOnInit() {
+    this.subscription = this.resultService.selectedEnvelope$
+      .subscribe(item => {
+        this.changeColorOfSelected(item);
+      })
+
+  }
+
+  drawnBBoxLayer: any;
   drawnItems: L.FeatureGroup = L.featureGroup();
-  footprints: L.FeatureGroup = L.featureGroup();
+  //footprints: L.FeatureGroup = L.featureGroup();
+  footprints:  L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
+
 
   layersControl = {
     baseLayers: {
@@ -48,7 +67,7 @@ export class MapApplicationComponent {
       marker: false,
       polyline: false,
       polygon: false,
-      rectangle: { showArea: false}, //shapeOptions: {color: "#ff7800", weight: 1}},
+      rectangle: { showArea: false }, //shapeOptions: {color: "#ff7800", weight: 1}},
       circlemarker: false,
       circle: false,
     },
@@ -76,7 +95,7 @@ export class MapApplicationComponent {
     this.drawnBBoxLayer = (e as L.DrawEvents.Created).layer;
     this.drawnItems.addLayer(this.drawnBBoxLayer);
     const type = (e as any).layerType,
-    layer = (e as any).layer
+      layer = (e as any).layer
     if (type === 'rectangle') {
       const coords = layer._latlngs;
       var bbox = [coords[0][0], coords[0][2]];
@@ -89,20 +108,48 @@ export class MapApplicationComponent {
     }
   }
 
+
+
+
+
+
+
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
+    var test = document.createElement('christian');
+    test.setAttribute('id', '1')
+
     this.drawnBBoxLayer.remove();
     this.footprints.clearLayers();
     for (let i = 0; i < dataEnvelopes.length; i++) {
-        var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
-        var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[2], dataEnvelopes[i].areaOfInterest.extent[1]];
-        var corner1 = L.latLng(min[0], min[1]);
-        var corner2 = L.latLng(max[0], max[1]);
-        var bounds = L.latLngBounds(corner1, corner2);
-        // ymin xmin ymax xmax
-        var footprintLayer = L.rectangle(bounds)
-        footprintLayer.setStyle({color: "#ff7800", weight: 1})
-        this.footprints.addLayer(footprintLayer)
-      }
+      var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
+      var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[2], dataEnvelopes[i].areaOfInterest.extent[1]];
+      var corner1 = L.latLng(min[0], min[1]);
+      var corner2 = L.latLng(max[0], max[1]);
+      var bounds = L.latLngBounds(corner1, corner2);
+      // ymin xmin ymax xmax
+      var footprintLayer = L.rectangle(bounds);
+      //this.footprints.addData(footprintLayer.toGeoJSON())
+      //var blub = L.geoJSON(footprintLayer.toGeoJSON());
+      //footprintLayer = dataEnvelopes[i].identifier;
+      footprintLayer.setStyle({ color: "#ff7800", weight: 1 })
+      this.footprints.addLayer(footprintLayer)
+      this.map.set(dataEnvelopes[i].identifier, this.footprints.getLayerId(footprintLayer)); 
+      //test[dataEnvelopes[i].identifier] =  this.footprints.getLayerId(footprintLayer);
+
+
+    }
   }
+
+
+  changeColorOfSelected(dataEnvelope: sourceType.DataEnvelopeResult) {
+    console.log("changeColorOfSelected")
+    console.log(this.map)
+    var selectedLayer: number = this.map.get(dataEnvelope.identifier); // value ;
+    console.log(selectedLayer)
+    var layer= this.footprints.getLayer(selectedLayer) as L.Rectangle
+    //console.log(layer)
+    layer.setStyle({ color: "#ff0000", weight: 1 })
+  }
+
 
 }
