@@ -24,11 +24,7 @@ export class ResultService {
 
 
   colorizeSelected(selectedEnvelope: sourceType.DataEnvelopeResult) {
-    console.log("colorizeSelected in Parameterservice")
     this.selectedEnvelope.next(selectedEnvelope);
   }
 
-  getSelectedEnvelope() {
-    return this.selectedEnvelope;
-  }
 }

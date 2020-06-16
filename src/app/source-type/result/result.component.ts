@@ -21,11 +21,8 @@ export class ResultComponent implements OnInit {
   }
 
   selected(dataEnvelope: sourceType.DataEnvelopeResult){
-    console.log('hover')
-    console.log(dataEnvelope)
     this.resultService.colorizeSelected(dataEnvelope);
   }
-
 
 }
 

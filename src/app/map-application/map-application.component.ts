@@ -19,8 +19,15 @@ export class MapApplicationComponent implements OnInit {
   //private _resultEnvelopes: sourceType.DataEnvelopeResult[];
 
   subscription: Subscription;
+  previousSelectedEnvelope: sourceType.DataEnvelopeResult;
   selectedEnvelope: sourceType.DataEnvelopeResult;
   map = new Map<string, number>(); 
+
+  
+  drawnBBoxLayer: any;
+  drawnItems: L.FeatureGroup = L.featureGroup();
+  //footprints: L.FeatureGroup = L.featureGroup();
+  footprints:  L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
 
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
     this.drawFootprints(resultEnvelopes);
@@ -29,17 +36,41 @@ export class MapApplicationComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.subscription = this.resultService.selectedEnvelope$
       .subscribe(item => {
-        this.changeColorOfSelected(item);
+        if(this.previousSelectedEnvelope == null){  //nothing is selected
+          this.changeColorOfSelected(item);   // a specific footprint gets a new color
+          this.previousSelectedEnvelope = item;
+        }
+        else if(this.previousSelectedEnvelope.identifier == item.identifier){ //mouseleave
+            this.footprints.setStyle({ color: "#ff7800", weight: 1 });    // all footprints become orange
+            this.previousSelectedEnvelope = null;
+        }
+        else{   // a new one is selceted
+          this.changeColorOfSelected(item); // a specific footprint gets a new color
+          this.previousSelectedEnvelope = item;
+        }
+        
       })
+
+
+
+      this.footprints.on('mouseover',function(ev) {
+        var layer = ev.target
+        layer.setStyle({ color: "#ff0000", weight: 1 })
+  }
+    );
+
+
+    this.footprints.on('mouseout',function(ev) {
+      var layer = ev.target
+      layer.setStyle({ color: "#ff7800", weight: 1 })
+}
+  );
 
   }
 
-  drawnBBoxLayer: any;
-  drawnItems: L.FeatureGroup = L.featureGroup();
-  //footprints: L.FeatureGroup = L.featureGroup();
-  footprints:  L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
 
 
   layersControl = {
@@ -86,8 +117,6 @@ export class MapApplicationComponent implements OnInit {
   */
   public onDrawStart(e: any) {
     // tslint:disable-next-line:no-console
-
-    console.log('Draw Started Event!');
   }
 
   public onDrawCreated(e: any) {
@@ -128,28 +157,17 @@ export class MapApplicationComponent implements OnInit {
       var bounds = L.latLngBounds(corner1, corner2);
       // ymin xmin ymax xmax
       var footprintLayer = L.rectangle(bounds);
-      //this.footprints.addData(footprintLayer.toGeoJSON())
-      //var blub = L.geoJSON(footprintLayer.toGeoJSON());
-      //footprintLayer = dataEnvelopes[i].identifier;
       footprintLayer.setStyle({ color: "#ff7800", weight: 1 })
       this.footprints.addLayer(footprintLayer)
       this.map.set(dataEnvelopes[i].identifier, this.footprints.getLayerId(footprintLayer)); 
-      //test[dataEnvelopes[i].identifier] =  this.footprints.getLayerId(footprintLayer);
-
-
     }
   }
 
 
   changeColorOfSelected(dataEnvelope: sourceType.DataEnvelopeResult) {
-    console.log("changeColorOfSelected")
-    console.log(this.map)
     var selectedLayer: number = this.map.get(dataEnvelope.identifier); // value ;
-    console.log(selectedLayer)
     var layer= this.footprints.getLayer(selectedLayer) as L.Rectangle
-    //console.log(layer)
     layer.setStyle({ color: "#ff0000", weight: 1 })
   }
-
 
 }
