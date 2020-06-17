@@ -28,7 +28,8 @@ constructor(public parameterService: ParameterService, private httpService: Http
     this.resultPressed = true;
     var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
     ergebnis.subscribe(dataEnvelope => {
-      this.dataEnvelopes.push(dataEnvelope);
+      this.dataEnvelopes = dataEnvelope;
+      //this.dataEnvelopes.push(dataEnvelope);
     this.results.emit(this.dataEnvelopes);
     });
     

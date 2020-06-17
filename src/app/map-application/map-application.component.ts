@@ -21,16 +21,16 @@ export class MapApplicationComponent implements OnInit {
   subscription: Subscription;
   previousSelectedEnvelope: sourceType.DataEnvelopeResult;
   selectedEnvelope: sourceType.DataEnvelopeResult;
-  map = new Map<string, number>(); 
+  map = new Map<string, number>();
 
-  
+
   drawnBBoxLayer: any;
   drawnItems: L.FeatureGroup = L.featureGroup();
   //footprints: L.FeatureGroup = L.featureGroup();
-  footprints:  L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
+  footprints: L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
 
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
-    if(resultEnvelopes != null){
+    if (resultEnvelopes != null) {
       console.log(resultEnvelopes[0])
       this.drawFootprints(resultEnvelopes);
     }
@@ -42,35 +42,23 @@ export class MapApplicationComponent implements OnInit {
 
     this.subscription = this.resultService.selectedEnvelope$
       .subscribe(item => {
-        if(this.previousSelectedEnvelope == null){  //nothing is selected
+        if (this.previousSelectedEnvelope == null) {  //nothing is selected
           this.changeColorOfSelected(item);   // a specific footprint gets a new color
           this.previousSelectedEnvelope = item;
         }
-        else if(this.previousSelectedEnvelope.identifier == item.identifier){ //mouseleave
-            this.footprints.setStyle({ color: "#ff7800", weight: 1 });    // all footprints become orange
-            this.previousSelectedEnvelope = null;
+        else if (this.previousSelectedEnvelope.identifier == item.identifier) { //mouseleave
+          this.footprints.setStyle({ color: "#ff7800", weight: 1 });    // all footprints become orange
+          this.previousSelectedEnvelope = null;
         }
-        else{   // a new one is selceted
+        else {   // a new one is selceted
           this.changeColorOfSelected(item); // a specific footprint gets a new color
           this.previousSelectedEnvelope = item;
         }
-        
+
       })
 
 
 
-      this.footprints.on('mouseover',function(ev) {
-        var layer = ev.target
-        layer.setStyle({ color: "#ff0000", weight: 1 })
-  }
-    );
-
-
-    this.footprints.on('mouseout',function(ev) {
-      var layer = ev.target
-      layer.setStyle({ color: "#ff7800", weight: 1 })
-}
-  );
 
   }
 
@@ -146,11 +134,9 @@ export class MapApplicationComponent implements OnInit {
 
 
 
-  public drawFootprints(dataEnvelopesAlt: sourceType.DataEnvelopeResult[]) {
+  public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
     var test = document.createElement('christian');
     test.setAttribute('id', '1');
-    
-    var dataEnvelopes: any = dataEnvelopesAlt[0]
     this.drawnBBoxLayer.remove();
     this.footprints.clearLayers();
     for (let i = 0; i < dataEnvelopes.length; i++) {
@@ -162,15 +148,30 @@ export class MapApplicationComponent implements OnInit {
       // ymin xmin ymax xmax
       var footprintLayer = L.rectangle(bounds);
       footprintLayer.setStyle({ color: "#ff7800", weight: 1 })
+
+
+
+      footprintLayer.on('mouseover', function (ev) {
+        var layer = ev.target
+        layer.setStyle({ color: "#ff0000", weight: 1 })
+      }
+      );
+
+      footprintLayer.on('mouseout', function (ev) {
+        var layer = ev.target
+        layer.setStyle({ color: "#ff7800", weight: 1 })
+      }
+      );
       this.footprints.addLayer(footprintLayer)
-      this.map.set(dataEnvelopes[i].identifier, this.footprints.getLayerId(footprintLayer)); 
+      console.log("Zeichnen fertig: " + dataEnvelopes[i].identifier)
+      this.map.set(dataEnvelopes[i].identifier, this.footprints.getLayerId(footprintLayer));
     }
   }
 
 
   changeColorOfSelected(dataEnvelope: sourceType.DataEnvelopeResult) {
     var selectedLayer: number = this.map.get(dataEnvelope.identifier); // value ;
-    var layer= this.footprints.getLayer(selectedLayer) as L.Rectangle
+    var layer = this.footprints.getLayer(selectedLayer) as L.Rectangle
     layer.setStyle({ color: "#ff0000", weight: 1 })
   }
 
