@@ -37,13 +37,12 @@ export class OptionalParametersCopernicusComponent implements OnInit {
 
   readCloudCover(cloudCover: number){
     this.parameterService.setCloudCover(cloudCover);
-    console.log(this.parameterService.copernicus.cloudCoverage);
+    console.log(this.parameterService.copernicus.queryParams.cloudCoverage.value);
     document.getElementById("currentValue").textContent = cloudCover.toString();
   }
 
   readPortal(portal: string){
     this.parameterService.setPortal(portal);
-    console.log(this.parameterService.copernicus.portal);
   }
 
 }

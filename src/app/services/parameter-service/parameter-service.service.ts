@@ -16,26 +16,64 @@ export class ParameterService {
   areaOfInterest: sourceType.AreaOfInterest;
   extent: number[] = new Array(4);
 
-  public sensorWeb: sourceType.SensorWeb = {
-    sourceType : "SensorWebDataEnvelope",
+  public sensorWeb: sourceType.SensorWebExplore = {
+    queryParams: {
+      sourceType:{
+       comparator: "equals",
+       value:"SensorWebDataEnvelope"
+      },
+      serviceUrl: {
+        comparator: "equals",
+        value:null
+      },
+      offering: {
+        comparator: "equals",
+        value: null
+      },
+      featureOfInterest: {
+        comparator: "equals",
+        value: null
+      },
+      procedure: {
+        comparator: "equals",
+        value: null
+      },
+      observedProperty:{
+        comparator: "equals",
+        value: null
+      }
+      //datasetId: {
+      //  comparator: "equals",
+      //  value: "anyID"
+      //}
+    },
     areaOfInterest: null,
-    timeFrame: null,
-    serviceUrl: null,
-    offering: null,
-    featureOfInterest: null,
-    observedProperty: null,
-    procedure: null,
-    datasetId: "anyID"
+    timeFrame: null    
   }
-  public copernicus: sourceType.Copernicus = {
-    sourceType : "CopernicusDataEnvelope",
-    satellite : "sentinel-2",
-    cloudCoverage: 100,
-    portal: "Code-DE",
+
+  public copernicus: sourceType.CopernicusExplore = {
     areaOfInterest: null,
     timeFrame: null,
-    datasetId: "anyID"
-  };
+    queryParams: {
+      sourceType:{
+        comparator: "equals",
+        value:"CopernicusDataEnvelope"
+       },
+    satellite : {
+      comparator: "equals",
+      value: "sentinel-2"
+    },
+    cloudCoverage: {
+      comparator: "lesserOrEquals",
+      value: 100
+    },
+    portal: {
+    comparator: "equals",
+      value: "Code-DE"
+    }
+
+  }
+};
 
   public dwd: sourceType.Dwd = {
     sourceType: "DwdDataEnvelope",
@@ -99,36 +137,36 @@ export class ParameterService {
 
   // Setters for SensorWeb
   setServiceUrlSensorWeb(serviceUrl: string){
-    this.sensorWeb.serviceUrl = serviceUrl;
+    this.sensorWeb.queryParams.serviceUrl.value = serviceUrl;
   }
 
   setOffering(offering: string){
-    this.sensorWeb.offering = offering;
+    this.sensorWeb.queryParams.offering.value = offering;
   }
 
   setFOI(foi: string){
-    this.sensorWeb.featureOfInterest = foi;
+    this.sensorWeb.queryParams.featureOfInterest.value = foi;
   }
 
   setObservedProp(observedProp: string){
-    this.sensorWeb.observedProperty = observedProp;
+    this.sensorWeb.queryParams.observedProperty.value = observedProp;
   }
 
   setProcedure(procedure: string){
-    this.sensorWeb.procedure = procedure;
+    this.sensorWeb.queryParams.procedure.value = procedure;
   }
 
   // Setters for Copernicus
   setSatellite(satellite: string){
-    this.copernicus.satellite = satellite;
+    this.copernicus.queryParams.satellite.value = satellite;
   }
 
   setCloudCover(cloudCover: number){
-    this.copernicus.cloudCoverage = cloudCover;
+    this.copernicus.queryParams.cloudCoverage.value = cloudCover;
   }
 
   setPortal(portal: string){
-    this.copernicus.portal = portal;
+    this.copernicus.queryParams.portal.value = portal;
   }
 
 
@@ -155,7 +193,7 @@ export class ParameterService {
   }
 
 
-  getDataEnvelope(): sourceType.DataEnvelope{
+  getDataEnvelope(): sourceType.DataEnvelopeExplore{
     this.timeFrame = {
       startTime: this.startDate,
       endTime: this.endDate

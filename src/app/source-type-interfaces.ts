@@ -1,8 +1,12 @@
-export interface DataEnvelope{
-  areaOfInterest: AreaOfInterest;
-  timeFrame: TimeFrame;
-  sourceType: string;
-  datasetId: string;
+import { Data } from 'ngx-bootstrap/positioning/models';
+
+export interface AreaOfInterest{
+  extent: number[];
+}
+
+export interface TimeFrame{
+  startTime: String;
+  endTime: String;
 }
 
 export interface DataEnvelopeResult{
@@ -15,46 +19,78 @@ export interface DataEnvelopeResult{
   identifier: string
 }
 
-
-export interface AreaOfInterest{
-  extent: number[];
+export interface DataEnvelopeExplore{
+  areaOfInterest: AreaOfInterest;
+  timeFrame: TimeFrame;
 }
 
-export interface TimeFrame{
-  startTime: String;
-  endTime: String;
+export interface Property{
+  comparator: "equals" | "not" | "lesser" | "greater" | "lesserOrEquals"| "greaterOrEquals"
+  value: string | number;
 }
 
 
-export interface SensorWeb extends DataEnvelope{
-  serviceUrl: string;
+
+
+export interface SensorWebExplore extends DataEnvelopeExplore{
+  
+  queryParams:{
+    sourceType: Property;
+    serviceUrl:Property;
+    offering: Property;
+    featureOfInterest: Property;
+    observedProperty: Property;
+    procedure: Property;
+  }
+}
+
+export interface CopernicusExplore extends DataEnvelopeExplore {
+  queryParams:{
+    sourceType: Property;
+    satellite: Property;
+    cloudCoverage: Property;
+    portal: Property;
+  }
+}
+
+export interface DwdExplore extends DataEnvelopeExplore{
+  queryParams:{
+    serviceUrl: Property;
+    layerName: Property;
+    parameter: Property;
+  }
+}
+
+export interface WacodisProductExplore extends DataEnvelopeExplore{
+  queryParams:{
+    productCollection: Property;
+    productType: Property;
+    serviceName: Property;
+  }
+}
+
+export interface SenserWebResult extends DataEnvelopeResult {
+  serviceUrl:string;
   offering: string;
   featureOfInterest: string;
   observedProperty: string;
-  procedure: string
+  procedure: string;
 }
-
-export interface Copernicus extends DataEnvelope {
-  satellite: string;
-  cloudCoverage: number;
-  portal: string;
-}
-
-
-export interface Dwd extends DataEnvelope{
-  serviceUrl: string;
-  layerName: string;
-  parameter: string;
-}
-export interface WacodisProduct extends DataEnvelope{
-  productCollection: string;
-  productType: string;
-  serviceName: string;
-}
-
 
 export interface CopernicusResult extends DataEnvelopeResult {
   satellite: string;
   cloudCoverage: number;
   portal: string;
+}
+
+export interface DwdResult extends DataEnvelopeResult {
+  serviceUrl: string;
+  layerName: string;
+  parameter: string;
+}
+
+export interface WacodisProductResult extends DataEnvelopeResult {
+  productCollection: string;
+  productType: string;
+  serviceName: string;
 }

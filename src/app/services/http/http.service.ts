@@ -16,12 +16,12 @@ const httpOptions = {
 })
 export class HttpService {
 
-  dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/search';  // URL to data access api search
+  dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/explore';  // URL to data access api search
 
   constructor( private http: HttpClient) {
   }
 
-  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelope): Observable<sourceType.DataEnvelopeResult> {
+  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelopeExplore): Observable<sourceType.DataEnvelopeResult> {
 
     if (this.instanceOfCopernicus(dataEnvelope)) {
       return this.http.post<sourceType.CopernicusResult>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
@@ -49,8 +49,8 @@ export class HttpService {
 
 
 
-  instanceOfCopernicus(envelope: any): envelope is sourceType.Copernicus {
-    return envelope.hasOwnProperty('satellite')
+  instanceOfCopernicus(envelope: any): envelope is sourceType.CopernicusExplore {
+    return true; //envelope.queryParams.hasOwnProperty('satellite')
 }
 
 

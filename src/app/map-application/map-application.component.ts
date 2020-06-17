@@ -30,7 +30,10 @@ export class MapApplicationComponent implements OnInit {
   footprints:  L.GeoJSON = L.geoJSON(); //(footprintLayer.toGeoJSON());
 
   @Input() set resultEnvelopes(resultEnvelopes: sourceType.DataEnvelopeResult[]) {
-    this.drawFootprints(resultEnvelopes);
+    if(resultEnvelopes != null){
+      console.log(resultEnvelopes[0])
+      this.drawFootprints(resultEnvelopes);
+    }
   }
   constructor(public parameterService: ParameterService, public resultService: ResultService) { };
 
@@ -143,10 +146,11 @@ export class MapApplicationComponent implements OnInit {
 
 
 
-  public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
+  public drawFootprints(dataEnvelopesAlt: sourceType.DataEnvelopeResult[]) {
     var test = document.createElement('christian');
-    test.setAttribute('id', '1')
-
+    test.setAttribute('id', '1');
+    
+    var dataEnvelopes: any = dataEnvelopesAlt[0]
     this.drawnBBoxLayer.remove();
     this.footprints.clearLayers();
     for (let i = 0; i < dataEnvelopes.length; i++) {
