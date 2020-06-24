@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class HttpService {
 
-  dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/explore';  // URL to data access api search
+  dataAccessApiUrl = 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore';  // URL to data access api search
 
   constructor( private http: HttpClient) {
   }
