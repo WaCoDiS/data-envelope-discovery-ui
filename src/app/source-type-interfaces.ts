@@ -55,6 +55,7 @@ export interface CopernicusExplore extends DataEnvelopeExplore {
 
 export interface DwdExplore extends DataEnvelopeExplore{
   queryParams:{
+    sourceType: Property;
     serviceUrl: Property;
     layerName: Property;
     parameter: Property;
@@ -63,6 +64,7 @@ export interface DwdExplore extends DataEnvelopeExplore{
 
 export interface WacodisProductExplore extends DataEnvelopeExplore{
   queryParams:{
+    sourceType: Property;
     productCollection: Property;
     productType: Property;
     serviceName: Property;
