@@ -110,11 +110,11 @@ export class ParameterService {
     this.minLonSource.next(coord);
   }
   changeMaxLon(coord: number) {
-    this.extent[1] = coord;
+    this.extent[2] = coord;
     this.maxLonSource.next(coord);
   }
   changeMinLat(coord: number) {
-    this.extent[2] = coord;
+    this.extent[1] = coord;
     this.minLatSource.next(coord);
   }
   changeMaxLat(coord: number) {
