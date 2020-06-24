@@ -75,16 +75,52 @@ export class ParameterService {
   }
 };
 
-  public dwd: sourceType.Dwd = {
-    sourceType: "DwdDataEnvelope",
-    datasetId: "anyID",
+  public dwd: sourceType.DwdExplore = {
     areaOfInterest: null,
     timeFrame: null,
-    serviceUrl: "https://cdc.dwd.de:443/geoserver/CDC/wfs?",
-    layerName: null,
-    parameter: null
-  };
-  public wacodisProducts: sourceType.WacodisProduct;
+    queryParams: {
+      sourceType:{
+        comparator: "equals",
+        value:"DwdDataEnvelope"
+       },
+      serviceUrl : {
+      comparator: "equals",
+      value: "https://cdc.dwd.de:443/geoserver/CDC/wfs?"
+    },
+    layerName: {
+      comparator: "equals",
+      value: null
+    },
+    parameter: {
+    comparator: "equals",
+      value: null
+    }
+
+  }
+};
+  public wacodisProducts: sourceType.WacodisProductExplore  = {
+    areaOfInterest: null,
+    timeFrame: null,
+    queryParams: {
+      sourceType:{
+        comparator: "equals",
+        value:"WacodisProductDataEnvelope"
+       },
+      productCollection : {
+      comparator: "equals",
+      value: null
+    },
+    productType: {
+      comparator: "equals",
+      value: null
+    },
+    serviceName: {
+    comparator: "equals",
+      value: null
+    }
+
+  }
+};
 
   // Observable source
   private minLonSource = new Subject<number>();
@@ -172,24 +208,24 @@ export class ParameterService {
 
   // Setters for DWD
   setLayerName(layerName: string){
-    this.dwd.layerName = layerName;
+    this.dwd.queryParams.layerName.value = layerName;
   }
 
   setParameter(parameter: string){
-    this.dwd.parameter = parameter;
+    this.dwd.queryParams.parameter.value = parameter;
   }
 
   // Setters for WacodisProducts
   setProductCollection(productCollection: string){
-    this.wacodisProducts.productCollection = productCollection;
+    this.wacodisProducts.queryParams.productCollection.value = productCollection;
   }
 
   setProductType(productType: string){
-    this.wacodisProducts.productType = productType;
+    this.wacodisProducts.queryParams.productType.value = productType;
   }
 
   setServiceName(serviceName: string){
-    this.wacodisProducts.serviceName = serviceName;
+    this.wacodisProducts.queryParams.serviceName.value = serviceName;
   }
 
 
