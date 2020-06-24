@@ -2,7 +2,7 @@
   <div class="row row-custom">
     <div class="col col-custom">
       <div class="table-responsive">
-        <table class="table table-stripe">
+        <table class="table table-stripe table-hover">
           <thead>
             <tr class="d-flex">
               <th class="col-1">#</th>
@@ -12,15 +12,14 @@
             </tr>
           </thead>
           <tbody>
-            <div *ngFor="let dataEnvelope of dataEnvelopes; index as i">
-              <tr class="d-flex hover" (click)="isCollapsed = !isCollapsed" (mouseenter)="selected(dataEnvelope)" (mouseleave)="selected(dataEnvelope)" role="button" aria-expanded="false"
-                aria-controls="collapseExample"style="cursor: pointer;">
+            <div *ngFor="let dataEnvelope of dataEnvelopes; index as i" (mouseenter)="selected(dataEnvelope)" (mouseleave)="selected(dataEnvelope)">
+              <tr class="d-flex hover" (click)="dataEnvelope.expanded = !dataEnvelope.expanded" style="cursor: pointer;">
                 <th style="word-wrap: break-word; max-width: 10%">{{ i + 1 }}</th>
-                <td style="word-wrap: break-word; max-width: 30%"> {{dataEnvelope.identifier}}</td>
+                <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.identifier}}</td>
                 <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
                 <td style="word-wrap: break-word; max-width: 30%">{{dataEnvelope.sourceType}}</td>
               </tr>
-              <div [collapse]="!isCollapsed">
+              <div *ngIf="dataEnvelope.expanded">
                 <div class="card card-body">
                   <table>
                     <tr>
