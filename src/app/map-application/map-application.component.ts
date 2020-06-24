@@ -1,9 +1,10 @@
-import { Component, AfterViewInit, Input, OnInit } from '@angular/core';
+import { Component, AfterViewInit, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import * as L from 'leaflet';
 import { ParameterService } from '../services/parameter-service/parameter-service.service';
 import * as sourceType from '../source-type-interfaces';
 import { ResultService } from '../services/result-service/result.service';
 import { Subscription } from 'rxjs';
+import * as geojson from 'geojson';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class MapApplicationComponent implements OnInit {
   previousSelectedEnvelope: sourceType.DataEnvelopeResult;
   selectedEnvelope: sourceType.DataEnvelopeResult;
   map = new Map<string, number>();
+  theRealMap;
 
 
   drawnBBoxLayer: any;
@@ -129,15 +131,14 @@ export class MapApplicationComponent implements OnInit {
   }
 
 
-
-
-
-
+  onMapReady(map: L.Map) {
+    // Do stuff with map
+    //map.removeLayer(this.drawnBBoxLayer);
+    this.theRealMap = map;
+  }
 
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
-    var test = document.createElement('christian');
-    test.setAttribute('id', '1');
-    this.drawnBBoxLayer.remove();
+    this.theRealMap.removeLayer(this.drawnItems);
     this.footprints.clearLayers();
     for (let i = 0; i < dataEnvelopes.length; i++) {
       var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
@@ -146,14 +147,39 @@ export class MapApplicationComponent implements OnInit {
       var corner2 = L.latLng(max[0], max[1]);
       var bounds = L.latLngBounds(corner1, corner2);
       // ymin xmin ymax xmax
-      var footprintLayer = L.rectangle(bounds);
+      var footprintLayerAlt = L.rectangle(bounds);
+      var footprintLayer = L.geoJSON(<geojson.Polygon>{
+        type: "Polygon",
+        properties: {
+          "identifier": dataEnvelopes[i].identifier
+        },
+        coordinates: [[
+          [min[1], min[0]],
+          [min[1], max[0]],
+          [max[1], max[0]],
+          [max[1], min[0]],
+          [min[1], min[0]]
+        ]]// Note that in GeoJSON, order is [LONG, LAT]
+      }
+        /*
+        ,
+        {
+          onEachFeature: function (feature, layer) {
+            layer.on('click', function (e) {
+              console.log(this.resultService.hoverRow("Hallo"));
+            })
+          }
+        }
+        */
+      );
+      console.log(footprintLayer.getLayers()[0])
       footprintLayer.setStyle({ color: "#ff7800", weight: 1 })
 
-
-
       footprintLayer.on('mouseover', function (ev) {
-        var layer = ev.target
-        layer.setStyle({ color: "#ff0000", weight: 1 })
+        var layer = ev.target;
+        layer.setStyle({ color: "#ff0000", weight: 1 });
+        console.log(ev.target.getLayers()[0].feature.geometry.properties.identifier);
+
       }
       );
 
@@ -174,5 +200,8 @@ export class MapApplicationComponent implements OnInit {
     var layer = this.footprints.getLayer(selectedLayer) as L.Rectangle
     layer.setStyle({ color: "#ff0000", weight: 1 })
   }
+
+
+
 
 }
