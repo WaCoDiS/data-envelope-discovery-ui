@@ -65,7 +65,7 @@ export class OptionalParametersDwdComponent implements OnInit {
   }
 
   readParameter(parameter: string){
-    this.parameterService.setParameter(parameter);
+    //this.parameterService.setParameter(parameter);
 
     if(this.selectedInterval == "hourly"){
      this.parameterService.setLayerName(HOURLY.get(parameter));

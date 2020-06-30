@@ -82,20 +82,20 @@ export class ParameterService {
       sourceType:{
         comparator: "equals",
         value:"DwdDataEnvelope"
-       },
+       },/*
       serviceUrl : {
       comparator: "equals",
       value: "https://cdc.dwd.de:443/geoserver/CDC/wfs?"
-    },
+    },*/
     layerName: {
       comparator: "equals",
       value: null
-    },
+    }/*,
     parameter: {
     comparator: "equals",
       value: null
     }
-
+    */
   }
 };
   public wacodisProducts: sourceType.WacodisProductExplore  = {
@@ -210,11 +210,11 @@ export class ParameterService {
   setLayerName(layerName: string){
     this.dwd.queryParams.layerName.value = layerName;
   }
-
+  /*
   setParameter(parameter: string){
     this.dwd.queryParams.parameter.value = parameter;
   }
-
+  */
   // Setters for WacodisProducts
   setProductCollection(productCollection: string){
     this.wacodisProducts.queryParams.productCollection.value = productCollection;
