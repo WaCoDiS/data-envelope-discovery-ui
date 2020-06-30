@@ -173,11 +173,11 @@ export class MapApplicationComponent implements OnInit {
         */
       );
       console.log(footprintLayer.getLayers()[0])
-      footprintLayer.setStyle({ color: "#ff7800", weight: 1 })
+      footprintLayer.setStyle({ color: "#ff7800", weight: 3, fillOpacity: 0.1 })
 
       footprintLayer.on('mouseover', function (ev) {
         var layer = ev.target;
-        layer.setStyle({ color: "#ff0000", weight: 1 });
+        layer.setStyle({ color: "#ff0000", weight: 3 });
         console.log(ev.target.getLayers()[0].feature.geometry.properties.identifier);
 
       }
