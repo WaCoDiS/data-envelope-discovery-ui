@@ -4,6 +4,7 @@ import * as sourceType from '../../source-type-interfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import {environment} from '../../../environments/environment'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +17,9 @@ const httpOptions = {
 })
 export class HttpService {
 
-  dataAccessApiUrl = 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore';  // URL to data access api search
+  dataAccessApiUrl = environment.apiUrl;
+  //dataAccessApiUrl = 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore';
+  //dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/explore';  // URL to data access api search
 
   constructor( private http: HttpClient) {
   }

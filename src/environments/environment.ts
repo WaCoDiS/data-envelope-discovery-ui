@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //apiUrl: 'http://localhost:8080/dataAccess/dataenvelopes/explore'
+  apiUrl: 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore'
 };
 
 /*
