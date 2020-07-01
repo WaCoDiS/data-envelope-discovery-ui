@@ -49,7 +49,7 @@ export class MapApplicationComponent implements OnInit {
           this.previousSelectedEnvelope = item;
         }
         else if (this.previousSelectedEnvelope.identifier == item.identifier) { //mouseleave
-          this.footprints.setStyle({ color: "#ff7800", weight: 1 });    // all footprints become orange
+          this.footprints.setStyle({ color: "#ff7800", weight: 1, fillOpacity: 0.1 });    // all footprints become orange
           this.previousSelectedEnvelope = null;
         }
         else {   // a new one is selceted
@@ -142,7 +142,7 @@ export class MapApplicationComponent implements OnInit {
     this.footprints.clearLayers();
     for (let i = 0; i < dataEnvelopes.length; i++) {
       var min: number[] = [dataEnvelopes[i].areaOfInterest.extent[3], dataEnvelopes[i].areaOfInterest.extent[0]];
-      var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[2], dataEnvelopes[i].areaOfInterest.extent[1]];
+      var max: number[] = [dataEnvelopes[i].areaOfInterest.extent[1], dataEnvelopes[i].areaOfInterest.extent[2]];
       var corner1 = L.latLng(min[0], min[1]);
       var corner2 = L.latLng(max[0], max[1]);
       var bounds = L.latLngBounds(corner1, corner2);
@@ -177,7 +177,7 @@ export class MapApplicationComponent implements OnInit {
 
       footprintLayer.on('mouseover', function (ev) {
         var layer = ev.target;
-        layer.setStyle({ color: "#ff0000", weight: 3 });
+        layer.setStyle({ color: "#ff0000", weight: 3, fillOpacity: 0.5});
         console.log(ev.target.getLayers()[0].feature.geometry.properties.identifier);
 
       }
@@ -197,8 +197,9 @@ export class MapApplicationComponent implements OnInit {
 
   changeColorOfSelected(dataEnvelope: sourceType.DataEnvelopeResult) {
     var selectedLayer: number = this.map.get(dataEnvelope.identifier); // value ;
-    var layer = this.footprints.getLayer(selectedLayer) as L.Rectangle
-    layer.setStyle({ color: "#ff0000", weight: 1 })
+    var layer = this.footprints.getLayer(selectedLayer) as L.Rectangle;
+    layer.setStyle({ color: "#ff0000", weight: 3, fillOpacity: 0.5});
+    layer.bringToFront();
   }
 
 
