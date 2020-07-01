@@ -40,7 +40,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ],
+              ]
+            ,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -62,6 +63,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
           }
         },
@@ -73,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dataEnvelopeDiscoveryUI:build:production"
+            },
+            "local": {
+              "browserTarget": "dataEnvelopeDiscoveryUI:build:local"
             }
           }
         },
