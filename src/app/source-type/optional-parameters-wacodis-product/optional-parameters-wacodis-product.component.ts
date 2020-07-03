@@ -15,19 +15,19 @@ export class OptionalParametersWacodisProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectionChanged(evt){
+  selectionChanged(evt) {
     console.log(evt.value);
   }
 
-  readProductCollection(productCollection: string){
+  readProductCollection(productCollection: string) {
     this.parameterService.setProductCollection(productCollection);
   }
 
-  readProductType(productType: string){
+  readProductType(productType: string) {
     this.parameterService.setProductType(productType);
   }
 
-  readServiceName(serviceName: string){
+  readServiceName(serviceName: string) {
     this.parameterService.setServiceName(serviceName);
   }
 

@@ -9,39 +9,39 @@ import { ParameterService } from 'src/app/services/parameter-service/parameter-s
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
 export class OptionalParametersCopernicusComponent implements OnInit {
-
-  public dropdownOptionsSatellite: any
-  public dropdownOptionsPortal: any
-  public selectedSatellite: any
-  public selectedPortal: any
-  public value: any
   constructor(public parameterService: ParameterService) { }
 
-  ngOnInit() {
-    this.dropdownOptionsSatellite = ["Sentinel-1", "Sentinel-2", "Sentinel-3"];
-    this.dropdownOptionsPortal = ["CODE-DE", "Sentinel-Hub"];
-    //this.value = [0,100];
-    this.selectedSatellite = this.dropdownOptionsSatellite[1];
-    this.selectedPortal = this.dropdownOptionsPortal[0];
-  }
+  public dropdownOptionsSatellite: any;
+  public dropdownOptionsPortal: any;
+  public selectedSatellite: any;
+  public selectedPortal: any;
+  public value: any;
 
 
 
   config = {
-    placeholder:'Select'
+    placeholder: 'Select'
   };
 
-  readSatellite(satellite: string){
+  ngOnInit() {
+    this.dropdownOptionsSatellite = ['Sentinel-1', 'Sentinel-2', 'Sentinel-3'];
+    this.dropdownOptionsPortal = ['CODE-DE', 'Sentinel-Hub'];
+    // this.value = [0,100];
+    this.selectedSatellite = this.dropdownOptionsSatellite[1];
+    this.selectedPortal = this.dropdownOptionsPortal[0];
+  }
+
+  readSatellite(satellite: string) {
     this.parameterService.setSatellite(satellite);
   }
 
-  readCloudCover(cloudCover: number){
+  readCloudCover(cloudCover: number) {
     this.parameterService.setCloudCover(cloudCover);
     console.log(this.parameterService.copernicus.queryParams.cloudCoverage.value);
-    document.getElementById("currentValue").textContent = cloudCover.toString();
+    document.getElementById('currentValue').textContent = cloudCover.toString();
   }
 
-  readPortal(portal: string){
+  readPortal(portal: string) {
     this.parameterService.setPortal(portal);
   }
 

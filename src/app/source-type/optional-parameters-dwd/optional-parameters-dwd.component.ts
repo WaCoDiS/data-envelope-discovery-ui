@@ -11,75 +11,75 @@ import { ParameterService } from 'src/app/services/parameter-service/parameter-s
 })
 export class OptionalParametersDwdComponent implements OnInit {
 
-  private dropdownOptionsTime: any
-  private dropdownOptionsLayer: any
-  private dropdownOptionsLayerHourly: any
-  private dropdownOptionsLayerDaily: any
-  private dropdownOptionsLayerMonthly: any
-  private dropdownOptionsLayerYearly: any
-  private selectedInterval: any
-
   constructor(public parameterService: ParameterService) { }
 
+  private dropdownOptionsTime: any;
+  private dropdownOptionsLayer: any;
+  private dropdownOptionsLayerHourly: any;
+  private dropdownOptionsLayerDaily: any;
+  private dropdownOptionsLayerMonthly: any;
+  private dropdownOptionsLayerYearly: any;
+  private selectedInterval: any;
+
+  config = {
+    placeholder: 'Select',
+    search: true,
+    limitTo: this.calcLimit()
+  };
+
   ngOnInit() {
-    this.dropdownOptionsTime = ["hourly", "daily", "monthly", "yearly"];
-    this.dropdownOptionsLayerHourly = Array.from(HOURLY.keys());// this.getLayername(HOURLY);
+    this.dropdownOptionsTime = ['hourly', 'daily', 'monthly', 'yearly'];
+    this.dropdownOptionsLayerHourly = Array.from(HOURLY.keys()); // this.getLayername(HOURLY);
     this.dropdownOptionsLayerDaily = Array.from(DAILY.keys());
     this.dropdownOptionsLayerMonthly = Array.from(MONTHLY.keys());
     this.dropdownOptionsLayerYearly = Array.from(YEARLY.keys());
   }
 
-  selectionChanged(evt){
+  selectionChanged(evt) {
     console.log(evt.value);
   }
 
-  config = {
-    placeholder:'Select',
-    search:true,
-    limitTo: this.calcLimit()
-  }
-
-  calcLimit(){
-    var lengths:number[] = [HOURLY.size, DAILY.size, MONTHLY.size, YEARLY.size];
-    var sortedLenghts:number[] = lengths.sort((n1,n2) => n1 - n2);
+  calcLimit() {
+    const lengths: number[] = [HOURLY.size, DAILY.size, MONTHLY.size, YEARLY.size];
+    const sortedLenghts: number[] = lengths.sort((n1, n2) => n1 - n2);
     return sortedLenghts.pop();
   }
 
-  availableLayerNames(selectedTimeIntervall){
-    if (selectedTimeIntervall.value == "hourly"){
+  availableLayerNames(selectedTimeIntervall) {
+    if (selectedTimeIntervall.value === 'hourly') {
       this.dropdownOptionsLayer = this.dropdownOptionsLayerHourly;
     }
-    if (selectedTimeIntervall.value == "daily"){
+    if (selectedTimeIntervall.value === 'daily') {
       this.dropdownOptionsLayer = this.dropdownOptionsLayerDaily;
     }
-    if (selectedTimeIntervall.value == "monthly"){
+    if (selectedTimeIntervall.value === 'monthly') {
       this.dropdownOptionsLayer = this.dropdownOptionsLayerMonthly;
     }
-    if (selectedTimeIntervall.value == "yearly"){
+    if (selectedTimeIntervall.value === 'yearly') {
       this.dropdownOptionsLayer = this.dropdownOptionsLayerYearly;
     }
   }
 
-  determineSelectedInterval(selected: string){
+  determineSelectedInterval(selected: string) {
     this.selectedInterval = selected;
   }
 
-  readParameter(parameter: string){
-    //this.parameterService.setParameter(parameter);
+  readParameter(parameter: string) {
+    // this.parameterService.setParameter(parameter);
 
-    if(this.selectedInterval == "hourly"){
+    if (this.selectedInterval === 'hourly') {
      this.parameterService.setLayerName(HOURLY.get(parameter));
     }
 
-    if(this.selectedInterval == "daily"){
+    if (this.selectedInterval === 'daily') {
       this.parameterService.setLayerName(DAILY.get(parameter));
     }
 
-    if(this.selectedInterval == "monthly"){
+    if (this.selectedInterval === 'monthly') {
       this.parameterService.setLayerName(MONTHLY.get(parameter));
     }
 
-    if(this.selectedInterval == "yearly"){
+    if (this.selectedInterval === 'yearly') {
       this.parameterService.setLayerName(YEARLY.get(parameter));
     }
   }

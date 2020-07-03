@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as sourceType from './source-type-interfaces'
+import * as sourceType from './source-type-interfaces';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,10 @@ import * as sourceType from './source-type-interfaces'
 
 export class AppComponent {
 
-  results : sourceType.DataEnvelopeResult[];
+  results: sourceType.DataEnvelopeResult[];
 
-  onResults(results: sourceType.DataEnvelopeResult[]){
-    console.log("onResults");
+  onResults(results: sourceType.DataEnvelopeResult[]) {
+    console.log('onResults');
     console.log(results[0]);
     this.results = results;
   }

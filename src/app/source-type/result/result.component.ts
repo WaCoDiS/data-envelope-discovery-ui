@@ -16,11 +16,11 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(public resultService: ResultService){
+  constructor(public resultService: ResultService) {
 
   }
 
-  selected(dataEnvelope: sourceType.DataEnvelopeResult){
+  selected(dataEnvelope: sourceType.DataEnvelopeResult) {
     this.resultService.colorizeSelected(dataEnvelope);
   }
 

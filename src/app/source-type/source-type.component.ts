@@ -8,8 +8,8 @@ import { HttpService } from 'src/app/services/http/http.service';
   templateUrl: './source-type.component.html',
   styleUrls: ['./source-type.component.scss']
 })
-export class SourceTypeComponent{
-  componentTitel = "Source type"
+export class SourceTypeComponent {
+  componentTitel = 'Source type';
   sourceTypeSelection = 'SensorWeb';
   resultPressed = false;
   dataEnvelopes: sourceType.DataEnvelopeResult[];
@@ -18,7 +18,7 @@ export class SourceTypeComponent{
 
 constructor(public parameterService: ParameterService, private httpService: HttpService) { }
 
-  sendChoosenSourceType(event: any){
+  sendChoosenSourceType(event: any) {
    this.parameterService.changeSourceType(event);
   }
 
@@ -26,13 +26,13 @@ constructor(public parameterService: ParameterService, private httpService: Http
   sendRequest() {
     this.dataEnvelopes =  new Array<sourceType.DataEnvelopeResult>();
     this.resultPressed = true;
-    var ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
+    const ergebnis = this.httpService.searchDataEnvelope(this.parameterService.getDataEnvelope());
     ergebnis.subscribe(dataEnvelope => {
       this.dataEnvelopes = dataEnvelope;
-      //this.dataEnvelopes.push(dataEnvelope);
-    this.results.emit(this.dataEnvelopes);
+      // this.dataEnvelopes.push(dataEnvelope);
+      this.results.emit(this.dataEnvelopes);
     });
-    
+
   }
 
 }

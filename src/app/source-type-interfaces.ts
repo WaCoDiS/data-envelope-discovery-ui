@@ -1,78 +1,78 @@
 import { Data } from 'ngx-bootstrap/positioning/models';
 
-export interface AreaOfInterest{
+export interface AreaOfInterest {
   extent: number[];
 }
 
-export interface TimeFrame{
-  startTime: String;
-  endTime: String;
+export interface TimeFrame {
+  startTime: string;
+  endTime: string;
 }
 
-export interface DataEnvelopeResult{
+export interface DataEnvelopeResult {
   areaOfInterest: AreaOfInterest;
   timeFrame: TimeFrame;
   sourceType: string;
   datasetId: string;
   modified: string;
   created: string;
-  identifier: string
+  identifier: string;
 }
 
-export interface DataEnvelopeExplore{
+export interface DataEnvelopeExplore {
   areaOfInterest: AreaOfInterest;
   timeFrame: TimeFrame;
 }
 
-export interface Property{
-  comparator: "equals" | "not" | "lesser" | "greater" | "lesserOrEquals"| "greaterOrEquals"
+export interface Property {
+  comparator: 'equals' | 'not' | 'lesser' | 'greater' | 'lesserOrEquals'| 'greaterOrEquals';
   value: string | number;
 }
 
 
 
 
-export interface SensorWebExplore extends DataEnvelopeExplore{
-  
-  queryParams:{
+export interface SensorWebExplore extends DataEnvelopeExplore {
+
+  queryParams: {
     sourceType: Property;
-    serviceUrl:Property;
+    serviceUrl: Property;
     offering: Property;
     featureOfInterest: Property;
     observedProperty: Property;
     procedure: Property;
-  }
+  };
 }
 
 export interface CopernicusExplore extends DataEnvelopeExplore {
-  queryParams:{
+  queryParams: {
     sourceType: Property;
     satellite: Property;
     cloudCoverage: Property;
     portal: Property;
-  }
+  };
 }
 
-export interface DwdExplore extends DataEnvelopeExplore{
-  queryParams:{
+export interface DwdExplore extends DataEnvelopeExplore {
+  queryParams: {
     sourceType: Property;
-    //serviceUrl: Property;
+    // serviceUrl: Property;
     layerName: Property;
-    //parameter: Property;
-  }
+    // parameter: Property;
+  };
 }
 
-export interface WacodisProductExplore extends DataEnvelopeExplore{
-  queryParams:{
+export interface WacodisProductExplore extends DataEnvelopeExplore {
+  queryParams: {
     sourceType: Property;
     productCollection: Property;
     productType: Property;
     serviceName: Property;
-  }
+  };
 }
 
 export interface SenserWebResult extends DataEnvelopeResult {
-  serviceUrl:string;
+  serviceUrl: string;
   offering: string;
   featureOfInterest: string;
   observedProperty: string;

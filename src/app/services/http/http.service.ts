@@ -4,7 +4,7 @@ import * as sourceType from '../../source-type-interfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import {environment} from '../../../environments/environment'
+import {environment} from '../../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,13 +18,13 @@ const httpOptions = {
 export class HttpService {
 
   dataAccessApiUrl = environment.apiUrl;
-  //dataAccessApiUrl = 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore';
-  //dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/explore';  // URL to data access api search
+  // dataAccessApiUrl = 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore';
+  // dataAccessApiUrl = 'http://localhost:8080/dataAccess/dataenvelopes/explore';  // URL to data access api search
 
   constructor( private http: HttpClient) {
   }
 
-  searchDataEnvelope (dataEnvelope: sourceType.DataEnvelopeExplore): Observable<sourceType.DataEnvelopeResult[]> {
+  searchDataEnvelope(dataEnvelope: sourceType.DataEnvelopeExplore): Observable<sourceType.DataEnvelopeResult[]> {
 
     if (this.instanceOfCopernicus(dataEnvelope)) {
       return this.http.post<sourceType.CopernicusResult[]>(this.dataAccessApiUrl, dataEnvelope, httpOptions)
@@ -48,12 +48,12 @@ export class HttpService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 
 
 
   instanceOfCopernicus(envelope: any): envelope is sourceType.CopernicusExplore {
-    return true; //envelope.queryParams.hasOwnProperty('satellite')
+    return true; // envelope.queryParams.hasOwnProperty('satellite')
 }
 
 

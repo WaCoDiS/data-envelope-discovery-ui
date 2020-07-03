@@ -20,28 +20,24 @@ export class RequiredParametersComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.parameterService.minLon$
       .subscribe(item => {
-        this.minLon = Math.round(item*100000)/100000
-      })
+        this.minLon = Math.round(item * 100000) / 100000;
+      });
     this.subscription = this.parameterService.minLat$
       .subscribe(item => {
-        this.minLat = Math.round(item*100000)/100000
-      })
+        this.minLat = Math.round(item * 100000) / 100000;
+      });
     this.subscription = this.parameterService.maxLon$
       .subscribe(item => {
-        this.maxLon = Math.round(item*100000)/100000
-      })
+        this.maxLon = Math.round(item * 100000) / 100000;
+      });
     this.subscription = this.parameterService.maxLat$
       .subscribe(item => {
-        this.maxLat = Math.round(item*100000)/100000
-      })
-  }
-  ngOnDestroy() {
-    // prevent memory leak when component is destroyed
-    this.subscription.unsubscribe();
+        this.maxLat = Math.round(item * 100000) / 100000;
+      });
   }
 
-  readDateRange(dateRange: Date[]){
-    //console.log(dateRange[1].toISOString());
+  readDateRange(dateRange: Date[]) {
+    // console.log(dateRange[1].toISOString());
     this.parameterService.setDateRange(dateRange);
   }
 

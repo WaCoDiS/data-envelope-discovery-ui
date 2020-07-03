@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 export class ResultService {
 
 
-  //selectedEnvelope: sourceType.DataEnvelopeResult;
+  // selectedEnvelope: sourceType.DataEnvelopeResult;
 
   constructor() { }
 

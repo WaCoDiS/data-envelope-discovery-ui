@@ -12,34 +12,34 @@ export class OptionalParametersSensorWebComponent implements OnInit {
 
   constructor(public parameterService: ParameterService) { }
 
+  config = {
+    placeholder: 'Select'
+  };
+
   ngOnInit() {
   }
 
-  selectionChanged(evt){
+  selectionChanged(evt) {
     console.log(evt.value);
   }
 
-  config = {
-    placeholder:'Select'
-  }
-
-  readServiceUrlSensorWeb(serviceUrl: string){
+  readServiceUrlSensorWeb(serviceUrl: string) {
     this.parameterService.setServiceUrlSensorWeb(serviceUrl);
 }
 
-  readOffering(offering: string){
+  readOffering(offering: string) {
     this.parameterService.setOffering(offering);
   }
 
-  readFOI(foi: string){
+  readFOI(foi: string) {
     this.parameterService.setFOI(foi);
   }
 
-  readObservedProp(observedProp: string){
+  readObservedProp(observedProp: string) {
     this.parameterService.setObservedProp(observedProp);
   }
 
-  readProcedure(procedure: string){
+  readProcedure(procedure: string) {
     this.parameterService.setProcedure(procedure);
   }
 }
