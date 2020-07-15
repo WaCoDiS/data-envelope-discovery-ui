@@ -31,8 +31,7 @@ export class MapApplicationComponent implements OnInit {
   previousSelectedEnvelope: sourceType.DataEnvelopeResult;
   selectedEnvelope: sourceType.DataEnvelopeResult;
   map = new Map<string, number>();
-  theRealMap;
-
+  theRealMap: L.Map;
 
   drawnBBoxLayer: any;
   drawnItems: L.FeatureGroup = L.featureGroup();
@@ -49,9 +48,6 @@ export class MapApplicationComponent implements OnInit {
       Footprints: this.footprints
     }
   };
-
-
-
   options = {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: 'Open Street Map' })
@@ -94,21 +90,7 @@ export class MapApplicationComponent implements OnInit {
         }
 
       });
-
-
-
-
-  }
-
-  /*
-  public onDrawCreated(e: any) {
-    // tslint:disable-next-line:no-console
-    console.log('Draw Created Event!');
-  }
-  */
-  public onDrawStart(e: any) {
-    // tslint:disable-next-line:no-console
-  }
+}
 
   public onDrawCreated(e: any) {
     this.drawnItems.clearLayers();
@@ -128,11 +110,13 @@ export class MapApplicationComponent implements OnInit {
     }
   }
 
-
   onMapReady(map: L.Map) {
+     console.log('on map ready is am ausführen');
     // Do stuff with map
     // map.removeLayer(this.drawnBBoxLayer);
-    this.theRealMap = map;
+     this.theRealMap = map;
+     this.theRealMap.locate({setView: true});
+
   }
 
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {

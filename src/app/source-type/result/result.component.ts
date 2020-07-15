@@ -26,6 +26,7 @@ export class ResultComponent implements OnInit {
           this.hoverHoveredFootprint(item);   // a specific listElement gets a new color
           this.previousIdentifier = item;
         } else if (this.previousIdentifier === item) { // mouseleave
+          console.log(document.getElementById(item).getAttribute('aria-expanded'));
           document.getElementById(item).style.backgroundColor = null;    // all listElements become white
           this.previousIdentifier = null;
         } else {   // a new one is selceted
