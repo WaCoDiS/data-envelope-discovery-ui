@@ -13,7 +13,7 @@
           </thead>
           <tbody>
             <div *ngFor="let dataEnvelope of dataEnvelopes; index as i" (mouseenter)="selected(dataEnvelope)" (mouseleave)="selected(dataEnvelope)">
-              <tr [ngStyle]="{'background-color':dataEnvelope.expanded === true ? '#f8f9fa' : '' }" class="d-flex hover" (click)="dataEnvelope.expanded = !dataEnvelope.expanded" style="cursor: pointer;">
+              <tr [id]="dataEnvelope.identifier" [ngStyle]="{'background-color':dataEnvelope.expanded === true ? '#ececec' : '' }" class="d-flex hover" (click)="dataEnvelope.expanded = !dataEnvelope.expanded;" style="cursor: pointer;">
                 <th style="word-wrap: break-word; width: 10%">{{ i + 1 }}</th>
                 <td style="word-wrap: break-word; width: 30%">{{dataEnvelope.identifier}}</td>
                 <td style="word-wrap: break-word; width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>

@@ -178,13 +178,14 @@ export class MapApplicationComponent implements OnInit {
         const layer = ev.target;
         layer.setStyle({ color: '#ff0000', weight: 3, fillOpacity: 0.5});
         console.log(ev.target.getLayers()[0].feature.geometry.properties.identifier);
-
+        this.resultService.colorizeListElement(ev.target.getLayers()[0].feature.geometry.properties.identifier);
       }
       );
 
       footprintLayer.on('mouseout', (ev): any =>  {
         const layer = ev.target;
         layer.setStyle({ color: '#ff7800', weight: 1 });
+        this.resultService.colorizeListElement(ev.target.getLayers()[0].feature.geometry.properties.identifier);
       }
       );
       this.footprints.addLayer(footprintLayer);

@@ -16,15 +16,21 @@ export class ResultService {
 
   // Observable source
   private selectedEnvelope = new Subject<sourceType.DataEnvelopeResult>();
+  private selectedFootprintIdentifier =  new Subject<string>();
 
 
   // Observable stream
   selectedEnvelope$ = this.selectedEnvelope.asObservable();
+  selectedFootprintIdentifier$ = this.selectedFootprintIdentifier.asObservable();
 
 
 
   colorizeSelected(selectedEnvelope: sourceType.DataEnvelopeResult) {
     this.selectedEnvelope.next(selectedEnvelope);
+  }
+
+  colorizeListElement(identifier: string) {
+    this.selectedFootprintIdentifier.next(identifier);
   }
 
 }
