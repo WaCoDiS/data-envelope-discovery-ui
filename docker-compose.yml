@@ -1,0 +1,11 @@
+
+version: "3"
+services:
+  core-engine:
+    build:
+      context: .
+    image: wacodis/data-envelope-discovery-ui
+    ports:
+      - 8080:80
+    environment: 
+      - PORT=80
