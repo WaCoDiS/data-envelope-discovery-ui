@@ -10,7 +10,7 @@ RUN npm run build --prod
 ### STAGE 2: Run ###
 FROM nginx:1.17.8-alpine
 # uses the configuration file 'nginx.conf' in this project
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/default.conf /etc/nginx/conf.d
 COPY --from=builder /app/dist/dataEnvelopeDiscoveryUI /usr/share/nginx/html
 CMD sed -i -e 's/MYPORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
 
