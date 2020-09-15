@@ -1,16 +1,16 @@
 import { Component, OnInit, PipeTransform, Input } from '@angular/core';
-import * as sourceType from '../../source-type-interfaces';
+import * as sourceType from '../../../source-type-interfaces';
 import { ResultService } from 'src/app/services/result-service/result.service';
 import { Subscription } from 'rxjs';
 
 
 @Component({
-  selector: 'app-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.scss']
+  selector: 'copernicus-result',
+  templateUrl: './copernicus-result.component.html',
+  styleUrls: ['./copernicus-result.component.scss']
 })
 
-export class ResultComponent implements OnInit {
+export class CopernicusResultComponent implements OnInit {
 
   @Input()  dataEnvelopes: sourceType.DataEnvelopeResult[];
 

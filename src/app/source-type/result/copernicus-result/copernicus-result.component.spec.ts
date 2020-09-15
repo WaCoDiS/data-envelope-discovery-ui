@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultComponent } from './result.component';
+import { CopernicusResultComponent } from './copernicus-result.component';
 
-describe('ResultComponent', () => {
-  let component: ResultComponent;
-  let fixture: ComponentFixture<ResultComponent>;
+describe('CopernicusResultComponent', () => {
+  let component: CopernicusResultComponent;
+  let fixture: ComponentFixture<CopernicusResultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResultComponent ]
+      declarations: [ CopernicusResultComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResultComponent);
+    fixture = TestBed.createComponent(CopernicusResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

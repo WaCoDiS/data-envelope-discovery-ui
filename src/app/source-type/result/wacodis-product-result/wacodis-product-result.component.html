@@ -1,0 +1,83 @@
+<div class="container-custom">
+  <div class="row row-custom">
+    <div class="col col-custom">
+      <div class="table-responsive">
+        <p *ngIf="dataEnvelopes.length <= 0">Keine passenden Ergebnisse gefunden</p>
+        <table class="table table-stripe table-hover" *ngIf="dataEnvelopes.length > 0">
+          <thead>
+            <tr class="d-flex">
+              <th style="word-wrap: break-word; width: 10%">#</th>
+              <th style="word-wrap: break-word; width: 30%">Identifier</th>
+              <th style="word-wrap: break-word; width: 30%">Date</th>
+              <th style="word-wrap: break-word; width: 30%">Source Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <div *ngFor="let dataEnvelope of dataEnvelopes; index as i" (mouseenter)="selected(dataEnvelope)" (mouseleave)="selected(dataEnvelope)">
+              <tr [id]="dataEnvelope.identifier" [ngStyle]="{'background-color':dataEnvelope.expanded === true ? '#ececec' : '' }" class="d-flex hover" (click)="dataEnvelope.expanded = !dataEnvelope.expanded;" style="cursor: pointer;">
+                <th style="word-wrap: break-word; width: 10%">{{ i + 1 }}</th>
+                <td style="word-wrap: break-word; width: 30%">{{dataEnvelope.identifier}}</td>
+                <td style="word-wrap: break-word; width: 30%">{{dataEnvelope.timeFrame.startTime}}</td>
+                <td style="word-wrap: break-word; width: 30%">{{dataEnvelope.sourceType}}</td>
+              </tr>
+              <div *ngIf="dataEnvelope.expanded">
+                  <table style="table-layout: fixed; width: 100%; " class="bg-light">
+                    <tr>
+                      <td style="word-wrap: break-word; width: 10%;"></td>
+                      <td style="word-wrap: break-word;">Identifier:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.identifier}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; width: 10%"></td>
+                      <td style="word-wrap: break-word;">Date:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.timeFrame.startTime}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">SourceType:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.sourceType}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">Created:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.created}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">Modified:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.modified}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">Area of Interest</td>
+                      <td style="word-wrap: break-word;">
+                      x-Min: {{dataEnvelope.areaOfInterest.extent[0]}}<br/>
+                      y-Min: {{dataEnvelope.areaOfInterest.extent[1]}}<br/>
+                      x-Max: {{dataEnvelope.areaOfInterest.extent[2]}}<br/>
+                      y-Max: {{dataEnvelope.areaOfInterest.extent[3]}}<br/>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">Produkttyp:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.productType}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word;">Backend Base-URL:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.serviceDefinition.baseUrl}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word; ">Service-Types:</td>
+                      <td style="word-wrap: break-word;"><div *ngFor="let type of dataEnvelope.serviceDefinition.serviceTypes">{{type}}</div></td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

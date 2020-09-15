@@ -2,7 +2,8 @@
   <div class="row row-custom">
     <div class="col col-custom">
       <div class="table-responsive">
-        <table class="table table-stripe table-hover" >
+        <p *ngIf="dataEnvelopes.length <= 0">Keine passenden Ergebnisse gefunden</p>
+        <table class="table table-stripe table-hover" *ngIf="dataEnvelopes.length > 0">
           <thead>
             <tr class="d-flex">
               <th style="word-wrap: break-word; width: 10%">#</th>
@@ -72,31 +73,6 @@
                       <td style="word-wrap: break-word;">{{dataEnvelope.cloudCoverage}}</td>
                     </tr>
                   </table>
-
-
-
-
-
-
-
-
-                  <!--
-                  <span class= "font-weight-bold"> Identifier: </span> {{dataEnvelope.identifier}}
-                  <span class= "font-weight-bold">Date: </span>{{dataEnvelope.timeFrame.startTime}}
-                  <span class= "font-weight-bold"> SourceType: </span> {{dataEnvelope.sourceType}}
-                  <span class= "font-weight-bold">Created: </span>{{dataEnvelope.created}}
-                  <span class= "font-weight-bold"> Modified: </span> {{dataEnvelope.modified}}
-                  <span class= "font-weight-bold"> Area of Interest: </span>
-                  <span class= "font-weight-italic">
-                    x-Min: {{dataEnvelope.areaOfInterest.extent[0]}}
-                    y-Min: {{dataEnvelope.areaOfInterest.extent[1]}}
-                    x-Max: {{dataEnvelope.areaOfInterest.extent[2]}}
-                    y-Max: {{dataEnvelope.areaOfInterest.extent[3]}}
-                  </span>
-                  <span class= "font-weight-bold"> Satellite: </span> {{dataEnvelope.satellite}}
-                  <span class= "font-weight-bold"> Portal: </span> {{dataEnvelope.portal}}
-                  <span class= "font-weight-bold"> Cloud Cover: </span> {{dataEnvelope.cloudCoverage}}
-                -->
               </div>
             </div>
           </tbody>

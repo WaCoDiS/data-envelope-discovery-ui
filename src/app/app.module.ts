@@ -21,14 +21,9 @@ import { OptionalParametersDwdComponent } from './source-type/optional-parameter
 import { OptionalParametersSensorWebComponent } from './source-type/optional-parameters-sensor-web/optional-parameters-sensor-web.component';
 import { OptionalParametersWacodisProductComponent } from './source-type/optional-parameters-wacodis-product/optional-parameters-wacodis-product.component';
 import { RequiredParametersComponent } from './source-type/required-parameters/required-parameters.component';
-import { ResultComponent } from './source-type/result/result.component';
+import { CopernicusResultComponent } from './source-type/result/copernicus-result/copernicus-result.component';
 import { SourceTypeComponent } from './source-type/source-type.component';
-
-
-
-
-
-
+import { WacodisProductResultComponent } from './source-type/result/wacodis-product-result/wacodis-product-result.component';
 
 
 @NgModule({
@@ -42,7 +37,8 @@ import { SourceTypeComponent } from './source-type/source-type.component';
     OptionalParametersDwdComponent,
     OptionalParametersWacodisProductComponent,
     MapApplicationComponent,
-    ResultComponent
+    CopernicusResultComponent,
+    WacodisProductResultComponent
   ],
   imports: [
     BrowserModule,
