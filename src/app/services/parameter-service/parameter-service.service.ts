@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import * as sourceType from '../../source-type-interfaces';
+import { CopernicusParameters } from 'src/app/source-type/optional-parameters-copernicus/optional-parameters-copernicus.component';
+import { WacodisProductParameters } from 'src/app/source-type/optional-parameters-wacodis-product/optional-parameters-wacodis-product.component';
+
+export class ExploreParameter {
+
+}
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +25,8 @@ export class ParameterService {
   public sensorWeb: sourceType.SensorWebExplore = {
     queryParams: {
       sourceType: {
-       comparator: 'equals',
-       value: 'SensorWebDataEnvelope'
+        comparator: 'equals',
+        value: 'SensorWebDataEnvelope'
       },
       serviceUrl: {
         comparator: 'equals',
@@ -58,22 +64,22 @@ export class ParameterService {
       sourceType: {
         comparator: 'equals',
         value: 'CopernicusDataEnvelope'
-       },
-    satellite : {
-      comparator: 'equals',
-      value: 'sentinel-2'
-    },
-    cloudCoverage: {
-      comparator: 'lesserOrEquals',
-      value: 100
-    },
-    portal: {
-    comparator: 'equals',
-      value: 'Code-DE'
-    }
+      },
+      satellite: {
+        comparator: 'equals',
+        value: 'sentinel-2'
+      },
+      cloudCoverage: {
+        comparator: 'lesserOrEquals',
+        value: 100
+      },
+      portal: {
+        comparator: 'equals',
+        value: 'Code-DE'
+      }
 
-  }
-};
+    }
+  };
 
   public dwd: sourceType.DwdExplore = {
     areaOfInterest: null,
@@ -82,45 +88,45 @@ export class ParameterService {
       sourceType: {
         comparator: 'equals',
         value: 'DwdDataEnvelope'
-       }, /*
+      }, /*
       serviceUrl : {
       comparator: "equals",
       value: "https://cdc.dwd.de:443/geoserver/CDC/wfs?"
     },*/
-    layerName: {
-      comparator: 'equals',
-      value: null
-    }/*,
+      layerName: {
+        comparator: 'equals',
+        value: null
+      }/*,
     parameter: {
     comparator: "equals",
       value: null
     }
     */
-  }
-};
-  public wacodisProducts: sourceType.WacodisProductExplore  = {
+    }
+  };
+  public wacodisProducts: sourceType.WacodisProductExplore = {
     areaOfInterest: null,
     timeFrame: null,
     queryParams: {
       sourceType: {
         comparator: 'equals',
         value: 'WacodisProductDataEnvelope'
-       },
-      productCollection : {
-      comparator: 'equals',
-      value: null
-    },
-    productType: {
-      comparator: 'equals',
-      value: null
-    },
-    serviceName: {
-    comparator: 'equals',
-      value: null
-    }
+      },
+      productCollection: {
+        comparator: 'equals',
+        value: null
+      },
+      productType: {
+        comparator: 'equals',
+        value: null
+      },
+      serviceName: {
+        comparator: 'equals',
+        value: null
+      }
 
-  }
-};
+    }
+  };
 
   // Observable source
   private minLonSource = new Subject<number>();
@@ -137,8 +143,6 @@ export class ParameterService {
   constructor() {
     this.currentSourceType = 'SensorWeb';
   }
-
-
 
   // service command
   changeMinLon(coord: number) {
@@ -157,8 +161,6 @@ export class ParameterService {
     this.extent[3] = coord;
     this.maxLatSource.next(coord);
   }
-
-
 
   changeSourceType(choosenSourceType: string) {
     console.log(choosenSourceType);
@@ -192,20 +194,6 @@ export class ParameterService {
     this.sensorWeb.queryParams.procedure.value = procedure;
   }
 
-  // Setters for Copernicus
-  setSatellite(satellite: string) {
-    this.copernicus.queryParams.satellite.value = satellite;
-  }
-
-  setCloudCover(cloudCover: number) {
-    this.copernicus.queryParams.cloudCoverage.value = cloudCover;
-  }
-
-  setPortal(portal: string) {
-    this.copernicus.queryParams.portal.value = portal;
-  }
-
-
   // Setters for DWD
   setLayerName(layerName: string) {
     this.dwd.queryParams.layerName.value = layerName;
@@ -215,17 +203,67 @@ export class ParameterService {
     this.dwd.queryParams.parameter.value = parameter;
   }
   */
-  // Setters for WacodisProducts
-  setProductCollection(productCollection: string) {
-    this.wacodisProducts.queryParams.productCollection.value = productCollection;
+
+  getCopernicusExploreDataEnvelope(params: CopernicusParameters): sourceType.DataEnvelopeExplore {
+    var explore: sourceType.CopernicusExplore;
+    return explore = {
+      areaOfInterest: {
+        extent: this.extent
+      },
+      timeFrame: {
+        startTime: this.startDate,
+        endTime: this.endDate
+      },
+      queryParams: {
+        sourceType: {
+          comparator: 'equals',
+          value: 'CopernicusDataEnvelope'
+        },
+        satellite: {
+          comparator: 'equals',
+          value: params.satellite.toLowerCase()
+        },
+        cloudCoverage: {
+          comparator: 'lesserOrEquals',
+          value: params.cloudCoverage
+        },
+        portal: {
+          comparator: 'equals',
+          value: params.portal
+        }
+      }
+    }
   }
 
-  setProductType(productType: string) {
-    this.wacodisProducts.queryParams.productType.value = productType;
-  }
-
-  setServiceName(serviceName: string) {
-    this.wacodisProducts.queryParams.serviceName.value = serviceName;
+  getWacodisExploreDataEnvelope(params: WacodisProductParameters): sourceType.DataEnvelopeExplore {
+    var explore: sourceType.WacodisProductExplore;
+    return explore = {
+      areaOfInterest: {
+        extent: this.extent
+      },
+      timeFrame: {
+        startTime: this.startDate,
+        endTime: this.endDate
+      },
+      queryParams: {
+        sourceType: {
+          comparator: 'equals',
+          value: 'WacodisProductDataEnvelope'
+        },
+        productCollection: {
+          comparator: 'equals',
+          value: null
+        },
+        productType: {
+          comparator: 'equals',
+          value: params.productType
+        },
+        serviceName: {
+          comparator: 'equals',
+          value: null
+        }
+      }
+    }
   }
 
 
