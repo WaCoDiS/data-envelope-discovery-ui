@@ -52,8 +52,8 @@ export class MapApplicationComponent implements OnInit {
     layers: [
       L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: 'Open Street Map' })
     ],
-    zoom: 15,
-    center: L.latLng({ lat: 51.447437, lng: 7.271786 })
+    zoom: 12,
+    center: L.latLng({ lat: 51.2625593628227, lng: 7.172698974609375 })
   };
 
   drawOptions = {
