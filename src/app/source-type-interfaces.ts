@@ -29,11 +29,7 @@ export interface Property {
   value: string | number;
 }
 
-
-
-
 export interface SensorWebExplore extends DataEnvelopeExplore {
-
   queryParams: {
     sourceType: Property;
     serviceUrl: Property;
