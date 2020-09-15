@@ -1,52 +1,28 @@
 <div class="container-custom">
-<div class="row">
-  <div class="col">
-    <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-            aria-controls="collapseBasic">Optional Parameters
-    </button>
-  </div>
-</div>
-<div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-  <div class="bg-light first-element">
-  <!-- Product Collection -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-4 col-custom">
-      <div class="card-body">
-        <label>Product Collection</label>
-      </div>
-    </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="productCollection" placeholder="collection" (input)="readProductCollection($event.target.value)"/>
-      </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-light" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Optional Parameters
+      </button>
     </div>
   </div>
-  <!-- Product Type -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-4 col-custom">
-      <div class="card-body">
-        <label>Product Type</label>
-      </div>
-    </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="productType" placeholder="type" (input)="readProductType($event.target.value)"/>
+  <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+    <div class="bg-light first-element">
+      <!-- Product Type -->
+      <div class="row bg-light row-custom">
+        <div class="col-md-4 col-custom">
+          <div class="card-body">
+            <label>Product Type</label>
+          </div>
+        </div>
+        <div class="col-md-5 col-custom ">
+          <div class="card-body">
+            <ngx-select-dropdown [multiple]="false" [options]="dropdownOptionsProductType" [config]="config"
+              [(ngModel)]="wacodisProductParameters.productType">
+            </ngx-select-dropdown>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Service Name -->
-  <div class="row bg-light row-custom">
-    <div class="col-md-4 col-custom">
-      <div class="card-body">
-        <label>Service Name</label>
-      </div>
-    </div>
-    <div class="col-md-5 col-custom ">
-      <div class="card-body">
-        <input class="form-control" id="serviceName" placeholder="name" (input)="readServiceName($event.target.value)"/>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 </div>
