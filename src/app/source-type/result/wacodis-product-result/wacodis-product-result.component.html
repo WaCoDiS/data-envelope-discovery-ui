@@ -59,7 +59,7 @@
                     </tr>
                     <tr>
                       <td style="word-wrap: break-word; min-width: 10%"></td>
-                      <td style="word-wrap: break-word;">Produkttyp:</td>
+                      <td style="word-wrap: break-word;">Product Type:</td>
                       <td style="word-wrap: break-word;">{{dataEnvelope.productType}}</td>
                     </tr>
                     <tr>
@@ -69,7 +69,12 @@
                     </tr>
                     <tr>
                       <td style="word-wrap: break-word; min-width: 10%"></td>
-                      <td style="word-wrap: break-word; ">Service-Types:</td>
+                      <td style="word-wrap: break-word;">Product Collection:</td>
+                      <td style="word-wrap: break-word;">{{dataEnvelope.serviceDefinition.productCollection}}</td>
+                    </tr>
+                    <tr>
+                      <td style="word-wrap: break-word; min-width: 10%"></td>
+                      <td style="word-wrap: break-word; ">Service Types:</td>
                       <td style="word-wrap: break-word;"><div *ngFor="let type of dataEnvelope.serviceDefinition.serviceTypes">{{type}}</div></td>
                     </tr>
                   </table>
