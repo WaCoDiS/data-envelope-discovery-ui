@@ -12,7 +12,7 @@ import { OptionalParametersWacodisProductComponent } from './optional-parameters
 })
 export class SourceTypeComponent {
   componentTitel = 'Source type';
-  sourceTypeSelection = 'SensorWeb';
+  sourceTypeSelection = 'Copernicus';
   resultPressed = false;
   dataEnvelopes: sourceType.DataEnvelopeResult[];
 
@@ -46,7 +46,6 @@ export class SourceTypeComponent {
     const ergebnis = this.httpService.searchDataEnvelope(explore);
     ergebnis.subscribe(dataEnvelope => {
       this.dataEnvelopes = dataEnvelope;
-      // this.dataEnvelopes.push(dataEnvelope);
       this.results.emit(this.dataEnvelopes);
     });
 
