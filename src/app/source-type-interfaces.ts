@@ -79,6 +79,7 @@ export interface CopernicusResult extends DataEnvelopeResult {
   satellite: string;
   cloudCoverage: number;
   portal: string;
+  footprint: string;
 }
 
 export interface DwdResult extends DataEnvelopeResult {

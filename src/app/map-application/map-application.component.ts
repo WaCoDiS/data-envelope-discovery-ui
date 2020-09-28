@@ -122,39 +122,24 @@ export class MapApplicationComponent implements OnInit {
   public drawFootprints(dataEnvelopes: sourceType.DataEnvelopeResult[]) {
     this.theRealMap.removeLayer(this.drawnItems);
     this.footprints.clearLayers();
+    var footprintLayer;
 
     for (const element of dataEnvelopes) {
-      const min: number[] = [element.areaOfInterest.extent[3], element.areaOfInterest.extent[0]];
-      const max: number[] = [element.areaOfInterest.extent[1], element.areaOfInterest.extent[2]];
-      const corner1 = L.latLng(min[0], min[1]);
-      const corner2 = L.latLng(max[0], max[1]);
-      const bounds = L.latLngBounds(corner1, corner2);
-      // ymin xmin ymax xmax
-      const footprintLayerAlt = L.rectangle(bounds);
-      const footprintLayer = L.geoJSON({
-        type: 'Polygon',
-        properties: {
-          identifier: element.identifier
-        },
-        coordinates: [[
-          [min[1], min[0]],
-          [min[1], max[0]],
-          [max[1], max[0]],
-          [max[1], min[0]],
-          [min[1], min[0]]
-        ]]// Note that in GeoJSON, order is [LONG, LAT]
-      } as geojson.Polygon
-        /*
-        ,
-        {
-          onEachFeature: function (feature, layer) {
-            layer.on('click', function (e) {
-              console.log(this.resultService.hoverRow("Hallo"));
-            })
+      if(element.sourceType === "CopernicusDataEnvelope" ) {
+        var copernicusEnvelope = element as sourceType.CopernicusResult;
+        if(copernicusEnvelope.footprint) {
+          var footprint = JSON.parse(copernicusEnvelope.footprint)
+          footprint.properties = {
+            identifier: element.identifier
           }
+          footprintLayer = L.geoJSON(footprint as geojson.Polygon); 
+        } else {
+          footprintLayer = this.createLayerFromBbox(element);
         }
-        */
-      );
+      } else {
+        footprintLayer = this.createLayerFromBbox(element);
+      }
+
       console.log(footprintLayer.getLayers()[0]);
       footprintLayer.setStyle({ color: '#ff7800', weight: 3, fillOpacity: 0.1 });
 
@@ -172,10 +157,32 @@ export class MapApplicationComponent implements OnInit {
         this.resultService.colorizeListElement(ev.target.getLayers()[0].feature.geometry.properties.identifier);
       }
       );
+     
       this.footprints.addLayer(footprintLayer);
       console.log('Zeichnen fertig: ' + element.identifier);
       this.map.set(element.identifier, this.footprints.getLayerId(footprintLayer));
     }
+  }
+
+  createLayerFromBbox (element: sourceType.DataEnvelopeResult) {
+     const min: number[] = [element.areaOfInterest.extent[3], element.areaOfInterest.extent[0]];
+        const max: number[] = [element.areaOfInterest.extent[1], element.areaOfInterest.extent[2]];
+        // ymin xmin ymax xmax
+        const footprintLayer = L.geoJSON({
+          type: 'Polygon',
+          properties: {
+            identifier: element.identifier
+          },
+          coordinates: [[
+            [min[1], min[0]],
+            [min[1], max[0]],
+            [max[1], max[0]],
+            [max[1], min[0]],
+            [min[1], min[0]]
+          ]]// Note that in GeoJSON, order is [LONG, LAT]
+        } as geojson.Polygon
+        );
+        return footprintLayer;
   }
 
 
