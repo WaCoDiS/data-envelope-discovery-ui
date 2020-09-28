@@ -256,7 +256,7 @@ export class ParameterService {
         },
         productType: {
           comparator: 'equals',
-          value: params.productType
+          value: params.productType ? params.productType : null
         },
         serviceName: {
           comparator: 'equals',
