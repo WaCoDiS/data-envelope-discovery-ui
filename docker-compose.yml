@@ -4,7 +4,7 @@ services:
   core-engine:
     build:
       context: .
-    image: wacodis/data-envelope-discovery-ui
+    image: wacodis/data-envelope-discovery-ui:1.0.2
     ports:
       - 8080:80
     environment: 
