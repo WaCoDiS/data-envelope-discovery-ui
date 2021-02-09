@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   local: false,
-  apiUrl: 'https://wacodis.demo.52north.org/wacodis-data-access-api/dataAccess/dataenvelopes/explore'
+  apiUrl: 'http://localhost:8082/dataAccess/dataenvelopes/explore'
 };
 
 /*
