@@ -1,10 +1,10 @@
 
 version: "3"
 services:
-  core-engine:
+  discovery-ui:
     build:
       context: .
-    image: wacodis/data-envelope-discovery-ui
+    image: wacodis/data-envelope-discovery-ui:latest
     ports:
       - 8080:80
     environment: 
