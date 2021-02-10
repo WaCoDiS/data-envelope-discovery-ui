@@ -7,10 +7,9 @@ User friendly web-based UI for discovering metadata for registrated datasets via
 2. [Overview](#overview) 
 3. [Installation / Building Information](#installation--building-information)
 4. [Deployment](#deployment)
-5. [User Guide](#user-guide)
-6. [Developer Information](#developer-information)
-7. [Contact](#contact)
-8. [Credits and Contributing Organizations](#credits-and-contributing-organizations)
+5. [Developer Information](#developer-information)
+6. [Contact](#contact)
+7. [Credits and Contributing Organizations](#credits-and-contributing-organizations)
 
 ## WaCoDiS Project Information
 <p align="center">
@@ -45,21 +44,34 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 production build.
 
 ### Build with Docker
-The repository contains a Dockerfile for building a Docker image. Just run `docker build -t wacodis/dataenvelope-discovery-ui .`
+The repository contains a Dockerfile for building a Docker image. Just run `docker build -t wacodis/data-envelope-discovery-ui .`
 from the project root to build the image.
 
 The [deployment section](#run-with-docker) provides helpful information for running the UI as Docker container.
 
 ### Configuration
 #### Parameters
-TODO
+Adopt the environment files inside the _src/environments/_ folder to your runtime enviroment specfic needs:
+* `production`: Indicates whether the environment file should be used in production mode or not
+* `local`: Indicates whether the environment file should be used in local mode or not
+* `apiUrl`: URL that points to the WaCoDiS DataAccess API
+
+To use the locally running API components, in the file environment.ts, set the parameter 'apiUrl' to the relevant URL,
+which may point to a locally running instance or to your production service . 
 
 ## Deployment
 ### Dependencies
-TODO
+WaCoDiS DataEnvelope Discovery UI serves as frontend for WaCoDiS Data Access API. Hence, Data Access API must be deployed in
+beforehand, otherwise the UI can not send any API requests to it. To install the backend components, follow the instructions as
+described here: https://github.com/WaCoDiS/data-access-api. We recommend to run the Data Access API as Docker
+container to speed up deployment. Once installed and configured, to use the API on your local system you will need to
+configure the Angular app accordingly. Just point the `apiUrl` parameter to your local API instance.
 
 ### Run with Docker
-TODO
+Start the Docker container by running `docker run --rm -it --name app-job-manager-container -e PORT=80 -p 8080:80 wacodis/job-manager-ui`.
+The repository also contains a docker-compose file that eases starting the container with `docker-compose up`.
+Subsequently, the Job Manager UI is available on http://localhost:8080/. Be sure to have built the docker image like described
+in the [Build with Docker section](#build-with-docker).
 
 ### Run on development server
 Run `ng serve --open` for a dev server and opening a web browser window displaying the UI on http://localhost:4200.
@@ -68,7 +80,10 @@ Run `ng serve --open` for a dev server and opening a web browser window displayi
 This section contains information for developers.
 
 ### How to Contribute
-TODO
+Feel free to implement missing features by creating a pull request or get in touch with our friendly developers.
+
+### Pending developments
+Up to now, WaCoDiS DataEnvelope Discovery UI support the discovery of `CopernicusDataEnvelope` and `WacodisProduct`
 
 ### Branching
 The master branch provides sources for stable builds. The develop branch represents the latest (maybe unstable) state of
