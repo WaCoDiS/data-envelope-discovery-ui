@@ -83,7 +83,9 @@ This section contains information for developers.
 Feel free to implement missing features by creating a pull request or get in touch with our friendly developers.
 
 ### Pending developments
-Up to now, WaCoDiS DataEnvelope Discovery UI support the discovery of `CopernicusDataEnvelope` and `WacodisProduct`
+Up to now, WaCoDiS DataEnvelope Discovery UI supports the discovery of `CopernicusDataEnvelope` and `WacodisProductDataEnvelope`.
+Since DatanAccess API also manages `SensorWebDataEnvelope`, `GdiDeDataEnvelope` and `DwdDataEnvelope`, the UI have to be expanded
+by providing additional parameter forms that matches each of the missing _DataEnvelopes_.
 
 ### Branching
 The master branch provides sources for stable builds. The develop branch represents the latest (maybe unstable) state of
