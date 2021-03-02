@@ -94,13 +94,14 @@ development.
 ### License and Third Party Lib POM Plugins
 [optional]
 
-## Contact
-|    Name   |   Organization    |    Mail    |
+### Contributing Developers
+|    Name   |   Organization    |    GitHub    |
 | :-------------: |:-------------:| :-----:|
-| Sebastian Drost | Bochum University of Applied Sciences | sebastian.drost@hs-bochum.de |
-| Arne Vogt | Bochum University of Applied Sciences | arne.vogt@hs-bochum.de |
-| Andreas Wytzisk  | Bochum University of Applied Sciences | andreas.wytzisk@hs-bochum.de |
-| Matthes Rieke | 52° North GmbH | m.rieke@52north.org |
+| Sebastian Drost | 52° North GmbH | [SebaDro](https://github.com/SebaDro) |
+
+## Contact
+The WaCoDiS project is maintained by [52°North GmbH](https://52north.org/). If you have any questions about this or any
+other repository related to WaCoDiS, please contact wacodis-info@52north.org.
 
 ## Credits and Contributing Organizations
 - Department of Geodesy, Bochum University of Applied Sciences, Bochum
